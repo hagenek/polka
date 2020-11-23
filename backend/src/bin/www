@@ -31,7 +31,7 @@ function normalizePort(val) {
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 /**
@@ -75,6 +75,23 @@ function onListening() {
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   console.log(`Listening on ${bind}`); // eslint-disable-line no-console
 }
+
+/**
+ * Socket setup
+ */
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
+io.on('connection', client => {
+  console.log('Client connected!');
+  client.on('disconnect', () => {
+    console.log("Client disconnected!");
+  })
+})
 
 /**
  * Listen on provided port, on all network interfaces.

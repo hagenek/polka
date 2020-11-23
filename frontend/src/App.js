@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
 import backend from "./api"
+import Chat from './components/Chat/Chat'
 
 function App() {
   const [message, setMessage] = useState("")
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <p> {message} </p>
+      <Chat />
     </div>
   )
 }
