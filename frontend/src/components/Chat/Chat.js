@@ -1,20 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import socketClient from 'socket.io-client'
 
 const Chat = () => {
+  const [socket, setSocket] = useState(undefined);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const socket = socketClient('http://localhost:8000/');
-    socket.on('connect', () => {
+    const socketIO = socketClient('http://localhost:8000/');
+    socketIO.on('connect', () => {
       console.log("Connect");
     })
-    socket.on('disconnect', () => {
+    socketIO.on('disconnect', () => {
       console.log("Disconnect");
     })
+    setSocket(socketIO)
   }, [])
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    setMessage("");
+  }
+
   return (
-    <h1>Test</h1>
+    <section>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={message} onChange={e => setMessage(e.target.value)}/>
+        <input type="submit" value="Send"/>
+      </form>
+    </section>
   )
 }
 
