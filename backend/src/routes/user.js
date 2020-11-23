@@ -2,7 +2,7 @@ const User = require('../models/user')
 const express = require('express')
 const router = new express.Router()
 
-router.post("/user", async (req, res) => {
+router.post("/users", async (req, res) => {
   console.log(req.body);
 
   const { username, password, firstname, lastname } = req.body
@@ -12,11 +12,19 @@ router.post("/user", async (req, res) => {
     firstname,
     lastname,
   })
-  await country.save(function (err, user) {
+  await user.save(function (err, user) {
     if (err) return console.error(err);
   });
 
-  Country.find((err, users) => {
+  User.find((err, users) => {
+    if (err) return console.error(err)
+    res.send(users)
+  })
+
+});
+router.get("/users", async (req, res) => {
+
+  User.find((err, users) => {
     if (err) return console.error(err)
     res.send(users)
   })

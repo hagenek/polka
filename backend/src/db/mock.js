@@ -1,4 +1,4 @@
-bruker 1 = {
+user_one = {
   "username": "joakimonline",
   "password": "hejhej123",
   "firstname": "joakim",
