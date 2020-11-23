@@ -5,14 +5,20 @@ const router = new express.Router()
 router.post("/user", async (req, res) => {
   console.log(req.body);
 
-  const country = new Country({name: req.body.name, description: "land in the North", ally: true,})
-  await country.save(function (err, fluffy) {
+  const { username, password, firstname, lastname } = req.body
+  const user = new User({
+    username,
+    password,
+    firstname,
+    lastname,
+  })
+  await country.save(function (err, user) {
     if (err) return console.error(err);
   });
 
-  Country.find((err, countries) => {
+  Country.find((err, users) => {
     if (err) return console.error(err)
-    res.send(countries)
+    res.send(users)
   })
 
 });

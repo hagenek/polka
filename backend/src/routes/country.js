@@ -15,7 +15,6 @@ router.post("/norway", async (req, res) => {
     if (err) return console.error(err)
     res.send(countries)
   })
-
 });
 
 module.exports = router;
