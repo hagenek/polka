@@ -18,8 +18,10 @@ const countrySchema = new Schema({
     required: false,
     default: false,
   },
-
-
 }, {
   timestamps: true
 });
+
+const Country = mongoose.model("Country", countrySchema)
+
+module.exports = Country
