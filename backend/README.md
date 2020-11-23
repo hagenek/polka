@@ -25,25 +25,25 @@ Add the following to your vscode settings
 Install dependencies
 
 ```
-npm install
+yarn install
 ```
 
 Running in development
 
 ```
-npm run dev
+yarn run dev
 ```
 
 Running in production
 
 ```
-npm start
+yarn start
 ```
 
 Running tests / linting
 
 ```
-npm test
+yarn test
 
-npm run lint
+yarn lint
 ```
