@@ -4,7 +4,6 @@ import backend from "./api"
 
 function App() {
   const [message, setMessage] = useState("")
-  console.log(message)
   useEffect(() => {
     async function fetchData() {
       const request = await backend.get("/")
@@ -16,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <p>hello {message}</p>
+      <p> {message} </p>
     </div>
   )
 }
