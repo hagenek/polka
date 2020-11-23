@@ -10,16 +10,18 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "airbnb": "^0.0.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "express": "~4.16.0",
     "helmet": "^3.21.1",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "prettier": "^2.2.0"
   },
-  "devDependencies": {
-    "eslint": "^5.12.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
