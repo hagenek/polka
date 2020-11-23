@@ -9,6 +9,7 @@ require('./db/mongoose')
 
 const indexRouter = require("./routes/index")
 const countryRouter = require("./routes/country")
+const userRouter = require("./routes/user")
 
 const errorHandler = require("./middleware/errorHandler")
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
 
+app.use("/", userRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
 

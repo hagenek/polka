@@ -27,7 +27,7 @@ const userSchema = new Schema({
   },
   city: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
@@ -39,7 +39,7 @@ const userSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
+    required: false,
   },
   genderinterest: {
     type: String,
@@ -53,25 +53,21 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-  objectid: {
-    type: String,
-    required: true,
-  },
   governmentid: {
     type: Number,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: Number,
-    required: true,
+    required: false,
   },
   birthdate: {
     type: String,
-    required: true,
+    required: false,
   },
   friends: {
     type: String,
