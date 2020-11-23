@@ -18,6 +18,7 @@ const Chat = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    socket.emit('message', message);
     setMessage("");
   }
 
