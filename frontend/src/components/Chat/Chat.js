@@ -22,6 +22,8 @@ const Chat = () => {
     setMessage("");
   }
 
+  if(!socket) return <h1>Establishing connection...</h1>
+
   return (
     <section>
       <form onSubmit={handleSubmit}>
