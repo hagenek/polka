@@ -1,6 +1,6 @@
 import Chat from '../Chat/Chat'
 
-const ChatList = () => {
+const ChatList = ({ contacts }) => {
   return (
     <Chat />
   )
