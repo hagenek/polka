@@ -79,7 +79,9 @@ function onListening() {
 /**
  * Socket setup
  */
- 
+
+// Split up into helper functions
+const onlineUsers = [];
 
 const io = require('socket.io')(server, {
   cors: {
@@ -88,15 +90,26 @@ const io = require('socket.io')(server, {
 });
 
 io.on('connection', client => {
+  const userId = client.handshake.query['id']
+  const userConnectionIds = {
+    userId,
+    clientId: client.id
+  }
+  onlineUsers.push(userConnectionIds);
   console.log('Client connected!');
-  console.log(client.handshake.query['id'])
+  console.log(onlineUsers)
+
   client.on('disconnect', () => {
+    onlineUsers.splice(onlineUsers.findIndex(user => user.userId === userId), 1)
     console.log("Client disconnected!");
+    console.log(onlineUsers)
   })
 
-  client.on('message', (message, receiver) => {
-    console.log(receiver)
-    io.emit('message', message);
+  client.on('message', (message, receiverId) => {
+    const receiverClient = onlineUsers.find(user => user.userId === receiverId)
+    if(receiverClient) {
+      io.to(receiverClient.id).emit('message', message);
+    }
   })
 })
 
