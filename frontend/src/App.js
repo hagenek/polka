@@ -63,10 +63,34 @@ function App() {
     }
   ]
 
+  const mockUser= {
+    "username": "username43",
+    "password": "password43",
+    "firstname": "firstname34",
+    "lastname": "lastname4",
+    "image": "VÄLJ EN SNART",
+    "city": "oslo",
+    "address": "kirkegata 12",
+    "gender": "male",
+    "genderinterests": "male",
+    "interests": ["sport", "gym", "fotboll", "tv", "fashion"],
+    "description": "snill gogutt",
+    "email": "joakim.andersson@teknologi.se",
+    "phone": 12345,
+    "birthday": Date,
+    "friends": ["Georg Ekeberg"],
+    "groups": null,
+    "events": null,
+    "date": Date,
+    "disabilities": "celebral pares",
+    "id": "8349b4ddd2781d08c09890f3",
+    "governmentId": Number,
+  }
+
   return (
     <div className="App">
       <p> {message} </p>
-      <ChatList contacts={mockContacts}/>
+      <ChatList user={mockUser} contacts={mockContacts}/>
     </div>
   )
 }

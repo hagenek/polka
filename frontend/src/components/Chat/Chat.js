@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
 
-const Chat = ({ contact }) => {
+const Chat = ({ sender, receiver }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -29,11 +29,13 @@ const Chat = ({ contact }) => {
 
   if(!socket) return <h1>Establishing connection...</h1>
 
+  else if(!receiver) return <h1>No contact selected</h1>
+
   return (
     <section>
       <section>
-        {contact.firstname}
-        {contact.lastname}
+        {receiver.firstname}
+        {receiver.lastname}
       </section>
       <ul>
         {messageList.map(message => <li>{message}</li>)}
