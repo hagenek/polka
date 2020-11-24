@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 import "./Nav.css"
 
@@ -21,19 +21,19 @@ const Nav = () => {
           role="presentation"
         >
           <li className="nav__item">
-              <Link to="/home">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li className="nav__item">
-              <Link to="/people">People</Link>
+            <Link to="/people">People</Link>
           </li>
           <li className="nav__item">
-              <Link to="/groups">Groups</Link>
+            <Link to="/groups">Groups</Link>
           </li>
           <li className="nav__item">
-              <Link to="/chat">Chat</Link>
+            <Link to="/chat">Chat</Link>
           </li>
           <li className="nav__item">
-              <Link to="/profile">Profile</Link>
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
         <div className="mobile__icon" onClick={handleClick} role="presentation">
