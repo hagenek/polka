@@ -53,15 +53,11 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-<<<<<<< HEAD
-  governmentid: {
-=======
   objectId: {
     type: String,
     required: false,
   },
   governmentId: {
->>>>>>> db
     type: Number,
     required: false,
   },
