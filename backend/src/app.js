@@ -1,31 +1,44 @@
-const express = require('express');
-const createError = require('http-errors');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const logger = require('morgan');
-const helmet = require('helmet');
+require("dotenv").config();
+const express = require("express")
+const createError = require("http-errors")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
+const logger = require("morgan")
+const helmet = require("helmet")
+const mongoose = require("mongoose");
 
-const indexRouter = require('./routes/index');
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-const errorHandler = require('./middleware/errorHandler');
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
 
-const app = express();
+const indexRouter = require("./routes/index")
+const countryRouter = require('./routes/country')
+const userRouter = require('./routes/user-route');
 
-app.use(helmet()); // https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(cors());
+const errorHandler = require("./middleware/errorHandler")
 
-app.use('/', indexRouter);
+const app = express()
+
+app.use(helmet()) // https://expressjs.com/en/advanced/best-practice-security.html#use-helmet
+app.use(logger("dev"))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(cors())
+
+app.use("/", userRouter)
+app.use("/", countryRouter)
+app.use("/", indexRouter)
+app.use('/api/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError.NotFound());
-});
+  next(createError.NotFound())
+})
 
 // pass any errors to the error handler
-app.use(errorHandler);
+app.use(errorHandler)
 
-module.exports = app;
+module.exports = app

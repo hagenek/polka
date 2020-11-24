@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react"
-import "./App.css"
+import { BrowserRouter as Router } from "react-router-dom"
 import backend from "./api"
+import About from "./components/About/About"
+import Search from "./components/Search/Search"
+import Nav from "./components/Nav/Nav"
+import Footer from "./components/Footer/Footer"
+
+import "./App.css"
 
 function App() {
   const [message, setMessage] = useState("")
-  console.log(message)
   useEffect(() => {
     async function fetchData() {
       const request = await backend.get("/")
@@ -15,9 +20,15 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <p>hello {message}</p>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Search />
+        <About />
+        <Footer />
+        <p> {message} </p>
+      </div>
+    </Router>
   )
 }
 
