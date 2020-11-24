@@ -2,7 +2,12 @@ import Chat from '../Chat/Chat'
 
 const ChatList = ({ contacts }) => {
   return (
-    <Chat />
+    <section>
+      {contacts.map(contact => {
+        
+      })}
+      <Chat />
+    </section>
   )
 }
 
