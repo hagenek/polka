@@ -1,4 +1,4 @@
-export default mockChat = {
+export default {
   participants: [
     "8349b4ddd2781d08c09890f3",
     "1349b4ddd2781d08c09890f3"
