@@ -4,6 +4,7 @@ import backend from "./api"
 import About from "./components/About/About"
 import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
+import Footer from "./components/Footer/Footer"
 
 import "./App.css"
 
@@ -24,6 +25,7 @@ function App() {
         <Nav />
         <Search />
         <About />
+        <Footer />
         <p> {message} </p>
       </div>
     </Router>
