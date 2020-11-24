@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
+import mockChat from './mockChat'
 
 const Chat = ({ sender, receiver }) => {
   const socket = useRef();
@@ -25,6 +26,7 @@ const Chat = ({ sender, receiver }) => {
     socket.current.on('message', msg => {
       setMessageList(prevMessageList => [...prevMessageList, msg])
     })
+    
   }, [])
 
   if(!socket) return <h1>Establishing connection...</h1>
