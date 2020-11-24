@@ -13,11 +13,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  firstname: {
+  firstName: {
     type: String,
     required: true,
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
   },
@@ -41,7 +41,7 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-  genderinterest: {
+  genderInterest: {
     type: String,
     required: false,
   },
@@ -53,7 +53,15 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+<<<<<<< HEAD
   governmentid: {
+=======
+  objectId: {
+    type: String,
+    required: false,
+  },
+  governmentId: {
+>>>>>>> db
     type: Number,
     required: false,
   },

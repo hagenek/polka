@@ -1,15 +1,21 @@
+require("dotenv").config();
 const express = require("express")
 const createError = require("http-errors")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const logger = require("morgan")
 const helmet = require("helmet")
-require('dotenv').config()
-require('./db/mongoose')
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
 
 const indexRouter = require("./routes/index")
-const countryRouter = require("./routes/country")
-const userRouter = require("./routes/user")
+const countryRouter = require('./routes/country')
+const userRouter = require('./routes/user-route');
 
 const errorHandler = require("./middleware/errorHandler")
 
@@ -25,6 +31,7 @@ app.use(cors())
 app.use("/", userRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
+app.use('/api/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
