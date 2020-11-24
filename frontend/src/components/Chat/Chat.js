@@ -23,7 +23,7 @@ const Chat = ({ sender, receiver }) => {
   const addMessage = (prevMessageList, msg) => {
     const newMessageList = prevMessageList;
     newMessageList.messages.push(msg);
-    return prevMessageList
+    return newMessageList;
   }
 
   useEffect(() => {
