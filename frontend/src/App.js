@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
-import "./App.css"
 import backend from "./api"
+// import Nav from "./components/Nav/Nav"
+
+import "./App.css"
 
 function App() {
   const [message, setMessage] = useState("")
