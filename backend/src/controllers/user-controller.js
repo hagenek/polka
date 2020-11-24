@@ -8,8 +8,9 @@ const registerUser = async (req, res) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.username,
-      govermentid: req.body.govermentid,
-      email: req.body.email
+      governmentid: req.body.governmentid,
+      email: req.body.email,
+      password: req.body.password
     });
     await createNewUser.save();
     res.json(createNewUser).status(201).end();
