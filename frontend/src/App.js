@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
 import backend from "./api"
-import Chat from './components/Chat/Chat'
+import ChatList from './components/ChatList/ChatList'
 
 function App() {
   const [message, setMessage] = useState("")
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <p> {message} </p>
-      <Chat />
+      <ChatList />
     </div>
   )
 }
