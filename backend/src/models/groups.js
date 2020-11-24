@@ -21,11 +21,11 @@ const groupSchema = new Schema({
     type: String,
     required: false,
   },
-  objectid: {
+  objectId: {
     type: String,
     required: true,
   },
 })
 
-const Group = mongoose.model("Groupt", groupSchema)
+const Group = mongoose.model("Group", groupSchema)
 module.exports = Group

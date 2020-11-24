@@ -5,10 +5,10 @@ const registerUser = async (req, res) => {
   try {
     const createNewUser = new User({
       id: ObjectId(),
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
+      firstName: req.body.firstName,
+      lastName: req.body.lastNName,
       username: req.body.username,
-      governmentid: req.body.governmentid,
+      governmentId: req.body.governmentId,
       email: req.body.email,
       password: req.body.password
     });
