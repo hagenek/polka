@@ -15,7 +15,7 @@ const Chat = ({ sender, receiver }) => {
         text: message,
         sender: sender.id
       }
-      socket.current.emit('message', msg);
+      socket.current.emit('message', msg, receiver.id);
       setMessage("");
     }
   }
@@ -27,7 +27,7 @@ const Chat = ({ sender, receiver }) => {
   }
 
   useEffect(() => {
-    socket.current = socketClient('http://localhost:8000/');
+    socket.current = socketClient('http://localhost:8000/', { query: `id=${sender.id}` });
     socket.current.on('connect', () => {
       console.log("Connect");
     })

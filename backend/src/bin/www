@@ -79,6 +79,7 @@ function onListening() {
 /**
  * Socket setup
  */
+ 
 
 const io = require('socket.io')(server, {
   cors: {
@@ -88,12 +89,13 @@ const io = require('socket.io')(server, {
 
 io.on('connection', client => {
   console.log('Client connected!');
-
+  console.log(client.handshake.query['id'])
   client.on('disconnect', () => {
     console.log("Client disconnected!");
   })
 
-  client.on('message', message => {
+  client.on('message', (message, receiver) => {
+    console.log(receiver)
     io.emit('message', message);
   })
 })
