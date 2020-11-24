@@ -1,8 +1,8 @@
-const Country = require('../models/country')
+const User = require('../models/user')
 const express = require('express')
 const router = new express.Router()
 
-router.post("/norway", async (req, res) => {
+router.post("/user", async (req, res) => {
   console.log(req.body);
 
   const country = new Country({name: req.body.name, description: "land in the North", ally: true,})
