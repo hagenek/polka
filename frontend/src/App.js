@@ -5,6 +5,7 @@ import About from "./components/About/About"
 import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
+import Login from "./components/Login/Login"
 
 import "./App.css"
 
@@ -24,6 +25,7 @@ function App() {
       <div className="App">
         <Nav />
         <Search />
+        <Login />
         <About />
         <Footer />
         <p> {message} </p>
