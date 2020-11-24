@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Router } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
 import backend from "./api"
 import About from "./components/About/About"
 import Nav from "./components/Nav/Nav"
