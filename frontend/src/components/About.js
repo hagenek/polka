@@ -11,7 +11,7 @@ function About() {
             As a result of these two factors, people with disability often find it harder to make and sustain connections. 
             Friendships are important aspects of social inclusion as they provide people with an opportunity to build a network of people around them that are their own age. 
             Friendships also allow people to express their ideas in a safe environment, and generally have some fun and a laugh.
-            Find new friends and hobbies here at Polka!
+            Find new friends and hobbies now at Polka!
             </p>
         </section>
     )
