@@ -11,8 +11,12 @@ const ChatList = ({ contacts }) => {
 
   return (
     <section>
-      {contacts.map(contact => <Contact handleClick={contact => handleClick(contact)} user={contact} /> )}
-      {clickedContact && <Chat contact={clickedContact} />}
+      <section>
+        {contacts.map(contact => <Contact handleClick={contact => handleClick(contact)} user={contact} /> )}
+      </section>
+      <section>
+        {clickedContact && <Chat contact={clickedContact} />}
+      </section>
     </section>
   )
 }

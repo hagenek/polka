@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
 
 const Chat = ({ contact }) => {
-  const socket= useRef();
+  const socket = useRef();
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   
@@ -31,7 +31,10 @@ const Chat = ({ contact }) => {
 
   return (
     <section>
-      {contact.name}
+      <section>
+        {contact.firstname}
+        {contact.lastname}
+      </section>
       <ul>
         {messageList.map(message => <li>{message}</li>)}
       </ul>
