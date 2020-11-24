@@ -9,6 +9,6 @@ test("renders about page", () => {
 
 test("renders links on footer corrrectly", () => {
   render(<App />)
-  const links = screen.getByText(/Contact/);
+  const links = screen.getByText(/Contact/)
   expect(links).toBeInTheDocument()
 })
