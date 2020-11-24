@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import backend from "./api"
 import About from "./components/About/About"
 import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
+import Login from "./components/Login/Login"
 
 import "./App.css"
 
@@ -20,15 +21,25 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <Nav />
         <Search />
-        <About />
+        <p>{message}</p>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          {/*
+          <Route exact path="/people" component={People} />
+          <Route exact path="/groups" component={Groups} />
+          <Route exact path="/chat" component={Chat} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/contact" component={Contact} />
+          </Route> */}
+          <Route exact path="/about" component={About} />
+        </Switch>
         <Footer />
-        <p> {message} </p>
-      </div>
-    </Router>
+      </Router>
+    </div>
   )
 }
 
