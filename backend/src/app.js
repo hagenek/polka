@@ -7,7 +7,7 @@ const logger = require("morgan")
 const helmet = require("helmet")
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
@@ -17,8 +17,10 @@ const indexRouter = require("./routes/index")
 const countryRouter = require('./routes/country')
 const userRouter = require('./routes/user-routes');
 const authRouter = require('./routes/auth-routes');
+const signinRouter = require('./routes/signin-route');
 
-const errorHandler = require("./middleware/errorHandler")
+const errorHandler = require("./middleware/errorHandler");
+const { signin } = require("./controllers/auth-controller");
 
 const app = express()
 
@@ -34,8 +36,7 @@ app.use("/", countryRouter)
 app.use("/", indexRouter)
 app.use('/api/test/user', userRouter);
 app.use('/api/auth/signup', authRouter);
-// require("./routes/auth-routes")(app);
-// require("./routes/user-routes")(app);
+app.use('/api/auth/signin', signinRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

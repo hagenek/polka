@@ -1,14 +1,10 @@
 const express = require('express');
-// const { registerUser } = require('../controllers/user-controller');
 const router = express.Router();
 const { verifyToken } = require("../middleware/authJwt");
-const controller = require("../controllers/user-controller");
+const { userBoard } = require("../controllers/user-controller");
 
 router
-  .get('/', [verifyToken], controller.userBoard)
-
-// router
-//   .post('/', registerUser);
+  .get('/', verifyToken, userBoard)
 
 module.exports = router;
 
