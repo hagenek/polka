@@ -1,18 +1,29 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
+import Message from '../Message/Message'
 import mockChat from './mockChat'
 
 const Chat = ({ sender, receiver }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState(undefined);
   
   const handleSubmit = e => {
     e.preventDefault();
     if(message !== "") {
-      socket.current.emit('message', message);
+      const msg = {
+        text: message,
+        sender: sender.id
+      }
+      socket.current.emit('message', msg);
       setMessage("");
     }
+  }
+
+  const addMessage = (prevMessageList, msg) => {
+    const newMessageList = prevMessageList;
+    newMessageList.messages.push(msg);
+    return prevMessageList
   }
 
   useEffect(() => {
@@ -24,9 +35,10 @@ const Chat = ({ sender, receiver }) => {
       console.log("Disconnect");
     })
     socket.current.on('message', msg => {
-      setMessageList(prevMessageList => [...prevMessageList, msg])
+      setMessageList(prevMessageList => addMessage({...prevMessageList}, msg))
     })
-    
+    // Should get user and receivers chat from db
+    setMessageList(mockChat)
   }, [])
 
   if(!socket) return <h1>Establishing connection...</h1>
@@ -40,7 +52,7 @@ const Chat = ({ sender, receiver }) => {
         {receiver.lastname}
       </section>
       <ul>
-        {messageList.map(message => <li>{message}</li>)}
+        {messageList && messageList.messages.map(message => <Message message={message} />)}
       </ul>
       <form onSubmit={handleSubmit}>
         <input type="text" value={message} onChange={e => setMessage(e.target.value)}/>
