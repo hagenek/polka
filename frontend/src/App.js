@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
+import { Router } from "react-router-dom"
 import backend from "./api"
-// import Nav from "./components/Nav/Nav"
+import About from "./components/About/About"
+import Nav from "./components/Nav/Nav"
 
 import "./App.css"
 
@@ -16,9 +18,13 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <p> {message} </p>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <About />
+        <p> {message} </p>
+      </div>
+    </Router>
   )
 }
 
