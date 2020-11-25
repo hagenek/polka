@@ -42,6 +42,14 @@ const createChat = async (req, res) => {
   }
 }
 
+const addMessage = async (req, res) => {
+  const { text, senderId, timestamp } = req.body;
+
+  if(!text || !senderId || !timestamp) {
+    res.status(400).end();
+  }
+}
+
 module.exports = {
   createChat,
 }
