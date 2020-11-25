@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const Chat = require('./chat')
 
 const { Schema } = mongoose
 
@@ -89,6 +90,12 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  chats: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Chat'
+    }
+  ]
 })
 
 const User = mongoose.model("User", userSchema)
