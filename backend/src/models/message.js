@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const { Schema } = mongoose;
 
@@ -9,7 +10,7 @@ const messageSchema = new Schema({
   },
   sender: {
     type: Schema.Types.ObjectId,
-    required: true
+    ref: 'User'
   },
   timestamp: {
     type: Date,
