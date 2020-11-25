@@ -14,13 +14,13 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
 
 const indexRouter = require("./routes/index")
-const countryRouter = require('./routes/country')
-const userRouter = require('./routes/user-routes');
+const countryRouter = require('./routes/country');
+const userRouter = require('./routes/user');
+const userPageRouter = require('./routes/user-routes');
 const authRouter = require('./routes/auth-routes');
 const signinRouter = require('./routes/signin-route');
 
 const errorHandler = require("./middleware/errorHandler");
-const { signin } = require("./controllers/auth-controller");
 
 const app = express()
 
@@ -31,10 +31,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
 
-// app.use("/", userRouter)
+app.use("/", userRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
-app.use('/api/test/user', userRouter);
+app.use('/api/test/user', userPageRouter);
 app.use('/api/auth/signup', authRouter);
 app.use('/api/auth/signin', signinRouter);
 
