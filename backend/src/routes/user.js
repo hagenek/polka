@@ -16,10 +16,7 @@ router.post("/users", async (req, res) => {
     if (err) return console.error(err);
   });
 
-  User.find((err, users) => {
-    if (err) return console.error(err)
-    res.send(users)
-  })
+  res.send(user)
 
 });
 router.get("/users", async (req, res) => {

@@ -1,21 +1,22 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Profile from "./Profile/Profile"
 import backend from "../../api"
 
 const Profiles = () => {
-  // const [ users, setUsers ] = useState([]);
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     const getUsers = async () => {
-      const users = await backend.get("/users")
-      console.log(users.data)
+      const userdata = await backend.get("/users")
+      console.log(userdata.data)
+      setUsers(userdata.data)
     }
     getUsers()
   }, [])
 
-  const makeProfileArr = () => <Profile />
+  const makeProfileArr = (userArr) => userArr.map((u) => <Profile firstName={u.firstName} lastName={u.lastName} username={u.username} />)
 
-  return <div>{makeProfileArr()}</div>
+  return <div>{makeProfileArr(users)}</div>
 }
 
 export default Profiles
