@@ -1,13 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const { verifyToken } = require("../middleware/authJwt");
-const { userBoard } = require("../controllers/user-controller");
+const express = require("express")
 
-router
-  .get('/', verifyToken, userBoard)
+const router = express.Router()
+const { verifyToken } = require("../middleware/authJwt")
+const { userBoard } = require("../controllers/user-controller")
 
-module.exports = router;
+router.get("/", verifyToken, userBoard)
 
+module.exports = router
 
 // module.exports = app => {
 //   app.use((req, res, next) => {

@@ -1,15 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const { checkDuplicateUsernameOrEmail } = require("../middleware/verifySignUp");
-const { signup } = require("../controllers/auth-controller");
+const express = require("express")
 
-router
-  .post('/', checkDuplicateUsernameOrEmail, (req, res) => {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    signup(req, res)
-  })
+const router = express.Router()
+const { checkDuplicateUsernameOrEmail } = require("../middleware/verifySignUp")
+const { signup } = require("../controllers/auth-controller")
 
-module.exports = router;
+router.post("/", checkDuplicateUsernameOrEmail, (req, res) => {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  )
+  signup(req, res)
+})
+
+module.exports = router

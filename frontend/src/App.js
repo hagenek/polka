@@ -6,6 +6,7 @@ import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
+import Groups from "./components/Groups/Groups"
 
 import "./App.css"
 
@@ -23,14 +24,14 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <p>{message}</p>
         <Nav />
         <Search />
-        <p>{message}</p>
         <Switch>
           <Route exact path="/" component={Login} />
+          <Route exact path="/groups" component={Groups} />
           {/*
           <Route exact path="/people" component={People} />
-          <Route exact path="/groups" component={Groups} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/contact" component={Contact} />
