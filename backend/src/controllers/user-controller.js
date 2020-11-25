@@ -1,16 +1,17 @@
-const User = require('../models/user');
+const user = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
 
 const registerUser = async (req, res) => {
+  console.log()
   try {
-    const createNewUser = new User({
-      id: ObjectId(),
+    const createNewUser = new user({
       firstName: req.body.firstName,
-      lastName: req.body.lastNName,
+      lastName: req.body.lastName,
       username: req.body.username,
       governmentId: req.body.governmentId,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      chats: []
     });
     await createNewUser.save();
     res.json(createNewUser).status(201).end();
