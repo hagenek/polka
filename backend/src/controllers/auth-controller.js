@@ -15,7 +15,7 @@ exports.signup = async (req, res) => {
       password: bcrypt.hashSync(req.body.password, 8)
     });
     await user.save();
-    res.json(user).status(201).end();
+    res.status(201).send({ message: "User was registered successfully!" });
   } catch (err) {
     console.log(err);
     res.send(err.message);

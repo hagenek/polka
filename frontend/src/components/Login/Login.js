@@ -2,9 +2,11 @@
 import React, { useState } from "react"
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import Button from "@material-ui/core/Button"
-
-
+import Grid from '@material-ui/core/Grid';
 import AuthService from "../../services/auth-service"
+import Alert from '@material-ui/lab/Alert';
+
+import "./Login.css";
 
 const Login = (props) => {
 
@@ -45,7 +47,14 @@ const Login = (props) => {
     );
   }
   return (
-    <div>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '80vh' }}
+    >
       <ValidatorForm onSubmit={handleLogin} >
         <TextValidator
           label="Username"
@@ -71,14 +80,30 @@ const Login = (props) => {
           Login
           </Button>
         {message && (
-          <div >
+          <Alert severity="error">
             {message}
-          </div>
+          </Alert>
         )}
         <Button style={{ display: "none" }} />
       </ValidatorForm>
-    </div>
+    </Grid>
   )
 }
 
 export default Login
+
+
+{/* <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justify="center"
+  style={{ minHeight: '100vh' }}
+>
+
+  <Grid item xs={3}>
+    <LoginForm />
+  </Grid>   
+
+</Grid>  */}

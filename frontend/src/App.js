@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Nav /> */}
+        <Nav />
         {/* <Search /> */}
         {/* <Register /> */}
         <Switch>
