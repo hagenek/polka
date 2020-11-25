@@ -127,7 +127,7 @@ const Register = () => {
       )}
       {message && (
         <div className="form-group">
-          <div className={successful ? "alert alert-success" : "alert alert-danger"} role="alert">
+          <div role="alert">
             {message}
           </div>
         </div>

@@ -1,57 +1,82 @@
+/* eslint-disable */
 import React, { useState } from "react"
-import TextField from "@material-ui/core/TextField"
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import Button from "@material-ui/core/Button"
 
-function Login() {
-  const [nameInput, setNameInput] = useState("")
-  const [passwordInput, setPasswordInput] = useState("")
 
-  const handleNameInputChange = (e) => {
-    const inputText = e.target.value
-    setNameInput(inputText)
+import AuthService from "../../services/auth-service"
+
+const Login = (props) => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleLogin = e => {
+    e.preventDefault();
+
+    setMessage("");
+
+    AuthService.login(username, password).then(
+      () => {
+        props.history.push("/");
+        // window.location.reload();
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setMessage(resMessage);
+      }
+    );
   }
-
-  const handlePasswordInputChange = (e) => {
-    const inputText = e.target.value
-    setPasswordInput(inputText)
-  }
-
-  const logInSubmit = () => {
-    if (!nameInput || !passwordInput) {
-      console.log("Please fill in fields")
-    }
-    // else LOG IN!!!?
-  }
-
   return (
     <div>
-      <form className="namefield" onSubmit={logInSubmit}>
-        <TextField
-          required
-          type="text"
-          className="namefield"
-          id="filled-required"
-          label="Enter name"
-          variant="outlined"
-          value={nameInput}
-          onChange={handleNameInputChange}
+      <ValidatorForm onSubmit={handleLogin} >
+        <TextValidator
+          label="Username"
+          onChange={onChangeUsername}
+          name="username"
+          value={username}
+          validators={['required']}
+          errorMessages={['This field is required']}
         />
-      </form>
-      <form className="passwordfield" onSubmit={logInSubmit}>
-        <TextField
-          required
-          type="text"
-          className="namefield"
-          id="filled-required"
-          label="Enter password"
-          variant="outlined"
-          value={passwordInput}
-          onChange={handlePasswordInputChange}
+        <TextValidator
+          label="Password"
+          onChange={onChangePassword}
+          type="password"
+          name="password"
+          value={password}
+          validators={['required']}
+          errorMessages={['This field is required']}
         />
-      </form>
-      <Button variant="contained" onClick={logInSubmit}>
-        LOG IN
-      </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit">
+          Login
+          </Button>
+        {message && (
+          <div >
+            {message}
+          </div>
+        )}
+        <Button style={{ display: "none" }} />
+      </ValidatorForm>
     </div>
   )
 }
