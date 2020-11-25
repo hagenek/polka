@@ -6,6 +6,7 @@ import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
+// import Register from "./components/Register/Register"
 
 import "./App.css"
 
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <Nav />
         <Search />
+        {/* <Register /> */}
         <p>{message}</p>
         <Switch>
           <Route exact path="/" component={Login} />
