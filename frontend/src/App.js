@@ -6,6 +6,7 @@ import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
+import Profiles from "./components/Profiles/Profiles"
 
 import "./App.css"
 
@@ -37,6 +38,7 @@ function App() {
           </Route> */}
           <Route exact path="/about" component={About} />
         </Switch>
+        <Profiles />
         <Footer />
       </Router>
     </div>
