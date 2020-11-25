@@ -11,11 +11,10 @@ const addChatId = async (req, res, user, _id) => {
   }
 }
 
-const createChat = async (req, res, members) => {
+const createChat = async (req, res, membersIds) => {
   try {
     const chat = new Chat({
-      //Should be changed to user ids
-      members,
+      members: membersIds,
       messages: []
     })
 
