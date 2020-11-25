@@ -11,24 +11,9 @@ import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
 
-import AuthService from "./services/auth-service"
-
 import "./App.css"
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(undefined);
-
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      setCurrentUser(user);
-    }
-  }, []);
-
-  const logOut = () => {
-    AuthService.logout();
-  };
   // const [message, setMessage] = useState("")
   // useEffect(() => {
   //   async function fetchData() {

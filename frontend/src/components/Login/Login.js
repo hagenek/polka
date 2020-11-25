@@ -84,7 +84,7 @@ const Login = (props) => {
             {message}
           </Alert>
         )}
-        <Button style={{ display: "none" }} />
+        <Button m={2} style={{ display: "none" }} />
       </ValidatorForm>
     </Grid>
   )

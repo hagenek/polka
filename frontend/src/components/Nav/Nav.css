@@ -12,6 +12,7 @@
   z-index: 1;
   width: 100%;
   max-width: 1000px;
+  z-index: 999;
 }
 
 .nav__logo {
@@ -25,7 +26,7 @@
   right: 20px;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .nav__menu {
@@ -38,6 +39,10 @@
   position: absolute;
   right: -1000px;
   background-color: lightblue;
+}
+
+.nav__menu1 {
+  display: flex;
 }
 
 .active {
