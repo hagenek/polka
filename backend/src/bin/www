@@ -110,6 +110,7 @@ io.on('connection', client => {
     if(receiverClient) {
       io.to(receiverClient.id).emit('message', message);
     }
+    io.to(client.id).emit('message', message);
   })
 })
 
