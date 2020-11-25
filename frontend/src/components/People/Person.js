@@ -1,4 +1,6 @@
 import React from "react"
+import PersonAddIcon from "@material-ui/icons/PersonAdd"
+import MailOutlineIcon from "@material-ui/icons/MailOutline"
 
 import "./Person.css"
 
@@ -7,10 +9,16 @@ function Person({ User }) {
   return (
     <div>
       <li className="person">
-        <h2 className="person__username">{User.username} </h2>
-        <p className="person__names">
-          {User.firstName} {User.lastName}{" "}
-        </p>
+        <div className="userinfo">
+          <h2 className="person__username">{User.username} </h2>
+          <p className="person__names">
+            {User.firstName} {User.lastName}{" "}
+          </p>
+        </div>
+        <div className="icons">
+          <MailOutlineIcon />
+          <PersonAddIcon />
+        </div>
       </li>
     </div>
   )
