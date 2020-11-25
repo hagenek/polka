@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
 import Groups from "./components/Groups/Groups"
 import People from "./components/People/People"
+import Contact from "./components/Contact/Contact"
 
 import "./App.css"
 
@@ -35,8 +36,8 @@ function App() {
           {/*
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/profile" component={Profile} />
+          */}
           <Route exact path="/contact" component={Contact} />
-          </Route> */}
           <Route exact path="/about" component={About} />
         </Switch>
         <Footer />
