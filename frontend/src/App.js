@@ -7,6 +7,7 @@ import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
 import Groups from "./components/Groups/Groups"
+import People from "./components/People/People"
 
 import "./App.css"
 
@@ -30,8 +31,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/groups" component={Groups} />
-          {/*
           <Route exact path="/people" component={People} />
+          {/*
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/contact" component={Contact} />
