@@ -15,7 +15,11 @@ const Nav = () => {
         <div className="nav__logo">
           <h1>Logo</h1>
         </div>
-        <ul className={`nav__menu ${click && "nav_menu active"}`} onClick={handleClick} role="presentation">
+        <ul
+          className={`nav__menu ${click && "nav_menu active"}`}
+          onClick={handleClick}
+          role="presentation"
+        >
           <li className="nav__item">
             <Link to="/home">Home</Link>
           </li>

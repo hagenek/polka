@@ -8,13 +8,15 @@ const Profiles = () => {
   useEffect(() => {
     const getUsers = async () => {
       const userdata = await backend.get("/users")
-      console.log(userdata.data)
       setUsers(userdata.data)
     }
     getUsers()
   }, [])
 
-  const makeProfileArr = (userArr) => userArr.map((u) => <Profile firstName={u.firstName} lastName={u.lastName} username={u.username} />)
+  const makeProfileArr = (userArr) =>
+    userArr.map((u) => (
+      <Profile firstName={u.firstName} lastName={u.lastName} username={u.username} />
+    ))
 
   return <div>{makeProfileArr(users)}</div>
 }

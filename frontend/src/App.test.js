@@ -13,3 +13,9 @@ test("renders links on footer corrrectly", () => {
   const links = screen.getByText(/Contact/)
   expect(links).toBeInTheDocument()
 })
+
+test("renders at least one profile", () => {
+  render(<App />)
+  const links = screen.getByText(/Username:/)
+  expect(links).toBeInTheDocument()
+})
