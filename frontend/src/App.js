@@ -10,6 +10,7 @@ import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
+import Profiles from "./components/Profiles/Profiles"
 
 import "./App.css"
 
@@ -43,7 +44,7 @@ function App() {
           </Route> */}
           <Route exact path="/about" component={About} />
         </Switch>
-        {/* <p>{message}</p> */}
+        {/* <Profiles /> */}
         <Footer />
       </Router>
     </div>
