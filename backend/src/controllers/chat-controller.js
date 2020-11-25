@@ -3,15 +3,6 @@ const User = require('../models/user');
 const Chat = require('../models/chat');
 const Message = require('../models/message');
 
-const addChatId = async (req, res, userId, chatId) => {
-  try {
-    await User.findByIdAndUpdate(userId, { $push: { chats: chatId } }, { useFindAndModify: false }) 
-  } catch(error) {
-    console.log(error)
-    res.send(error.message);
-  }
-}
-
 const createChat = async (req, res) => {
   let { membersIds } = req.body;
   
@@ -31,7 +22,7 @@ const createChat = async (req, res) => {
     await chat.save();
 
     membersIds.forEach(async (userId) => {
-      await addChatId(req, res, userId, chat._id)
+      await User.findByIdAndUpdate(userId, { $push: { chats: chat._id } }, { useFindAndModify: false }) 
     });
     
     res.json(chat).status(201).end();
@@ -43,13 +34,31 @@ const createChat = async (req, res) => {
 }
 
 const addMessage = async (req, res) => {
-  const { text, senderId, timestamp } = req.body;
+  const { text, senderId, timestamp, chatId } = req.body;
 
-  if(!text || !senderId || !timestamp) {
-    res.status(400).end();
+  if(!text || !senderId || !timestamp || !chatId) {
+    res.status(400).send("Error: missing property");
+  }
+
+  try {
+    const message = new Message({
+      text,
+      sender: mongoose.Types.ObjectId(senderId),
+      timestamp
+    })
+
+    await message.save();
+
+    await Chat.findByIdAndUpdate(chatId, { $push: { messages: message }}, { useFindAndModify: false })
+    res.json(message).status(201).end();
+
+  } catch(error) {
+    console.log(error)
+    res.send(error.message)
   }
 }
 
 module.exports = {
   createChat,
+  addMessage
 }
