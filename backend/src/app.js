@@ -21,8 +21,8 @@ const countryRouter = require("./routes/country")
 const groupRouter = require("./routes/group")
 const userRouter = require("./routes/user")
 const userPageRouter = require("./routes/user-routes")
-const authRouter = require("./routes/auth-routes")
 const signinRouter = require("./routes/signin-route")
+const signupRoute = require('./routes/signup-route');
 const chatRouter = require('./routes/chat-route');
 
 const errorHandler = require("./middleware/errorHandler")
@@ -42,7 +42,7 @@ app.use("/", countryRouter)
 app.use("/", indexRouter)
 
 app.use('/api/test/user', userPageRouter);
-app.use('/api/auth/signup', authRouter);
+app.use('/api/auth/signup', signupRoute);
 app.use('/api/auth/signin', signinRouter);
 app.use('/api/chat', chatRouter)
 

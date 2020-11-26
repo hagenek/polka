@@ -3,7 +3,8 @@ const config = require("../config/auth.config")
 const User = require("../models/user")
 
 verifyToken = (req, res, next) => {
-  const token = req.headers["x-access-token"]
+  console.log(req.headers)
+  let token = req.headers["x-access-token"];
 
   if (!token) {
     return res.status(403).send({ message: "No token provided!" })

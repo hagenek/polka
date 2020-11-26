@@ -8,15 +8,22 @@
 .nav__container {
   display: flex;
   justify-content: space-between;
+  align-content: center;
   height: 80px;
-  z-index: 1;
   width: 100%;
   max-width: 1000px;
+  z-index: 999;
 }
 
 .nav__logo {
-  font-size: 2rem;
-  padding-left: 20px;
+  font-size: 1.5rem;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.nav__logo a {
+  text-decoration: none;
+  color: #000;
 }
 
 .mobile__icon {
@@ -25,7 +32,7 @@
   right: 20px;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .nav__menu {
@@ -40,12 +47,22 @@
   background-color: lightblue;
 }
 
+.nav__menu1 {
+  display: flex;
+}
+
 .active {
   right: 0;
 }
 
 .nav__item {
   margin: 40px 0 0 20px;
+}
+
+.nav__item a {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 960px) {
