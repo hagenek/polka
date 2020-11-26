@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const userSchema = new Schema({
   username: {
@@ -14,11 +13,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  firstname: {
+  firstName: {
     type: String,
     required: true,
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
   },
@@ -28,7 +27,7 @@ const userSchema = new Schema({
   },
   city: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
@@ -40,9 +39,9 @@ const userSchema = new Schema({
   },
   gender: {
     type: String,
-    required: true,
+    required: false,
   },
-  genderinterest: {
+  genderInterest: {
     type: String,
     required: false,
   },
@@ -54,25 +53,25 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-  objectid: {
+  objectId: {
     type: String,
-    required: true,
+    required: false,
   },
-  governmentid: {
-    type: number,
-    required: true,
+  governmentId: {
+    type: Number,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
-    type: number,
-    required: true,
+    type: Number,
+    required: false,
   },
   birthdate: {
     type: String,
-    required: true,
+    required: false,
   },
   friends: {
     type: String,
@@ -86,10 +85,11 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-  date: { type: Date, default: Date.now },
-});
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+})
 
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+const User = mongoose.model("User", userSchema)
+module.exports = User

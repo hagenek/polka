@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
-const eventSchema = new Schema({
+const groupSchema = new Schema({
   name: {
     type: String,
     required: true,
     lowercase: true,
     trim: true,
   },
-  participants: {
+  members: {
     type: String,
     required: true,
   },
@@ -19,13 +19,13 @@ const eventSchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
+    required: false,
   },
-  date: {
+  objectId: {
     type: String,
     required: true,
   },
-});
+})
 
-const Event = mongoose.model('Event', eventSchema);
-module.exports = Event;
+const Group = mongoose.model("Group", groupSchema)
+module.exports = Group

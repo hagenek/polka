@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react"
-import "./App.css"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import backend from "./api"
 import ChatList from './components/ChatList/ChatList'
+import About from "./components/About/About"
+import Search from "./components/Search/Search"
+import Nav from "./components/Nav/Nav"
+import Footer from "./components/Footer/Footer"
+import Login from "./components/Login/Login"
+import Profiles from "./components/Profiles/Profiles"
+
+import "./App.css"
 
 function App() {
   const [message, setMessage] = useState("")
@@ -89,8 +97,25 @@ function App() {
 
   return (
     <div className="App">
-      <p> {message} </p>
-      <ChatList user={mockUser} contacts={mockContacts}/>
+      <Router>
+        <Nav />
+        <Search />
+        <ChatList user={mockUser} contacts={mockContacts}/>
+        <p>{message}</p>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          {/*
+          <Route exact path="/people" component={People} />
+          <Route exact path="/groups" component={Groups} />
+          <Route exact path="/chat" component={Chat} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/contact" component={Contact} />
+          </Route> */}
+          <Route exact path="/about" component={About} />
+        </Switch>
+        <Profiles />
+        <Footer />
+      </Router>
     </div>
   )
 }

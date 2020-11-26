@@ -27,7 +27,7 @@ const Chat = ({ sender, receiver }) => {
   }
 
   useEffect(() => {
-    socket.current = socketClient('http://localhost:8000/', { query: `id=${sender.id}` });
+    socket.current = socketClient('http://localhost:1337/', { query: `id=${sender.id}` });
     socket.current.on('connect', () => {
       console.log("Connect");
     })
