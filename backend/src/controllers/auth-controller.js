@@ -12,7 +12,8 @@ exports.signup = async (req, res) => {
       username: req.body.username,
       governmentId: req.body.governmentId,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8)
+      password: bcrypt.hashSync(req.body.password, 8),
+      chats: []
     });
     await user.save();
     res.status(201).send({ message: "User was registered successfully!" });
