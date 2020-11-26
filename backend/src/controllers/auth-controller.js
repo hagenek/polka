@@ -51,6 +51,11 @@ exports.signin = (req, res) => {
       expiresIn: 86400
     });
 
+    // res.cookie('token', token).status(200).end();
+    // console.log(token)
+    // res.cookie('token', token, { httpOnly: true });
+    // res.json({ token });
+
     res.status(200).send({
       id: user._id,
       firstName: user.firstName,
