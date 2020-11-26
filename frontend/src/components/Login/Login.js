@@ -1,58 +1,114 @@
+/* eslint-disable */
 import React, { useState } from "react"
-import TextField from "@material-ui/core/TextField"
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import Button from "@material-ui/core/Button"
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles'
+import Alert from '@material-ui/lab/Alert';
+import AuthService from "../../services/auth-service"
 
-function Login() {
-  const [nameInput, setNameInput] = useState("")
-  const [passwordInput, setPasswordInput] = useState("")
+import "./Login.css";
 
-  const handleNameInputChange = (e) => {
-    const inputText = e.target.value
-    setNameInput(inputText)
+const useStyles = makeStyles({
+  button: {
+    height: 48,
+    width: 200,
+    padding: '0 30px',
+  },
+  input: {
+    width: 200,
+    margin: '10px 0 0 0'
+  }
+});
+
+const Login = (props) => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleLogin = e => {
+    e.preventDefault();
+
+    setMessage("");
+
+    AuthService.login(username, password).then(
+      () => {
+        props.history.push("/user");
+        window.location.reload();
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setMessage(resMessage);
+      }
+    );
   }
 
-  const handlePasswordInputChange = (e) => {
-    const inputText = e.target.value
-    setPasswordInput(inputText)
-  }
-
-  const logInSubmit = () => {
-    if (!nameInput || !passwordInput) {
-      console.log("Please fill in fields")
-    }
-    // else LOG IN!!!?
-  }
+  const classes = useStyles();
 
   return (
-    <div>
-      <form className="namefield" onSubmit={logInSubmit}>
-        <TextField
-          required
-          type="text"
-          className="namefield"
-          id="filled-required"
-          label="Enter name"
-          variant="outlined"
-          value={nameInput}
-          onChange={handleNameInputChange}
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '85vh' }}
+    >
+      <ValidatorForm className="login__form" onSubmit={handleLogin} >
+        {message && (
+          <Alert severity="error">
+            {message}
+          </Alert>
+        )}
+        <img
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         />
-      </form>
-      <form className="passwordfield" onSubmit={logInSubmit}>
-        <TextField
-          required
-          type="text"
-          className="namefield"
-          id="filled-required"
-          label="Enter password"
-          variant="outlined"
-          value={passwordInput}
-          onChange={handlePasswordInputChange}
+        <TextValidator
+          className={classes.input}
+          label="Username"
+          onChange={onChangeUsername}
+          name="username"
+          value={username}
+          validators={['required']}
+          errorMessages={['This field is required']}
         />
-      </form>
-      <Button variant="contained" onClick={logInSubmit}>
-        LOG IN
-      </Button>
-    </div>
+        <TextValidator
+          className={`mb-20 ${classes.input}`}
+          label="Password"
+          onChange={onChangePassword}
+          type="password"
+          name="password"
+          value={password}
+          validators={['required']}
+          errorMessages={['This field is required']}
+        />
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          type="submit">
+          Login
+          </Button>
+        {/* <Button m={2} style={{ display: "none" }} /> */}
+      </ValidatorForm>
+    </Grid>
   )
 }
 

@@ -12,10 +12,11 @@ exports.signup = async (req, res) => {
       username: req.body.username,
       governmentId: req.body.governmentId,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8)
+      password: bcrypt.hashSync(req.body.password, 8),
+      chats: []
     });
     await user.save();
-    res.json(user).status(201).end();
+    res.status(201).send({ message: "User was registered successfully!" });
   } catch (err) {
     console.log(err);
     res.send(err.message);
@@ -50,6 +51,11 @@ exports.signin = (req, res) => {
     const token = jwt.sign({ id: user.id }, config.secret, {
       expiresIn: 86400
     });
+
+    // res.cookie('token', token).status(200).end();
+    // console.log(token)
+    // res.cookie('token', token, { httpOnly: true });
+    // res.json({ token });
 
     res.status(200).send({
       id: user._id,
