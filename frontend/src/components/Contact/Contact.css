@@ -1,0 +1,29 @@
+.contact {
+    font-size: 1em;
+    margin: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact h1 {
+    font-size: 2em;
+    margin: 10px;
+    text-decoration: underline;
+  }
+  
+  .contact h3 {
+    font-size: 1.5em;
+    margin: 10px;
+  }
+  
+  .contact p {
+    font-size: 18px;
+    margin: 20px;
+    max-width: 60%;
+    line-height: 1.6;
+    text-align: center;
+    width: auto;
+  }

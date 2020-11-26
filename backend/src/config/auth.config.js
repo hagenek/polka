@@ -1,3 +1,3 @@
 module.exports = {
-  secret: "roccos-secret-key"
-};
+  secret: "roccos-secret-key",
+}

@@ -1,15 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const { signin } = require("../controllers/auth-controller");
+const express = require("express")
 
-router
-  .post("/", (req, res) => {
-    console.log(req.cookies)
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    signin(req, res)
-  })
+const router = express.Router()
+const { signin } = require("../controllers/auth-controller")
 
-module.exports = router;
+router.post("/", (req, res) => {
+  console.log(req.cookies)
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  )
+  signin(req, res)
+})
+
+module.exports = router

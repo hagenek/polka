@@ -1,8 +1,7 @@
-const config = require("../config/auth.config");
-const User = require('../models/user');
-
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+const config = require("../config/auth.config")
+const User = require("../models/user")
 
 exports.signup = async (req, res) => {
   try {
@@ -13,44 +12,41 @@ exports.signup = async (req, res) => {
       governmentId: req.body.governmentId,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-      chats: []
-    });
-    await user.save();
-    res.status(201).send({ message: "User was registered successfully!" });
+      chats: [],
+    })
+    await user.save()
+    res.status(201).send({ message: "User was registered successfully!" })
   } catch (err) {
-    console.log(err);
-    res.send(err.message);
+    console.log(err)
+    res.send(err.message)
   }
 }
 
 exports.signin = (req, res) => {
   User.findOne({
-    username: req.body.username
+    username: req.body.username,
   }).exec((err, user) => {
     if (err) {
-      res.status(500).send({ message: err });
-      return;
+      res.status(500).send({ message: err })
+      return
     }
 
     if (!user) {
-      return res.status(404).send({ message: "User not found!" });
+      return res.status(404).send({ message: "User not found!" })
     }
 
-    const passwordIsValid = bcrypt.compareSync(
-      req.body.password,
-      user.password
-    );
+    const passwordIsValid = bcrypt.compareSync(req.body.password, user.password)
 
     if (!passwordIsValid) {
       return res.status(401).send({
         accessToken: null,
-        message: "Invalid Password!"
-      });
+        message: "Invalid Password!",
+      })
     }
 
     const token = jwt.sign({ id: user.id }, config.secret, {
-      expiresIn: 86400
-    });
+      expiresIn: 86400,
+    })
 
     // res.cookie('token', token).status(200).end();
     // console.log(token)
@@ -64,7 +60,7 @@ exports.signin = (req, res) => {
       governmentId: user.governmentId,
       username: user.username,
       email: user.email,
-      accessToken: token
+      accessToken: token,
     })
-  });
-};
+  })
+}

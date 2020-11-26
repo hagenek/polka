@@ -1,22 +1,22 @@
-const mongoose = require('mongoose');
-const User = require('./user');
+const mongoose = require("mongoose")
+const User = require("./user")
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const messageSchema = new Schema({
   text: {
     type: String,
-    required: true
+    required: true,
   },
   sender: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: "User",
   },
   timestamp: {
     type: Date,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
 const Message = mongoose.model("Message", messageSchema)
 
