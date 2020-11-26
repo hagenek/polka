@@ -63,7 +63,16 @@ const getChatById = async (req, res) => {
   
   try {
     id = mongoose.Types.ObjectId(id);
-    const chat = await Chat.findById(id).populate('members').populate('messages');
+    const chat = await Chat.findById(id)
+      .populate('members')
+      .populate({
+        path: 'messages',
+        model: 'Message',
+        populate: {
+          path: 'sender',
+          model: 'User'
+        }
+      });
     res.status(200).json(chat);
   } catch(error) {
     console.log(error);
@@ -73,7 +82,7 @@ const getChatById = async (req, res) => {
 
 const getChatsByUserId = async (req, res) => {
   let { id } = req.params;
-  
+
   try {
     id = mongoose.Types.ObjectId(id);
     const chats = await User.findById(id)

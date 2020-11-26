@@ -104,8 +104,7 @@ function App() {
       <Router>
         <Nav />
         <Search />
-        <ChatList userId={"5fbfae60574a72724a0b4641"} />
-        <p>{message}</p>
+        <ChatList userId={"5fbe611e18de443d28c81718"} />
         {/* <Search /> */}
         {/* <Register /> */}
         <Switch>

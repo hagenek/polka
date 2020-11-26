@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const express = require('express')
-const router = new express.Router()
+const router = express.Router()
+const { getUser } = require('../controllers/user-controller')
 
 router.post("/users", async (req, res) => {
   console.log(req.body);
@@ -18,6 +19,7 @@ router.post("/users", async (req, res) => {
   res.send(user)
 
 });
+
 router.get("/users", async (req, res) => {
 
   User.find((err, users) => {
@@ -26,5 +28,7 @@ router.get("/users", async (req, res) => {
   })
 
 });
+
+router.get('/:id', getUser);
 
 module.exports = router;

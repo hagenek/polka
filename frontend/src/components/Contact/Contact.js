@@ -1,9 +1,16 @@
 
-const Contact = ({ users, handleClick }) => {
+const Contact = ({ chat, handleClick }) => {
   return (
-    <section onClick={() => handleClick(user)}>
-      <h1>{user.firstname}</h1>
-      <h1>{user.lastname}</h1>
+    <section>
+      <section onClick={() => handleClick(chat)}>
+        {chat.members.map(user => (
+          <section>
+            <h1>{user.firstName}</h1>
+            <h1>{user.lastName}</h1>
+          </section>
+        ))
+        }
+      </section>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
 import Contact from '../Contact/Contact'
+import api from "../../api"
 
 const ChatList = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
@@ -8,8 +9,9 @@ const ChatList = ({ userId }) => {
 
   useEffect(() => {
     const getChats = async () => {
-      const chats = await backend.get("/users")
-      
+      const res = await api.get(`api/chat/user/${userId}`)
+      console.log(res)
+      setChats(res.data.chats)
     }
     getChats()
   }, [])
@@ -20,10 +22,10 @@ const ChatList = ({ userId }) => {
   return (
     <section>
       <section>
-        {chats.map(chat => <Contact handleClick={chat => setClickedChat(chat)} user={chat} /> )}
+        {chats.map(chat => <Contact key={chat._id} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
       </section>
       <section>
-        {clickedChat && <Chat sender={userId} receiver={clickedChat} />}
+        {clickedChat && <Chat senderId={userId} chat={clickedChat} />}
       </section>
     </section>
   )
