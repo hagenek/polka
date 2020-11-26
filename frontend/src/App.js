@@ -100,7 +100,7 @@ function App() {
       <Router>
         <Nav />
         <Search />
-        <ChatList user={mockUser} contacts={mockContacts}/>
+        <ChatList userId={"5fbfae60574a72724a0b4641"} />
         <p>{message}</p>
         <Switch>
           <Route exact path="/" component={Login} />

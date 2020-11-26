@@ -1,21 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
 import Contact from '../Contact/Contact'
 
-const ChatList = ({ user, contacts }) => {
-  const [clickedContact, setClickedContact] = useState(undefined)
+const ChatList = ({ userId }) => {
+  const [chats, setChats] = useState(undefined)
+  const [clickedChat, setClickedChat] = useState(undefined)
 
-  const handleClick = (contact) => setClickedContact(contact)
+  useEffect(() => {
+    const getChats = async () => {
+      const chats = await backend.get("/users")
+      
+    }
+    getChats()
+  }, [])
 
-  if(!contacts) return <h1>No contacts</h1>
+  // Add better response page
+  if(!chats) return <h1>No chats</h1>
 
   return (
     <section>
       <section>
-        {contacts.map(contact => <Contact handleClick={contact => handleClick(contact)} user={contact} /> )}
+        {chats.map(chat => <Contact handleClick={chat => setClickedChat(chat)} user={chat} /> )}
       </section>
       <section>
-        {clickedContact && <Chat sender={user} receiver={clickedContact} />}
+        {clickedChat && <Chat sender={userId} receiver={clickedChat} />}
       </section>
     </section>
   )

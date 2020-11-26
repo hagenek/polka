@@ -1,5 +1,5 @@
 
-const Contact = ({ user, handleClick }) => {
+const Contact = ({ users, handleClick }) => {
   return (
     <section onClick={() => handleClick(user)}>
       <h1>{user.firstname}</h1>
