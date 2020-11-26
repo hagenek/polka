@@ -50,7 +50,7 @@ const Nav = () => {
                 <Link to="/people">People</Link>
               </li>
               <li className="nav__item">
-                <Link to="/groups">Events</Link>
+                <Link to="/events">Events</Link>
               </li>
               <li className="nav__item">
                 <Link to="/groups">Groups</Link>
@@ -85,7 +85,7 @@ const Nav = () => {
                 <Link to="/groups">Groups</Link>
               </li>
               <li className="nav__item login__logo" >
-              <AccountCircleIcon className="AccountCircleIcon" />
+              <AccountCircleIcon fontSize="medium" className="AccountCircleIcon" />
                 <Link to="/login">Log In</Link>
               </li>
               {/* <li className="nav__item">

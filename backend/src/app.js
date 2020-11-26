@@ -19,11 +19,12 @@ db.once("open", () => console.log("Connected to Database"))
 const indexRouter = require("./routes/index")
 const countryRouter = require("./routes/country")
 const groupRouter = require("./routes/group")
+const eventRouter = require("./routes/event")
 const userRouter = require("./routes/user")
 const userPageRouter = require("./routes/user-routes")
 const signinRouter = require("./routes/signin-route")
-const signupRoute = require('./routes/signup-route');
-const chatRouter = require('./routes/chat-route');
+const signupRoute = require("./routes/signup-route")
+const chatRouter = require("./routes/chat-route")
 
 const errorHandler = require("./middleware/errorHandler")
 
@@ -38,13 +39,14 @@ app.use(cors())
 
 app.use("/", userRouter)
 app.use("/", groupRouter)
+app.use("/", eventRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
 
-app.use('/api/test/user', userPageRouter);
-app.use('/api/auth/signup', signupRoute);
-app.use('/api/auth/signin', signinRouter);
-app.use('/api/chat', chatRouter)
+app.use("/api/test/user", userPageRouter)
+app.use("/api/auth/signup", signupRoute)
+app.use("/api/auth/signin", signinRouter)
+app.use("/api/chat", chatRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

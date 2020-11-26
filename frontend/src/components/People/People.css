@@ -7,6 +7,11 @@
     font-size: 1.5em;
 }
 
+.people__section h1{
+    color: var(--main--color);
+    font-weight: 600;
+    }
+
 .people__list {
     display: grid;
     justify-items: center;

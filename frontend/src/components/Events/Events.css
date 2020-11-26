@@ -1,4 +1,4 @@
-.group__section {
+.event__section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,12 +7,12 @@
     font-size: 1.5em;
 }
 
-.group__section h1{
+.event__section h1{
 color: var(--main--color);
 font-weight: 600;
 }
 
-.group__section ul{
+.event__section ul{
     margin: 10px;
     display: flex;
     flex-direction: column;

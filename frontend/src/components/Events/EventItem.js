@@ -2,20 +2,21 @@ import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import IconButton from "@material-ui/core/IconButton"
+import halloweenImage from "./pablo-keep-distance.png"
 
-import "./Eventitem.css"
+
+import "./EventItem.css"
 
 /* eslint-disable react/prop-types */
 function EventItem({ getEvent, eventName }) {
   return (
     <li className="eventItem">
-      <img
-        src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
-        alt="generic event"
+      <img className="eventItem__photo" src={halloweenImage}
+        alt="generic group"
       />
-      <div role="presentation" onClick={() => getGroup(eventName.name)} className="group__info">
-        <h2 className="groupItem__header">{groupName.name} </h2>
-        <p className="groupItem__description">{groupName.description} </p>
+      <div role="presentation" onClick={() => getEvent(eventName.name)} className="event__info">
+        <h2 className="eventItem__header">{eventName.name} </h2>
+        <p className="eventItem__description">{eventName.description} </p>
       </div>
       <div className="icons">
         <IconButton className="checkBoxIcon">
@@ -29,4 +30,4 @@ function EventItem({ getEvent, eventName }) {
   )
 }
 
-export default GroupItem
+export default EventItem

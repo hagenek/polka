@@ -2,6 +2,8 @@ import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 // import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import IconButton from "@material-ui/core/IconButton"
+import sportImage from "./cherry-paralympic-basketball.png"
+
 
 import "./Groupitem.css"
 
@@ -10,7 +12,7 @@ function GroupItem({ getGroup, groupName }) {
   return (
     <li className="groupItem">
       <img
-        src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
+        src={sportImage}
         alt="generic group"
       />
       <div role="presentation" onClick={() => getGroup(groupName.name)} className="group__info">

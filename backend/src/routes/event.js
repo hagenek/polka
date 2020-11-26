@@ -3,11 +3,11 @@ const Event = require("../models/event")
 
 const router = new express.Router()
 
-router.post("/groups", async (req, res) => {
+router.post("/events", async (req, res) => {
   console.log(req.body)
 
   const { name, description } = req.body
-  const group = new Event({
+  const event = new Event({
     name,
     description,
   })
@@ -15,16 +15,16 @@ router.post("/groups", async (req, res) => {
     if (err) return console.error(err)
   })
 
-  Event.find((err, groups) => {
+  Event.find((err, events) => {
     if (err) return console.error(err)
     res.send(event)
   })
 })
 
 router.get("/events", async (req, res) => {
-  Event.find((err, groups) => {
+  Event.find((err, events) => {
     if (err) return console.error(err)
-    res.send(event)
+    res.send(events)
   })
 })
 

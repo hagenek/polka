@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react"
-import GroupItem from "./GroupItem"
-import GroupPage from "./GroupPage"
+import EventItem from "./EventItem"
+import EventPage from "./EventPage"
 import backend from "../../api"
 
-import "./Event.css"
+import "./Events.css"
 
-function Event() {
+function Events() {
   const [eventName, setEventName] = useState([])
   const [clickedEvent, setClickedEvent] = useState([])
 
   useEffect(() => {
     async function fetchData() {
       const request = await backend.get("/events")
-      setGroupName(request.data)
+      setEventName(request.data)
       return request
     }
     fetchData()
@@ -31,13 +31,13 @@ function Event() {
       {clickedEvent.length === 0 ? (
         <ul>
           {eventName.map((event) => (
-            <GroupItem getEvent={getEvent} eventName={event} />
+            <EventItem getEvent={getEvent} eventName={event} />
           ))}
         </ul>
       ) : (
         <ul>
           {clickedEvent.map((event) => (
-            <GroupEvent setClickedEvent={setClickedEvent} eventName={event} />
+            <EventPage setClickedEvent={setClickedEvent} eventName={event} />
           ))}
         </ul>
       )}
@@ -45,4 +45,4 @@ function Event() {
   )
 }
 
-export default Event
+export default Events

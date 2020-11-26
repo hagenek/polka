@@ -14,6 +14,7 @@ import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
 import Profiles from "./components/Profiles/Profiles"
+import Events from "./components/Events/Events"
 
 import "./App.css"
 
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
+          <Route exact path="/events" component={Events} />
           {/* <Route exact path="/chat" component={Chat} /> */}
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contact" component={Contact} />

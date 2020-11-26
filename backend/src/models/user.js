@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const Chat = require('./chat')
+const Chat = require("./chat")
 
 const { Schema } = mongoose
 
@@ -93,9 +93,9 @@ const userSchema = new Schema({
   chats: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Chat'
-    }
-  ]
+      ref: "Chat",
+    },
+  ],
 })
 
 const user = mongoose.model("User", userSchema)
