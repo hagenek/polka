@@ -21,6 +21,7 @@ const Nav = () => {
 
   const logOut = () => {
     AuthService.logout();
+    window.location.reload();
   };
 
   return (
@@ -28,7 +29,7 @@ const Nav = () => {
       <div className="nav__container">
         <div className="nav__logo">
           <Link to="/">
-            <h1>Logo</h1>
+            <h1>Polka</h1>
           </Link>
         </div>
         {currentUser ? (

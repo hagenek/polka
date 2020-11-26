@@ -1,34 +1,36 @@
-/* eslint-disable */
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
-import UserService from "../services/user-service"
+import getUserBoard from "../services/user-service";
 
 const BoardUser = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getUserBoard().then(
+    getUserBoard().then(
       (response) => {
-        setContent(response.data);
+        console.log(response)
+        setContent(response.data.message);
       },
       (error) => {
-        const content =
+        const eContent =
           (error.response &&
             error.response.data &&
             error.response.data.message) ||
           error.message ||
           error.toString();
 
-        setContent(content);
+        setContent(eContent);
       }
     );
-  }, [])
+  }, []);
 
   return (
-    <div>
-      <h1>{content}</h1>
+    <div className="container">
+      <header className="jumbotron">
+        <h3>{content}</h3>
+      </header>
     </div>
-  )
-}
+  );
+};
 
-export default BoardUser
+export default BoardUser;

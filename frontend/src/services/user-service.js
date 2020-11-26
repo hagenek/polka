@@ -1,7 +1,7 @@
 import backend from "../api"
 import authHeader from "./auth-header"
 
-const getUserBoard = () => {
+const getUserBoard = async () => {
   return backend.get("/api/test/user", { headers: authHeader() })
 }
 

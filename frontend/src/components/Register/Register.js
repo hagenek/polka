@@ -1,11 +1,26 @@
 import React, { useState } from "react"
 import Button from "@material-ui/core/Button"
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Alert from '@material-ui/lab/Alert'
 import { Link } from "react-router-dom";
 
 import AuthService from "../../services/auth-service"
+
+import "./Register.css";
+
+const useStyles = makeStyles({
+  button: {
+    height: 48,
+    width: 200,
+    padding: '0 30px',
+  },
+  input: {
+    width: 200,
+    margin: '10px 0 0 0'
+  }
+});
 
 const Register = () => {
   const [username, setUsername] = useState("")
@@ -72,6 +87,8 @@ const Register = () => {
     )
   }
 
+  const classes = useStyles();
+
   return (
     <Grid
       container
@@ -79,63 +96,9 @@ const Register = () => {
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ minHeight: '90vh' }}
+      style={{ minHeight: '85vh' }}
     >
-      <ValidatorForm onSubmit={handleRegister}>
-        {!successful && (
-          <>
-            <TextValidator
-              label="First Name"
-              onChange={onChangeFirstName}
-              name="first name"
-              value={firstName}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <TextValidator
-              label="First Name"
-              onChange={onChangelastName}
-              name="first name"
-              value={lastName}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <TextValidator
-              label="Username"
-              onChange={onChangeUsername}
-              name="username"
-              value={username}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <TextValidator
-              label="Email"
-              onChange={onChangeEmail}
-              name="email"
-              value={email}
-              validators={['required', 'isEmail']}
-              errorMessages={['This field is required', 'Not a valid email']}
-            />
-            <TextValidator
-              label="Password"
-              onChange={onChangePassword}
-              type="password"
-              name="password"
-              value={password}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <TextValidator
-              label="Token"
-              onChange={onChangeToken}
-              name="token"
-              value={token}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <Button variant="contained" color="primary" type="submit">Sign Up</Button>
-          </>
-        )}
+      <ValidatorForm className="signup__form" onSubmit={handleRegister}>
         {message && (
           successful ? (
             <>
@@ -152,7 +115,67 @@ const Register = () => {
               </Alert>
             )
         )}
-        <Button style={{ display: "none" }} />
+        {!successful && (
+          <div className="test">
+            <TextValidator
+              label="First Name"
+              className={classes.input}
+              onChange={onChangeFirstName}
+              name="first name"
+              value={firstName}
+              validators={['required']}
+              errorMessages={['This field is required']}
+            />
+            <TextValidator
+              className={classes.input}
+              label="First Name"
+              onChange={onChangelastName}
+              name="first name"
+              value={lastName}
+              validators={['required']}
+              errorMessages={['This field is required']}
+            />
+            <TextValidator
+              className={classes.input}
+              label="Username"
+              onChange={onChangeUsername}
+              name="username"
+              value={username}
+              validators={['required']}
+              errorMessages={['This field is required']}
+            />
+            <TextValidator
+              className={classes.input}
+              label="Email"
+              onChange={onChangeEmail}
+              name="email"
+              value={email}
+              validators={['required', 'isEmail']}
+              errorMessages={['This field is required', 'Not a valid email']}
+            />
+            <TextValidator
+              className={classes.input}
+              label="Password"
+              onChange={onChangePassword}
+              type="password"
+              name="password"
+              value={password}
+              validators={['required']}
+              errorMessages={['This field is required']}
+            />
+            <TextValidator
+              className={`mb-20 ${classes.input}`}
+              label="Token"
+              onChange={onChangeToken}
+              name="token"
+              value={token}
+              validators={['required']}
+              errorMessages={['This field is required']}
+            />
+            <Button color="primary" variant="contained" className={classes.button} type="submit">Sign Up</Button>
+          </div>
+        )}
+        {/* <Button style={{ display: "none" }} /> */}
       </ValidatorForm>
     </Grid>
   )

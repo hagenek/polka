@@ -3,10 +3,23 @@ import React, { useState } from "react"
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import Button from "@material-ui/core/Button"
 import Grid from '@material-ui/core/Grid';
-import AuthService from "../../services/auth-service"
+import { makeStyles } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert';
+import AuthService from "../../services/auth-service"
 
 import "./Login.css";
+
+const useStyles = makeStyles({
+  button: {
+    height: 48,
+    width: 200,
+    padding: '0 30px',
+  },
+  input: {
+    width: 200,
+    margin: '10px 0 0 0'
+  }
+});
 
 const Login = (props) => {
 
@@ -31,8 +44,8 @@ const Login = (props) => {
 
     AuthService.login(username, password).then(
       () => {
-        props.history.push("/");
-        // window.location.reload();
+        props.history.push("/user");
+        window.location.reload();
       },
       (error) => {
         const resMessage =
@@ -46,6 +59,9 @@ const Login = (props) => {
       }
     );
   }
+
+  const classes = useStyles();
+
   return (
     <Grid
       container
@@ -53,10 +69,19 @@ const Login = (props) => {
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ minHeight: '80vh' }}
+      style={{ minHeight: '85vh' }}
     >
-      <ValidatorForm onSubmit={handleLogin} >
+      <ValidatorForm className="login__form" onSubmit={handleLogin} >
+        {message && (
+          <Alert severity="error">
+            {message}
+          </Alert>
+        )}
+        <img
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        />
         <TextValidator
+          className={classes.input}
           label="Username"
           onChange={onChangeUsername}
           name="username"
@@ -65,6 +90,7 @@ const Login = (props) => {
           errorMessages={['This field is required']}
         />
         <TextValidator
+          className={`mb-20 ${classes.input}`}
           label="Password"
           onChange={onChangePassword}
           type="password"
@@ -74,36 +100,16 @@ const Login = (props) => {
           errorMessages={['This field is required']}
         />
         <Button
+          className={classes.button}
           variant="contained"
           color="primary"
           type="submit">
           Login
           </Button>
-        {message && (
-          <Alert severity="error">
-            {message}
-          </Alert>
-        )}
-        <Button m={2} style={{ display: "none" }} />
+        {/* <Button m={2} style={{ display: "none" }} /> */}
       </ValidatorForm>
     </Grid>
   )
 }
 
 export default Login
-
-
-{/* <Grid
-  container
-  spacing={0}
-  direction="column"
-  alignItems="center"
-  justify="center"
-  style={{ minHeight: '100vh' }}
->
-
-  <Grid item xs={3}>
-    <LoginForm />
-  </Grid>   
-
-</Grid>  */}

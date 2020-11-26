@@ -34,7 +34,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route path="/user" component={BoardUser} />
+          {/* <Route path="/user" component={BoardUser} /> */}
           <Route exact path="/profile" component={Profile} />
           {/*
           <Route exact path="/people" component={People} />
@@ -42,6 +42,8 @@ function App() {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/contact" component={Contact} />
           </Route> */}
+          <Route path="/user" component={BoardUser} />
+          <Route exact path="/people" component={Profiles} />
           <Route exact path="/about" component={About} />
         </Switch>
         {/* <Profiles /> */}
