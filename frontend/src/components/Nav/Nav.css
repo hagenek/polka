@@ -1,4 +1,5 @@
 .nav {
+  background-color: var(--main--color);
   height: 80px;
   display: flex;
   justify-content: center;
@@ -16,18 +17,26 @@
 }
 
 .nav__logo {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-left: 20px;
   cursor: pointer;
 }
 
 .nav__logo a {
   text-decoration: none;
-  color: #000;
+  color: var(--secondary--color);
+  text-transform: uppercase;
+}
+
+.login__logo {
+  display: flex;
+  align-items: center;
+  color: var(--secondary--color);
 }
 
 .mobile__icon {
   position: absolute;
+  color: var(--secondary--color);
   top: 20px;
   right: 20px;
   font-size: 1.5rem;
@@ -44,7 +53,7 @@
   transition: all 0.3s ease;
   position: absolute;
   right: -1000px;
-  background-color: lightblue;
+  background-color: var(--third--color);
 }
 
 .nav__menu1 {
@@ -61,8 +70,12 @@
 
 .nav__item a {
   text-decoration: none;
-  color: #000;
-  text-transform: uppercase;
+  color: var(--secondary--color);
+  text-transform: capitalize;
+}
+
+.nav__item a:hover {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 960px) {

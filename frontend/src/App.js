@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import backend from "./api"
+// import backend from "./api"
 import About from "./components/About/About"
-import Search from "./components/Search/Search"
+// import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
@@ -35,7 +35,7 @@ function App() {
         <Nav />
         {/* <Search /> */}
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
         {/* <Search /> */}
         {/* <Register /> */}
           <Route exact path="/login" component={Login} />

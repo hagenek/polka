@@ -1,8 +1,12 @@
 .footer {
+  background-color: var(--main--color);
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  margin-top: 100px;
+  position: relative;
 }
 
 .footer__container {
@@ -16,4 +20,13 @@
 
 .footer__item {
   margin: 40px 0 0 20px;
+}
+
+.footer__item a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__item a:hover {
+  text-decoration: underline;
 }

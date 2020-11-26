@@ -1,19 +1,19 @@
 import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
-// import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import IconButton from "@material-ui/core/IconButton"
 
-import "./Groupitem.css"
+import "./Eventitem.css"
 
 /* eslint-disable react/prop-types */
-function GroupItem({ getGroup, groupName }) {
+function EventItem({ getEvent, eventName }) {
   return (
-    <li className="groupItem">
+    <li className="eventItem">
       <img
         src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
-        alt="generic group"
+        alt="generic event"
       />
-      <div role="presentation" onClick={() => getGroup(groupName.name)} className="group__info">
+      <div role="presentation" onClick={() => getGroup(eventName.name)} className="group__info">
         <h2 className="groupItem__header">{groupName.name} </h2>
         <p className="groupItem__description">{groupName.description} </p>
       </div>
@@ -21,9 +21,9 @@ function GroupItem({ getGroup, groupName }) {
         <IconButton className="checkBoxIcon">
           <CheckBoxIcon />
         </IconButton>
-        {/* <IconButton className="CheckBoxOutlineBlankIcon">
+        <IconButton className="CheckBoxOutlineBlankIcon">
           <CheckBoxOutlineBlankIcon />
-        </IconButton> */}
+        </IconButton>
       </div>
     </li>
   )
