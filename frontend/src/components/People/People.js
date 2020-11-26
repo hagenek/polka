@@ -19,7 +19,7 @@ function Groups() {
   return (
     <section className="people__section">
       <h1>Find new friends: </h1>
-      <ul>
+      <ul className="people__list">
         {people.map((user) => (
           <Person User={user} />
         ))}

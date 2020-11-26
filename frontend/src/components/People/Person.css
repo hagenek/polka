@@ -1,20 +1,24 @@
 .person {
-    border: solid 1px;
-    margin: 10px;
+    border: solid rgb(202, 202, 202) 1px;
+    border-radius: 5px;
+    margin: 5px;
     padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
 }
 
-.personinfo {
+.userinfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100%;
+}
+
+.person__names {
+    text-transform: capitalize;
 }
 
 .icons {

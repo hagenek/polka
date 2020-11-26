@@ -13,31 +13,29 @@ function GroupPage({ setClickedGroup, groupName }) {
   }
 
   return (
-    <div>
-      <li className="groupPage">
+    <li className="groupPage">
+      <IconButton className="checkBoxIcon">
+        <ArrowBackIosIcon role="presentation" onClick={() => emptyGroupArrray()} />
+      </IconButton>
+      <img
+        className="groupPage__photo"
+        src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
+        alt="generic group"
+      />
+      <div className="groupPage__info">
+        <h2 className="groupPage__header">{groupName.name} </h2>
+        <p className="groupPage__description">Description: {groupName.description} </p>
+        <p className="groupPage__members">Members: {groupName.members.length} </p>
+      </div>
+      <div className="icons">
         <IconButton className="checkBoxIcon">
-          <ArrowBackIosIcon role="presentation" onClick={() => emptyGroupArrray()} />
+          <CheckBoxIcon />
         </IconButton>
-        <img
-          className="groupPage__photo"
-          src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
-          alt="generic group"
-        />
-        <div className="groupPage__info">
-          <h2 className="groupPage__header">Name: {groupName.name} </h2>
-          <p className="groupPage__description">Description: {groupName.description} </p>
-          <p className="groupPage__members">Members: {groupName.members.length} </p>
-        </div>
-        <div className="icons">
-          <IconButton className="checkBoxIcon">
-            <CheckBoxIcon />
-          </IconButton>
-          <IconButton className="CheckBoxOutlineBlankIcon">
-            <CheckBoxOutlineBlankIcon />
-          </IconButton>
-        </div>
-      </li>
-    </div>
+        <IconButton className="CheckBoxOutlineBlankIcon">
+          <CheckBoxOutlineBlankIcon />
+        </IconButton>
+      </div>
+    </li>
   )
 }
 
