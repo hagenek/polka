@@ -1,5 +1,5 @@
 
-const Contact = ({ chat, handleClick }) => {
+const ChatCard = ({ chat, handleClick }) => {
   return (
     <section>
       <section onClick={() => handleClick(chat)}>
@@ -15,4 +15,4 @@ const Contact = ({ chat, handleClick }) => {
   )
 }
 
-export default Contact;
+export default ChatCard;

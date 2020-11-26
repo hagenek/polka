@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
-import Contact from '../Contact/Contact'
+import ChatCard from '../ChatCard/ChatCard'
 import api from "../../api"
 
 const ChatList = ({ userId }) => {
@@ -10,7 +10,6 @@ const ChatList = ({ userId }) => {
   useEffect(() => {
     const getChats = async () => {
       const res = await api.get(`api/chat/user/${userId}`)
-      console.log(res)
       setChats(res.data.chats)
     }
     getChats()
@@ -22,7 +21,7 @@ const ChatList = ({ userId }) => {
   return (
     <section>
       <section>
-        {chats.map(chat => <Contact key={chat._id} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
+        {chats.map(chat => <ChatCard key={chat._id} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
       </section>
       <section>
         {clickedChat && <Chat senderId={userId} chat={clickedChat} />}
