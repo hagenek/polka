@@ -7,18 +7,21 @@ const logger = require("morgan")
 const helmet = require("helmet")
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
 
 const indexRouter = require("./routes/index")
-const countryRouter = require('./routes/country')
-const userRouter = require('./routes/user-route');
+const countryRouter = require('./routes/country');
+const userRouter = require('./routes/user');
+const userPageRouter = require('./routes/user-routes');
+const authRouter = require('./routes/auth-routes');
+const signinRouter = require('./routes/signin-route');
 const chatRouter = require('./routes/chat-route');
 
-const errorHandler = require("./middleware/errorHandler")
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express()
 
@@ -29,9 +32,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
 
+app.use("/", userRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
-app.use('/api/user', userRouter)
+app.use('/api/test/user', userPageRouter);
+app.use('/api/auth/signup', authRouter);
+app.use('/api/auth/signin', signinRouter);
 app.use('/api/chat', chatRouter)
 
 // catch 404 and forward to error handler

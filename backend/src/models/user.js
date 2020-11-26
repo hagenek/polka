@@ -60,11 +60,11 @@ const userSchema = new Schema({
   },
   governmentId: {
     type: Number,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: Number,

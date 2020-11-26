@@ -1,0 +1,19 @@
+.footer {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: center;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.footer__item {
+  margin: 40px 0 0 20px;
+}
