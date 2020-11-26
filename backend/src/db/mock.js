@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-user_one = {
-=======
 const userOne = {
->>>>>>> db
   "username": "joakimonline",
   "password": "hejhej123",
   "firstname": "joakim",

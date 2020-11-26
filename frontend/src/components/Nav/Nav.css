@@ -1,4 +1,5 @@
 .nav {
+  background-color: var(--main--color);
   height: 80px;
   display: flex;
   justify-content: center;
@@ -8,24 +9,39 @@
 .nav__container {
   display: flex;
   justify-content: space-between;
+  align-content: center;
   height: 80px;
-  z-index: 1;
   width: 100%;
   max-width: 1000px;
+  z-index: 999;
 }
 
 .nav__logo {
-  font-size: 2rem;
-  padding-left: 20px;
+  font-size: 1.25rem;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.nav__logo a {
+  text-decoration: none;
+  color: var(--secondary--color);
+  text-transform: uppercase;
+}
+
+.login__logo {
+  display: flex;
+  align-items: center;
+  color: var(--secondary--color);
 }
 
 .mobile__icon {
   position: absolute;
+  color: var(--secondary--color);
   top: 20px;
   right: 20px;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .nav__menu {
@@ -37,7 +53,11 @@
   transition: all 0.3s ease;
   position: absolute;
   right: -1000px;
-  background-color: lightblue;
+  background-color: var(--third--color);
+}
+
+.nav__menu1 {
+  display: flex;
 }
 
 .active {
@@ -46,6 +66,16 @@
 
 .nav__item {
   margin: 40px 0 0 20px;
+}
+
+.nav__item a {
+  text-decoration: none;
+  color: var(--secondary--color);
+  text-transform: capitalize;
+}
+
+.nav__item a:hover {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 960px) {

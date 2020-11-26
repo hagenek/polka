@@ -9,21 +9,21 @@ const eventSchema = new Schema({
     lowercase: true,
     trim: true,
   },
-  participants: {
-    type: String,
-    required: true,
-  },
   description: {
-    type: String,
-    required: true,
-  },
-  image: {
     type: String,
     required: true,
   },
   date: {
     type: String,
-    required: true,
+    required: false,
+  },
+  participants: {
+    type: String,
+    required: false,
+  },
+  image: {
+    type: String,
+    required: false,
   },
 })
 

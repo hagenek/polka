@@ -10,8 +10,8 @@ const groupSchema = new Schema({
     trim: true,
   },
   members: {
-    type: String,
-    required: true,
+    type: Array,
+    required: false,
   },
   description: {
     type: String,
@@ -20,10 +20,6 @@ const groupSchema = new Schema({
   image: {
     type: String,
     required: false,
-  },
-  objectId: {
-    type: String,
-    required: true,
   },
 })
 

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "airbnb": "^0.0.2",
+    "bcrypt": "^5.0.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -20,6 +21,8 @@
     "express": "~4.16.0",
     "helmet": "^3.21.1",
     "http-errors": "~1.6.2",
+    "socket.io": "^3.0.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
     "morgan": "~1.9.0",
     "prettier": "^2.2.0"

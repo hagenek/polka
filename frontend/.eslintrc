@@ -1,4 +1,4 @@
-{
+/*{
   "extends": [
     "react-app",
     "airbnb",
@@ -12,10 +12,11 @@
   ],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "prettier/prettier": [
-      "error", {
-        "semi": false
-      }
-    ]   
+    "prettier/prettier": 0
+    // "prettier/prettier": [
+    //   "error", {
+    //     "semi": false
+    //   }
+    // ]   
   }
-}
+}*/
