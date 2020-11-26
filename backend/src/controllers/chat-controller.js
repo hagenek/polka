@@ -59,9 +59,16 @@ const addMessage = async (req, res) => {
 }
 
 const getChatById = async (req, res) => {
-  const { id } = req.params;
-  console.log(id)
-  res.send(id)
+  let { id } = req.params;
+  
+  try {
+    id = mongoose.Types.ObjectId(id);
+    const chat = await Chat.findById(id).populate('members').populate('messages');
+    res.status(200).json(chat);
+  } catch(error) {
+    console.log(error);
+    res.send(error.message)
+  }
 }
 
 module.exports = {
