@@ -27,4 +27,10 @@ router.get("/groups", async (req, res) => {
   })
 })
 
+router.get("/groups/:name", async (req, res) => {
+  const searchQuery = req.params.name
+  const data = await Group.find({ name: `${searchQuery}` })
+  res.send(data)
+})
+
 module.exports = router

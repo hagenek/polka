@@ -22,11 +22,18 @@ router.post("/users", async (req, res) => {
     res.send(users)
   })
 })
+
 router.get("/users", async (req, res) => {
   User.find((err, users) => {
     if (err) return console.error(err)
     res.send(users)
   })
+})
+
+router.get("/users/:id", async (req, res) => {
+  const searchQuery = req.params.id
+  const data = await User.find({ _id: `${searchQuery}` })
+  res.send(data)
 })
 
 module.exports = router
