@@ -59,11 +59,13 @@ const addMessage = async (req, res) => {
 }
 
 const getChatById = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
+  console.log(id)
   res.send(id)
 }
 
 module.exports = {
   createChat,
-  addMessage
+  addMessage,
+  getChatById
 }
