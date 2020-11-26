@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import Profile from "./Profile/Profile"
 import backend from "../../api"
 
+import "./Profile/Profile.css"
+
 const Profiles = () => {
   const [users, setUsers] = useState([])
 
@@ -18,7 +20,7 @@ const Profiles = () => {
       <Profile firstName={u.firstName} lastName={u.lastName} username={u.username} />
     ))
 
-  return <div>{makeProfileArr(users)}</div>
+  return <div className="profiles__container">{makeProfileArr(users)}</div>
 }
 
 export default Profiles

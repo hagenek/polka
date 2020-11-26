@@ -1,8 +1,11 @@
-.login__form {
+.signup__form {
   background-color: rgba(213, 213, 213, 0.20);
   width: 350px;
   border-radius: 5px;
   padding: 20px;
+}
+
+.test {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,5 +13,5 @@
 }
 
 .mb-20 {
-  margin-bottom: 20px !important;
+  margin-bottom: 20px;
 }

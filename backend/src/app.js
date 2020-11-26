@@ -17,7 +17,7 @@ const indexRouter = require("./routes/index")
 const countryRouter = require('./routes/country');
 const userRouter = require('./routes/user');
 const userPageRouter = require('./routes/user-routes');
-const authRouter = require('./routes/auth-routes');
+const signupRoute = require('./routes/signup-route');
 const signinRouter = require('./routes/signin-route');
 const chatRouter = require('./routes/chat-route');
 
@@ -36,7 +36,7 @@ app.use("/", userRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
 app.use('/api/test/user', userPageRouter);
-app.use('/api/auth/signup', authRouter);
+app.use('/api/auth/signup', signupRoute);
 app.use('/api/auth/signin', signinRouter);
 app.use('/api/chat', chatRouter)
 
