@@ -33,7 +33,7 @@ const Nav = () => {
             <Link to="/chat">Chat</Link>
           </li>
           <li className="nav__item">
-            <Link to="/profile">Profile</Link>
+            <Link to="/profiles">Profile</Link>
           </li>
         </ul>
         <div className="mobile__icon" onClick={handleClick} role="presentation">

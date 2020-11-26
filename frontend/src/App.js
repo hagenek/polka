@@ -36,12 +36,11 @@ function App() {
           <Route exact path="/people" component={People} />
           {/*
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/profile" component={Profile} />
           */}
+          <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/about" component={About} />
         </Switch>
-        <Profiles />
         <Footer />
       </Router>
     </div>

@@ -20,6 +20,7 @@ router.post("/groups", async (req, res) => {
     res.send(groups)
   })
 })
+
 router.get("/groups", async (req, res) => {
   Group.find((err, groups) => {
     if (err) return console.error(err)
