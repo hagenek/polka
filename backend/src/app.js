@@ -19,6 +19,7 @@ const userRouter = require('./routes/user');
 const userPageRouter = require('./routes/user-routes');
 const authRouter = require('./routes/auth-routes');
 const signinRouter = require('./routes/signin-route');
+const chatRouter = require('./routes/chat-route');
 
 const errorHandler = require("./middleware/errorHandler");
 
@@ -37,6 +38,7 @@ app.use("/", indexRouter)
 app.use('/api/test/user', userPageRouter);
 app.use('/api/auth/signup', authRouter);
 app.use('/api/auth/signin', signinRouter);
+app.use('/api/chat', chatRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
