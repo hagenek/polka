@@ -9,6 +9,7 @@ import Login from "./components/Login/Login"
 import Groups from "./components/Groups/Groups"
 import People from "./components/People/People"
 import Contact from "./components/Contact/Contact"
+import Profiles from "./components/Profiles/Profiles"
 
 import "./App.css"
 
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/about" component={About} />
         </Switch>
+        <Profiles />
         <Footer />
       </Router>
     </div>

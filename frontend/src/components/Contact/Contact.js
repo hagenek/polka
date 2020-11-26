@@ -9,8 +9,8 @@ function Contact() {
     <section className="contact">
       <h1>Contact Us:</h1>
       <p>
-        If you have any questions, please get in contact with us, or with your
-        doctor for more information on how to join this platform.
+        If you have any questions, please get in contact with us, or with your doctor for more
+        information on how to join this platform.
       </p>
       <h3>
         {" "}
