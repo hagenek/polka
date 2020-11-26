@@ -12,9 +12,10 @@ exports.signup = async (req, res) => {
       governmentId: req.body.governmentId,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-    })
-    await user.save()
-    res.json(user).status(201).end()
+      chats: []
+    });
+    await user.save();
+    res.json(user).status(201).end();
   } catch (err) {
     console.log(err)
     res.send(err.message)
