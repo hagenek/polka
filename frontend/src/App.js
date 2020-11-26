@@ -31,9 +31,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <p>{message}</p>
+        {/* <p>{message}</p> */}
         <Nav />
-        <Search />
+        {/* <Search /> */}
         <Switch>
           <Route exact path="/" component={Login} />
         {/* <Search /> */}
@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
-          <Route exact path="/chat" component={Chat} />
+          {/* <Route exact path="/chat" component={Chat} /> */}
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/about" component={About} />
