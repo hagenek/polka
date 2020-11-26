@@ -2,6 +2,7 @@ import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
+import IconButton from "@material-ui/core/IconButton"
 
 import "./GroupPage.css"
 
@@ -14,7 +15,9 @@ function GroupPage({ setClickedGroup, groupName }) {
   return (
     <div>
       <li className="groupPage">
-        <ArrowBackIosIcon role="presentation" onClick={() => emptyGroupArrray()} />
+        <IconButton className="checkBoxIcon">
+          <ArrowBackIosIcon role="presentation" onClick={() => emptyGroupArrray()} />
+        </IconButton>
         <img
           className="groupPage__photo"
           src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
@@ -26,8 +29,12 @@ function GroupPage({ setClickedGroup, groupName }) {
           <p className="groupPage__members">Members: {groupName.members.length} </p>
         </div>
         <div className="icons">
-          <CheckBoxIcon />
-          <CheckBoxOutlineBlankIcon />
+          <IconButton className="checkBoxIcon">
+            <CheckBoxIcon />
+          </IconButton>
+          <IconButton className="CheckBoxOutlineBlankIcon">
+            <CheckBoxOutlineBlankIcon />
+          </IconButton>
         </div>
       </li>
     </div>

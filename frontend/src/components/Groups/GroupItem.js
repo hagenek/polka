@@ -1,6 +1,7 @@
 import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
+import IconButton from "@material-ui/core/IconButton";
 
 import "./Groupitem.css"
 
@@ -18,8 +19,12 @@ function GroupItem({ getGroup, groupName }) {
           <p className="groupItem__description">{groupName.description} </p>
         </div>
         <div className="icons">
-          <CheckBoxIcon />
-          <CheckBoxOutlineBlankIcon />
+        <IconButton className="checkBoxIcon">
+        <CheckBoxIcon />
+        </IconButton>
+        <IconButton className="CheckBoxOutlineBlankIcon">
+        <CheckBoxOutlineBlankIcon />
+        </IconButton>
         </div>
       </li>
     </div>
