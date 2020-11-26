@@ -1,7 +1,7 @@
-const express = require("express")
-const User = require("../models/user")
-
-const router = new express.Router()
+const User = require('../models/user')
+const express = require('express')
+const router = express.Router()
+const { getUser } = require('../controllers/user-controller')
 
 router.post("/users", async (req, res) => {
   console.log(req.body)
@@ -35,4 +35,6 @@ router.get("/users/:id", async (req, res) => {
   res.send(data)
 })
 
-module.exports = router
+router.get('/:id', getUser);
+
+module.exports = router;

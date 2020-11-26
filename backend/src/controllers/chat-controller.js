@@ -68,19 +68,26 @@ const getChatById = async (req, res) => {
   let { id } = req.params
 
   try {
-    id = mongoose.Types.ObjectId(id)
+    id = mongoose.Types.ObjectId(id);
     const chat = await Chat.findById(id)
-      .populate("members")
-      .populate("messages")
-    res.status(200).json(chat)
-  } catch (error) {
-    console.log(error)
+      .populate('members')
+      .populate({
+        path: 'messages',
+        model: 'Message',
+        populate: {
+          path: 'sender',
+          model: 'User'
+        }
+      });
+    res.status(200).json(chat);
+  } catch(error) {
+    console.log(error);
     res.send(error.message)
   }
 }
 
 const getChatsByUserId = async (req, res) => {
-  let { id } = req.params
+  let { id } = req.params;
 
   try {
     id = mongoose.Types.ObjectId(id)

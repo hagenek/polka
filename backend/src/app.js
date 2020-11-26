@@ -37,12 +37,12 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(cors())
 
-app.use("/", userRouter)
 app.use("/", groupRouter)
 app.use("/", eventRouter)
 app.use("/", countryRouter)
 app.use("/", indexRouter)
 
+app.use("/api/user", userRouter)
 app.use("/api/test/user", userPageRouter)
 app.use("/api/auth/signup", signupRoute)
 app.use("/api/auth/signin", signinRouter)

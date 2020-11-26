@@ -1,9 +1,10 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import backend from "./api"
 // import backend from "./api"
 import About from "./components/About/About"
-// import Search from "./components/Search/Search"
+import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
 import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
@@ -15,6 +16,7 @@ import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
 import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
+import ChatList from "./components/ChatList/ChatList"
 
 import "./App.css"
 
@@ -34,18 +36,20 @@ function App() {
       <Router>
         {/* <p>{message}</p> */}
         <Nav />
+        <Search />
+        
         {/* <Search /> */}
         <Switch>
           <Route exact path="/login" component={Login} />
-        {/* <Search /> */}
-        {/* <Register /> */}
+          {/* <Search /> */}
+          {/* <Register /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
-          {/* <Route exact path="/chat" component={Chat} /> */}
+          <Route exact path="/chat" render={() => <ChatList userId={"5fbe611e18de443d28c81718"} />} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/about" component={About} />

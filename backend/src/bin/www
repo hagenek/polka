@@ -77,6 +77,44 @@ function onListening() {
 }
 
 /**
+ * Socket setup
+ */
+
+// Split up into helper functions
+const onlineUsers = [];
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
+io.on('connection', client => {
+  const userId = client.handshake.query['id']
+  const userConnectionIds = {
+    userId,
+    clientId: client.id
+  }
+  onlineUsers.push(userConnectionIds);
+  console.log('Client connected!');
+  console.log(onlineUsers)
+
+  client.on('disconnect', () => {
+    onlineUsers.splice(onlineUsers.findIndex(user => user.userId === userId), 1)
+    console.log("Client disconnected!");
+    console.log(onlineUsers)
+  })
+
+  client.on('message', (message, receiverId) => {
+    const receiverClient = onlineUsers.find(user => user.userId === receiverId)
+    if(receiverClient) {
+      io.to(receiverClient.id).emit('message', message);
+    }
+    io.to(client.id).emit('message', message);
+  })
+})
+
+/**
  * Listen on provided port, on all network interfaces.
  */
 
