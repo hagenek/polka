@@ -2,6 +2,8 @@ import React from 'react'
 import Button from "@material-ui/core/Button"
 import HeroImage from "../../assets/img.png"
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from "react-router-dom"
+
 
 import "./Hero.css"
 
@@ -26,14 +28,15 @@ function Hero() {
                     variant="contained"
                     color="primary"
                     type="submit">
-                    Login
+                    <Link className="link" to="/login">Login</Link>
+
           </Button>
                 <Button
                     className={classes.button}
                     variant="contained"
                     color="primary"
                     type="submit">
-                    Register
+                <Link className="link" to="/register">Sign up</Link>
           </Button>
             </div>
             <img

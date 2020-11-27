@@ -29,3 +29,7 @@
     margin-right: 10px !important;
 }
 
+.link {
+    text-decoration: none;
+    color: white;
+}
