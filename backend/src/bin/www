@@ -105,12 +105,12 @@ io.on('connection', client => {
     console.log(onlineUsers)
   })
 
-  client.on('message', (message, receiverId) => {
-    const receiverClient = onlineUsers.find(user => user.userId === receiverId)
-    if(receiverClient) {
-      io.to(receiverClient.id).emit('message', message);
-    }
-    io.to(client.id).emit('message', message);
+  client.on('message', (message, recievers) => {
+    // Needs fixing. Undefined users
+    const onlineRecievers = recievers.map(receiver => onlineUsers.find(user => user.userId === receiver._id))
+    onlineRecievers.forEach(user => {
+      if(user) io.to(user.clientId).emit('message', message)
+    })
   })
 })
 

@@ -1,0 +1,11 @@
+.chatcard__section {
+  font-size: 1.5em;
+  border: 1px solid grey;
+  border-top: none;
+  width: 500px;
+  height: 100px;
+}
+
+.chatcard__name {
+  display: flex;
+}

@@ -1,0 +1,10 @@
+.chat__form {
+  align-self: flex-end;
+  background-color: aqua;
+}
+
+.chat__section {
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+}
