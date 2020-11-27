@@ -10,13 +10,13 @@ import "./Main.css"
 function Main() {
     return (
         <section className="main__section">
-            <section className="chat__container">
+            <section className="mainchat__container">
                 <img
-                    className="chat__image"
+                    className="mainchat__image"
                     src={ChatImage}
                     alt="generic group"
                 />
-                <div className="chat__text">
+                <div className="mainchat__text">
                     <h1>Make life more fun!</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nihil debitis eaque sapiente voluptas quam fuga neque at aperiam, soluta laudantium excepturi! Ut aliquid accusamus velit nisi laudantium, suscipit corrupti. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dolores molestiae nisi aperiam odit esse dicta ullam. Totam error aperiam quibusdam odit magni obcaecati corrupti in? Animi nesciunt repudiandae inventore? lorem</p>
                 </div>

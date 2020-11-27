@@ -51,19 +51,23 @@ const Chat = ({ senderId, chat }) => {
 
   return (
     <section className="chat__section">
-      <section>
+    <div>
+      <section className="chat__to-message">
         {chat.members.map(user => (
-          <h1> {user.firstName} {user.lastName}</h1>
+          <h1>{user.firstName} {user.lastName}</h1>
         ))
         } 
       </section>
       <ul>
         {messageList && messageList.map(msg => <Message message={msg} /> )}
       </ul>
+      </div>
+      <div className="form__container">
       <form className="chat__form" onSubmit={handleSubmit}>
-        <input type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-        <input type="submit" value="Send"/>
+        <input className="chat__input" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
+        <input className="chat__btn" type="submit" value="Send"/>
       </form>
+      </div>
     </section>
   )
 }
