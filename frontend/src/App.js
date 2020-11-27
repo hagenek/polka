@@ -17,6 +17,7 @@ import Profile from "./components/Profile/Profile"
 import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatList from "./components/ChatList/ChatList"
+import Upload from "./components/Upload/Upload"
 
 import "./App.css"
 
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           {/* <Search /> */}
           {/* <Register /> */}
+          <Route exact path="/upload" component={Upload} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
