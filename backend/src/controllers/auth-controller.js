@@ -12,10 +12,10 @@ exports.signup = async (req, res) => {
       governmentId: req.body.governmentId,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
-      chats: []
-    });
-    await user.save();
-    res.status(201).send({ message: "User was registered successfully!" });
+      chats: [],
+    })
+    await user.save()
+    res.status(201).send({ message: "User was registered successfully!" })
   } catch (err) {
     console.log(err)
     res.send(err.message)
