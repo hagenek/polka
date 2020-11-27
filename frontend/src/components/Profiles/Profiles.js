@@ -9,7 +9,7 @@ const Profiles = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const userdata = await backend.get("/users")
+      const userdata = await backend.get("api/user/all")
       setUsers(userdata.data)
     }
     getUsers()
