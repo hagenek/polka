@@ -37,14 +37,10 @@ function App() {
         {/* <p>{message}</p> */}
         <Nav />
         <Search />
-        
+
         {/* <Search /> */}
         <Switch>
-<<<<<<< HEAD
-          <Route exact path="/" component={Login} />
-=======
           <Route exact path="/login" component={Login} />
->>>>>>> dev
           {/* <Search /> */}
           {/* <Register /> */}
           <Route exact path="/login" component={Login} />
