@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
 import ChatCard from '../ChatCard/ChatCard'
 import api from "../../api"
+import './ChatList.css'
 
 const ChatList = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
@@ -19,13 +20,9 @@ const ChatList = ({ userId }) => {
   if(!chats) return <h1>No chats</h1>
 
   return (
-    <section>
-      <section>
+    <section className="chatlist__section">
         {chats.map(chat => <ChatCard key={chat._id} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
-      </section>
-      <section>
         {clickedChat && <Chat senderId={userId} chat={clickedChat} />}
-      </section>
     </section>
   )
 }
