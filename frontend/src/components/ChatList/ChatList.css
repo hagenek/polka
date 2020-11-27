@@ -2,3 +2,12 @@
   display: flex;
   flex-direction: row;
 }
+
+.chatcard__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__container {
+
+}

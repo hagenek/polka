@@ -21,8 +21,12 @@ const ChatList = ({ userId }) => {
 
   return (
     <section className="chatlist__section">
-        {chats.map(chat => <ChatCard key={chat._id} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
-        {clickedChat && <Chat senderId={userId} chat={clickedChat} />}
+      <section className="chatcard__container">
+          {chats.map(chat => <ChatCard key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
+      </section>
+      <section className="chat__container">
+          {clickedChat && <Chat senderId={userId} chat={clickedChat} />}
+      </section>
     </section>
   )
 }
