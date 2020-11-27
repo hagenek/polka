@@ -16,8 +16,20 @@
     display: grid;
     justify-items: center;
     align-items: start;
-    grid-template-columns: 300px 300px 300px;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-gap: 10px;
+}
+
+
+@media screen and (min-width: 960px) {
+    .people__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .people__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
