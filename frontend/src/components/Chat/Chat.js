@@ -14,7 +14,9 @@ const Chat = ({ senderId, chat }) => {
     if(message !== "") {
       const msg = {
         text: message,
-        sender: senderId
+        sender: senderId,
+        timestamp: new Date(),
+        chatId: chat._id
       }
       socket.current.emit('message', msg, chat)
       setMessage("");
@@ -31,7 +33,6 @@ const Chat = ({ senderId, chat }) => {
     })
     socket.current.on('message', async msg => {
       const user = await api.get(`api/user/${msg.sender}`)
-      console.log(user)
       setMessageList(prevMessageList => {
         msg.sender = user.data;
         const newMessageList = [...prevMessageList];

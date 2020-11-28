@@ -37,16 +37,16 @@ const createChat = async (req, res) => {
 }
 
 const addMessage = async (req, res) => {
-  const { text, senderId, timestamp, chatId } = req.body
+  const { text, sender, timestamp, chatId } = req.body
 
-  if (!text || !senderId || !timestamp || !chatId) {
+  if (!text || !sender || !timestamp || !chatId) {
     res.status(400).send("Error: missing property")
   }
 
   try {
     const message = new Message({
       text,
-      sender: mongoose.Types.ObjectId(senderId),
+      sender: mongoose.Types.ObjectId(sender),
       timestamp,
     })
 
