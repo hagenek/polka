@@ -16,7 +16,7 @@ const Chat = ({ senderId, chat }) => {
         text: message,
         sender: senderId
       }
-      socket.current.emit('message', msg, chat.members)
+      socket.current.emit('message', msg, chat)
       setMessage("");
     }
   }

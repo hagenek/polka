@@ -105,11 +105,13 @@ io.on('connection', client => {
     console.log(onlineUsers)
   })
 
-  client.on('message', (message, recievers) => {
-    // Needs fixing. Undefined users
-    const onlineRecievers = recievers.map(receiver => onlineUsers.find(user => user.userId === receiver._id))
+  client.on('message', async (message, chat) => {
+    const onlineRecievers = onlineUsers.map(onlineUser => {
+      const onlineReciever = chat.members.find(chatUser => chatUser._id === onlineUser.userId)
+      if(onlineReciever) return onlineUser
+    })
     onlineRecievers.forEach(user => {
-      if(user) io.to(user.clientId).emit('message', message)
+      io.to(user.clientId).emit('message', message);
     })
   })
 })
