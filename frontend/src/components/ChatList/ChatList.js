@@ -33,7 +33,7 @@ const ChatList = ({ userId }) => {
       </section>
       <section className="chat__container">
           {clickedChat ? <Chat senderId={userId} chat={clickedChat} /> 
-                       : createChat && <ChatForm />
+                       : createChat && <ChatForm userId={userId} />
           }
       </section>
     </section>
