@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
 import ChatCard from '../ChatCard/ChatCard'
+import ChatForm from '../ChatForm/ChatForm'
 import api from "../../api"
 import './ChatList.css'
 
 const ChatList = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
   const [clickedChat, setClickedChat] = useState(undefined)
+  const [clickedCreateChat, setClickedCreateChat] = userState(false)
 
   useEffect(() => {
     const getChats = async () => {
