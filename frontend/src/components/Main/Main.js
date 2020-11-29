@@ -1,7 +1,7 @@
 import React from 'react'
 import ChatImage from "../../assets/clip-online-advertising-smm.png"
 import Chat from "../../assets/clip-chatting-and-speech-bubbles.png"
-import Basket from "../../assets/cherry-paralympic-basketball (1).png"
+import Basket from "../../assets/cherry-paralympic-basketball.png"
 import Event from "../../assets/pablo-help-and-care.png"
 
 import "./Main.css"
