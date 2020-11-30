@@ -32,16 +32,12 @@ function Person({ User }) {
       <h4>Interests:</h4>
       <div>
       <List >
-        <ListItem button>
           <ListItemIcon>
-            Golf
+            {User.interests ?? "golf"}
           </ListItemIcon>
-        </ListItem>
-        <ListItem button>
           <ListItemIcon>
-            Tennis
+            {User.interests ?? "tennis"}
           </ListItemIcon>
-        </ListItem>
       </List>
       <Divider />
       <CardHeader text="LOL"/ >

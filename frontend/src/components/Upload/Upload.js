@@ -24,7 +24,7 @@ const Upload = () => {
   }
 
   return (
-    <div className="App">
+    <div className="Upload">
       <ImageUploading
         multiple
         value={images}
