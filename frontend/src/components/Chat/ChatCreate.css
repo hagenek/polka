@@ -1,0 +1,8 @@
+.chatcreate__section {
+  display: flex;
+  height: 100%;
+}
+
+.chatcreate__contact-list {
+  overflow-y: scroll;
+}

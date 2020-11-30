@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ChatContact from './ChatContact'
 import api from "../../api"
 import {TextField } from '@material-ui/core'
+import './ChatCreate.css'
 
 const ChatCreate = ({ userId }) => {
     const [input, setInput] = useState('');
@@ -30,25 +31,27 @@ const ChatCreate = ({ userId }) => {
     }, [])
 
     return (
-        <section>
+        <section className="chatcreate__section">
             <section>
-                <TextField
-                    required
-                    type="text"
-                    id="filled-required"
-                    label="search user"
-                    variant="outlined"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                />
-            </section>
-            <section>
-                {contacts && 
-                    contacts
-                        .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(input.toLowerCase()))
-                        .filter(user => !members.includes(user))
-                        .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberAdd(id)} />) 
-                }
+                <section>
+                    <TextField
+                        required
+                        type="text"
+                        id="filled-required"
+                        label="search user"
+                        variant="outlined"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                    />
+                </section>
+                <section className="chatcreate__contact-list">
+                    {contacts && 
+                        contacts
+                            .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(input.toLowerCase()))
+                            .filter(user => !members.includes(user))
+                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberAdd(id)} />) 
+                    }
+                </section>
             </section>
             <section>
                 {members

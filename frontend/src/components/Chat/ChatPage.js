@@ -23,8 +23,7 @@ const ChatPage = ({ userId }) => {
   if (!chats) return <h1>No chats</h1>
 
   return (
-    <section className="chatlist__section">
-      {console.log(userId)}
+    <section className="chatpage__container">
       <section className="chatcard__container">
           <CreateChatIcon onClick={() => {
             setCreateChat(true)
