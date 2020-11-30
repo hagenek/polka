@@ -25,6 +25,18 @@ const getAllUsers = async (req, res) => {
   })
 }
 
+const getImageFromUser = async (req, res) => {
+  let { id } = req.params;
+  
+  try {
+    id = mongoose.Types.ObjectId(id);
+    const user = await User.findById(id);
+    res.status(200).json(user.username);
+  } catch(error) {
+    console.log(error);
+}
+}
+
 const addUser = async (req, res) => {
   const { username, password, firstName, lastName } = req.body
 
@@ -50,5 +62,6 @@ module.exports = {
   getUser,
   userBoard,
   addUser,
-  getAllUsers
+  getAllUsers,
+  getImageFromUser
 }
