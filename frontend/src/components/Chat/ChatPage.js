@@ -20,7 +20,7 @@ const ChatPage = ({ userId }) => {
   }, [userId])
 
   // Add better response page
-  if(!chats) return <h1>No chats</h1>
+  if (!chats) return <h1>No chats</h1>
 
   return (
     <section className="chatlist__section">

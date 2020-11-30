@@ -7,7 +7,6 @@ const { userBoard, getUser, addUser, getAllUsers, getImageFromUser } = require("
 router.get("/", verifyToken, userBoard)
 router.get("/all", getAllUsers);
 router.get('/:id', getUser);
-router.get('./:id', getImageFromUser)
 router.post("/user", addUser);
 
 module.exports = router

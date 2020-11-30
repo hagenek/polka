@@ -42,7 +42,7 @@ function App() {
           {/* <Register /> */}
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" render={() => <Profile userId={userId} />}/>
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />

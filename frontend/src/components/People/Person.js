@@ -13,6 +13,9 @@ import "./Person.css"
 
 /* eslint-disable react/prop-types */
 function Person({ User }) {
+
+  console.log(User);
+  
   return (
     <li className="person">
       <div className="userinfo">
