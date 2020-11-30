@@ -82,6 +82,12 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+  avatar: {
+    type: Buffer
+  },
+  images: {
+    type: Array,
+  },
   events: {
     type: String,
     required: false,

@@ -12,5 +12,7 @@
    - git pull
    - git merge [Your local branch]
    - git push
+   - git checkout [your local branch]
+   - git merge dev
 
 3. Questions: Ask Georg.

@@ -2,8 +2,7 @@ import React from "react"
 import CheckBoxIcon from "@material-ui/icons/CheckBox"
 // import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import IconButton from "@material-ui/core/IconButton"
-import sportImage from "./cherry-paralympic-basketball.png"
-
+import sportImage from "../../assets/cherry-paralympic-basketball.png"
 
 import "./Groupitem.css"
 

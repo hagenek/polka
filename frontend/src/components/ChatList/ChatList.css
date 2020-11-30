@@ -1,13 +1,21 @@
 .chatlist__section {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  background-color: rgb(251, 255, 255);
+  box-shadow: 2px 4px 10px #c0c0c0a1;
+  border-radius: 5px;
 }
 
 .chatcard__container {
   display: flex;
   flex-direction: column;
+  margin-right: 2px;
+  flex: 1;
 }
 
 .chat__container {
-
+  display: flex;
+  flex-direction: column;
+  flex: 2;
 }

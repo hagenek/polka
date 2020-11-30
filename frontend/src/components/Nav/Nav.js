@@ -22,7 +22,7 @@ const Nav = () => {
 
   const logOut = () => {
     AuthService.logout();
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -59,7 +59,7 @@ const Nav = () => {
                 <Link to="/chat">Chat</Link>
               </li>
               <li className="nav__item">
-                <Link to="/login" onClick={logOut}>Log Out</Link>
+                <Link to="/" onClick={logOut}>Log Out</Link>
               </li>
               {/* {currentUser && (
             <li className="nav__item">
