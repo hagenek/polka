@@ -6,7 +6,7 @@ import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
 import './ChatPage.css'
 
-const ChatList = ({ userId }) => {
+const ChatPage = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
   const [clickedChat, setClickedChat] = useState(undefined)
   const [createChat, setCreateChat] = useState(false)
@@ -40,4 +40,4 @@ const ChatList = ({ userId }) => {
   )
 }
 
-export default ChatList;
+export default ChatPage;
