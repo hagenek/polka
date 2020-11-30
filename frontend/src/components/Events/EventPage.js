@@ -3,7 +3,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox"
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import IconButton from "@material-ui/core/IconButton"
-import halloweenImage from "./pablo-keep-distance.png"
+import halloweenImage from "../../assets/pablo-keep-distance.png"
 
 import "./EventPage.css"
 

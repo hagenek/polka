@@ -8,7 +8,7 @@
 }
 
 .people__section h1{
-    color: var(--main--color);
+    color: var(--fifth--color);
     font-weight: 600;
     }
 
@@ -16,8 +16,27 @@
     display: grid;
     justify-items: center;
     align-items: start;
-    grid-template-columns: 300px 300px 300px;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-gap: 20px;
 }
+
+
+
+@media screen and (min-width: 600px) {
+    .people__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .people__list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* @media screen and (min-width: 1560px) {
+    .people__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+} */

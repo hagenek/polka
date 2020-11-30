@@ -10,13 +10,13 @@ import Footer from "./components/Footer/Footer"
 import Login from "./components/Login/Login"
 import Groups from "./components/Groups/Groups"
 import People from "./components/People/People"
-import Contact from "./components/Contact/Contact"
+import ContactInfo from "./components/ContactInfo/ContactInfo"
 import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
 import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
-import ChatList from "./components/ChatList/ChatList"
+import ChatPage from "./components/Chat/ChatPage"
 
 import "./App.css"
 
@@ -49,9 +49,9 @@ function App() {
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
-          <Route exact path="/chat" render={() => <ChatList userId={"5fbe611e18de443d28c81718"} />} />
+          <Route exact path="/chat" render={() => <ChatPage userId={"5fbe611e18de443d28c81718"} />} />
           <Route exact path="/profiles" component={Profiles} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />
           <Route exact path="/people" component={Profiles} />

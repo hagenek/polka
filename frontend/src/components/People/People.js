@@ -9,7 +9,7 @@ function Groups() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await backend.get("/users")
+      const request = await backend.get("api/user/all")
       setPeople(request.data)
       return request
     }

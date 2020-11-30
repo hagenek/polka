@@ -2,7 +2,7 @@ import React from "react"
 import PhoneIcon from "@material-ui/icons/Phone"
 import MailOutlineIcon from "@material-ui/icons/MailOutline"
 
-import "./Contact.css"
+import "./ContactInfo.css"
 
 function Contact() {
   return (
