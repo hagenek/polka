@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from "../../api"
 import {TextField } from '@material-ui/core'
 
-const ChatForm = ({ userId }) => {
+const ChatCreate = ({ userId }) => {
     const [input, setInput] = useState('');
     const [contacts, setContacts] = useState(undefined)
 
@@ -37,4 +37,4 @@ const ChatForm = ({ userId }) => {
     )
 }
 
-export default ChatForm;
+export default ChatCreate;

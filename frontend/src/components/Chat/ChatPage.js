@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Chat from '../Chat/Chat'
-import ChatCard from '../ChatCard/ChatCard'
-import ChatForm from '../ChatForm/ChatForm'
+import ChatMessages from './ChatMessages'
+import ChatContacts from './ChatContacts'
+import ChatCreate from './ChatCreate'
 import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
-import './ChatList.css'
+import './ChatPage.css'
 
 const ChatList = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
@@ -29,11 +29,11 @@ const ChatList = ({ userId }) => {
             setCreateChat(true)
             setClickedChat(undefined)
           }}/>
-          {chats.map(chat => <ChatCard key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
+          {chats.map(chat => <ChatContacts key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
       </section>
       <section className="chat__container">
-          {clickedChat ? <Chat senderId={userId} chat={clickedChat} /> 
-                       : createChat && <ChatForm userId={userId} />
+          {clickedChat ? <ChatMessages senderId={userId} chat={clickedChat} /> 
+                       : createChat && <ChatCreate userId={userId} />
           }
       </section>
     </section>
