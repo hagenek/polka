@@ -15,9 +15,11 @@ function EventPage({ setClickedEvent, eventName, addParticipant }) {
 
   return (
     <li className="eventPage">
+      <div className="eventPage__icons" onClick={() => emptyEventArrray()}>
       <IconButton className="checkBoxIcon">
-        <ArrowBackIosIcon role="presentation" onClick={() => emptyEventArrray()} />
+        <ArrowBackIosIcon role="presentation" />
       </IconButton>
+      </div>
       <img className="eventPage__photo" src={halloweenImage}
         alt="generic group"
       />

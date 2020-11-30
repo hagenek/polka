@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/profile" render={() => <Profile userId={userId} />}/>
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" render={() => <Groups userId={userId} />} />
-          <Route exact path="/events" component={Events} />
+          <Route exact path="/events" render={() => <Events userId={userId} />} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contactinfo" component={ContactInfo} />

@@ -13,8 +13,6 @@ import "./Person.css"
 
 /* eslint-disable react/prop-types */
 function Person({ User }) {
-
-  console.log(User);
   
   return (
     <li className="person">
@@ -31,21 +29,21 @@ function Person({ User }) {
       <br />
       <h4>Interests:</h4>
       <div>
-      <List >
-        <ListItem button>
-          <ListItemIcon>
-            Golf
+        <List >
+          <ListItem button>
+            <ListItemIcon>
+              Golf
           </ListItemIcon>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            Tennis
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              Tennis
           </ListItemIcon>
-        </ListItem>
-      </List>
-      <Divider />
-      <CardHeader text="LOL"/ >
-    </div>
+          </ListItem>
+        </List>
+        <Divider />
+        <CardHeader text="LOL" />
+      </div>
     </li>
   )
 }

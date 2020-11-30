@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Event = require("../models/event")
+const User = require("../models/user")
 
 const addParticipant = async (req, res) => {
     const { eventId, userId } = req.body
@@ -13,6 +14,11 @@ const addParticipant = async (req, res) => {
         await Event.findByIdAndUpdate(
             eventId,
             { $push: { members: userId } },
+            { useFindAndModify: false }
+        )
+        await User.findByIdAndUpdate(
+            userId,
+            { $push: { events: eventId } },
             { useFindAndModify: false }
         )
         res.json(userId).status(201).end()

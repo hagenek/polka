@@ -28,7 +28,7 @@ function Events({ userId }) {
       userId,
       eventId: clickedEvent[0]._id
     })
-    console.log("hello")
+    console.log("hello from event.js")
   }
 
   return (

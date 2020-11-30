@@ -37,5 +37,4 @@ router.get("/:name", async (req, res) => {
 
 router.put("/participant", addParticipant)
 
-
 module.exports = router
