@@ -1,7 +1,7 @@
-import './ChatCard.css'
+import './ChatContacts.css'
 import { removeSelfFromMembers } from '../../services/chat-service'
 
-const ChatCard = ({ userId, chat, handleClick }) => {
+const ChatContacts = ({ userId, chat, handleClick }) => {
   const members = removeSelfFromMembers(userId, chat)
 
   return (
@@ -21,4 +21,4 @@ const ChatCard = ({ userId, chat, handleClick }) => {
   )
 }
 
-export default ChatCard;
+export default ChatContacts;

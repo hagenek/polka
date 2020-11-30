@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
-import Message from '../Message/Message'
+import ChatMessage from './ChatMessage'
 import api from "../../api"
-import './Chat.css'
+import './ChatMessages.css'
 
-const Chat = ({ senderId, chat }) => {
+const ChatMessages = ({ senderId, chat }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState(undefined);
@@ -14,9 +14,11 @@ const Chat = ({ senderId, chat }) => {
     if(message !== "") {
       const msg = {
         text: message,
-        sender: senderId
+        sender: senderId,
+        timestamp: new Date(),
+        chatId: chat._id
       }
-      socket.current.emit('message', msg, chat.members)
+      socket.current.emit('message', msg, chat)
       setMessage("");
     }
   }
@@ -31,7 +33,6 @@ const Chat = ({ senderId, chat }) => {
     })
     socket.current.on('message', async msg => {
       const user = await api.get(`api/user/${msg.sender}`)
-      console.log(user)
       setMessageList(prevMessageList => {
         msg.sender = user.data;
         const newMessageList = [...prevMessageList];
@@ -59,7 +60,7 @@ const Chat = ({ senderId, chat }) => {
         } 
       </section>
       <ul>
-        {messageList && messageList.map(msg => <Message message={msg} /> )}
+        {messageList && messageList.map(msg => <ChatMessage message={msg} /> )}
       </ul>
       </div>
       <div className="form__container">
@@ -72,4 +73,4 @@ const Chat = ({ senderId, chat }) => {
   )
 }
 
-export default Chat;
+export default ChatMessages;
