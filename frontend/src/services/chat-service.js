@@ -1,5 +1,5 @@
-const removeSelfFromMembers = (userId, chat) => chat.members.filter(member => member._id !== userId)
+const removeUserFromArray = (id, members) => members.filter(user => user._id !== id)
 
 export {
-  removeSelfFromMembers
+  removeUserFromArray
 }
