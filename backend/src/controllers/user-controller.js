@@ -18,6 +18,28 @@ const getUser = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) => {
+  const updates = Object.keys(req.body)
+  
+  // TODO : Implement valdiation of what you are allowed to change
+	// const allowedUpdates = ['firstName', 'lastName', 'interests', 'age']
+	// const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+	// if (!isValidOperation) {
+	// 		return res.status(400).send({ error: 'Invalid updates!' })
+  // }
+	try {
+      let { id } = req.params;
+    id = mongoose.Types.ObjectId(id);
+    const user = await User.findById(id);
+			updates.forEach((update) => user[update] = req.body[update])
+			await user.save()
+      res.send(user)
+	} catch (e) {
+			res.status(400).send(e)
+	}
+}
+
 const getAllUsers = async (req, res) => {
   User.find((err, users) => {
     if (err) return console.error(err)
@@ -31,7 +53,8 @@ const getImageFromUser = async (req, res) => {
   try {
     id = mongoose.Types.ObjectId(id);
     const user = await User.findById(id);
-    res.status(200).json(user.username);
+    res.status(200)
+    res.send(user.images)
   } catch(error) {
     console.log(error);
 }
@@ -66,5 +89,6 @@ module.exports = {
   userBoard,
   addUser,
   getAllUsers,
-  getImageFromUser
+  getImageFromUser,
+  updateUser
 }

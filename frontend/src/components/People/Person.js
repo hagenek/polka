@@ -1,12 +1,21 @@
 import React from "react"
-import PersonAddIcon from "@material-ui/icons/PersonAdd"
-import MailOutlineIcon from "@material-ui/icons/MailOutline"
-import IconButton from "@material-ui/core/IconButton"
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import CardHeader from '@material-ui/core/CardHeader'
 
 import "./Person.css"
 
+
+
 /* eslint-disable react/prop-types */
 function Person({ User }) {
+
+  console.log(User);
+  
   return (
     <li className="person">
       <div className="userinfo">
@@ -19,14 +28,24 @@ function Person({ User }) {
           {User.firstName} {User.lastName}{" "}
         </p>
       </div>
-      <div className="icons">
-        <IconButton className="MailOutlineIcon">
-          <MailOutlineIcon />
-        </IconButton>
-        <IconButton className="PersonAddIcon">
-          <PersonAddIcon />
-        </IconButton>
-      </div>
+      <br />
+      <h4>Interests:</h4>
+      <div>
+      <List >
+        <ListItem button>
+          <ListItemIcon>
+            Golf
+          </ListItemIcon>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            Tennis
+          </ListItemIcon>
+        </ListItem>
+      </List>
+      <Divider />
+      <CardHeader text="LOL"/ >
+    </div>
     </li>
   )
 }

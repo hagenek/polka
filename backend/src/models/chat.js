@@ -5,6 +5,14 @@ const Message = require("./message")
 const { Schema } = mongoose
 
 const chatSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now()
+  },
   members: [
     {
       type: Schema.Types.ObjectId,

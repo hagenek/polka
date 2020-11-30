@@ -6,24 +6,14 @@ import AuthService from "../../services/auth-service"
 
 import "./Nav.css"
 
-const Nav = ({ userId, logOut }) => {
+const Nav = ({ userId, setUserId }) => {
   const [click, setClick] = useState(false)
-  const [currentUser, setCurrentUser] = useState(undefined)
 
   const handleClick = () => setClick(!click)
 
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      setCurrentUser(user);
-    }
-  }, []);
-
   const handleLogOut = () => {
     AuthService.logout();
-    logOut();
-    // window.location.reload();
+    setUserId(undefined);
   };
 
   return (
