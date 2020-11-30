@@ -17,27 +17,23 @@ import Profile from "./components/Profile/Profile"
 import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
+import AuthService from "./services/auth-service"
 
 import "./App.css"
 
 function App() {
   const [userId, setUserId] = useState(undefined);
 
-  // const [message, setMessage] = useState("")
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const request = await backend.get("/")
-  //     setMessage(request.data.message)
-  //     return request
-  //   }
-  //   fetchData()
-  // }, [])
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if(user) setUserId(user.id);
+  }, [])
 
   return (
     <div className="App">
       <Router>
         {/* <p>{message}</p> */}
-        <Nav userId={userId} logOut={() => setUserId(undefined)}/>
+        <Nav userId={userId} setUserId={setUserId}/>
         <Search />
         
         {/* <Search /> */}
