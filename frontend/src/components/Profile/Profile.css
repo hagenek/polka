@@ -1,0 +1,27 @@
+img {
+    width: 200px
+}
+
+.userdata-container {
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+}
+
+.edit-label {
+    display: inline-block;
+    clear: left;
+    width: 350px;
+    text-align: right;
+    margin: 5px;
+}
+input {
+    margin-left: 10px;
+  display: inline-block;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

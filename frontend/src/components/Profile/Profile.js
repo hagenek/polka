@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import backend from '../../api'
 import Button from '@material-ui/core/Button'
+import "./Profile.css"
 
 const Profile = ({userId}) => {
 
@@ -16,18 +17,34 @@ const Profile = ({userId}) => {
   }, [])
 
   return (
-    <div>
+    <div className="userdata-container">
       <form type="submit">
-      <h3> Your first name: 
+      <table>
+        <tbody>
+      <label className="edit-label"> Your first name: 
         <input type="text" value={userData.firstName}></input>
-      </h3>
-      <h3> Your last name: 
+      </label>
+      <label className="edit-label"> Your last name: 
         <input type="text" value={userData.lastName}></input>
-      </h3>
-      <h3> Your email: 
+      </label>
+      <label className="edit-label"> Your email: 
         <input type="text" value={userData.email}></input>
-      </h3>
-      <Button />
+      </label>
+      <label className="edit-label"> Your interests: 
+        <input type="text"></input>
+      </label >
+      <label className="edit-label"> Your sex: 
+        <input type="text"></input>
+      </label>
+      <label className="edit-label"> Your city: 
+        <input type="text"></input>
+      </label>
+      <br />
+      <Button className="submit-btn" variant="contained" color="primary">
+          Submit changes
+      </Button>
+        </tbody>
+      </table>
       </form>
     </div>
   )
