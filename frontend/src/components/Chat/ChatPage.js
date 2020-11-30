@@ -20,21 +20,21 @@ const ChatPage = ({ userId }) => {
   }, [])
 
   // Add better response page
-  if(!chats) return <h1>No chats</h1>
+  if (!chats) return <h1>No chats</h1>
 
   return (
-    <section className="chatlist__section">
-      <section className="chatcard__container">
-          <CreateChatIcon onClick={() => {
-            setCreateChat(true)
-            setClickedChat(undefined)
-          }}/>
-          {chats.map(chat => <ChatContacts key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
+    <section className="chatPage__container">
+      <section className="chat__sidebar-container">
+        <CreateChatIcon onClick={() => {
+          setCreateChat(true)
+          setClickedChat(undefined)
+        }} />
+        {chats.map(chat => <ChatContacts key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} />)}
       </section>
       <section className="chat__container">
-          {clickedChat ? <ChatMessages senderId={userId} chat={clickedChat} /> 
-                       : createChat && <ChatCreate userId={userId} />
-          }
+        {clickedChat ? <ChatMessages senderId={userId} chat={clickedChat} />
+          : createChat && <ChatCreate userId={userId} />
+        }
       </section>
     </section>
   )

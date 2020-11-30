@@ -5,9 +5,9 @@ const ChatContacts = ({ userId, chat, handleClick }) => {
   const members = removeSelfFromMembers(userId, chat)
 
   return (
-    <section className="chatcard__section" onClick={() => handleClick(chat)}>
-      <section className="chatcard__name">
-        <img className="chatcard__image"
+    <section onClick={() => handleClick(chat)}>
+      <section className="contacts__container">
+        <img className="contact__image"
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         />
         {members.length === 1
