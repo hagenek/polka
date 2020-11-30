@@ -22,6 +22,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  age: {
+    type: String,
+  },
   image: {
     type: String,
     required: false,
@@ -61,6 +64,9 @@ const userSchema = new Schema({
   governmentId: {
     type: Number,
     required: false,
+  },
+  interests: {
+    type: String
   },
   email: {
     type: String,
