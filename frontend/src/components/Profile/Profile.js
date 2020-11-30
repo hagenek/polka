@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Alert from '@material-ui/lab/Alert'
 import { Link } from "react-router-dom"
 import userService from "../../services/user-service"
+import base64js from 'base64-js'
 
 const Profile = ({userId}) => {
 
@@ -20,6 +21,7 @@ const Profile = ({userId}) => {
   const [message, setMessage] = useState("")
   const [interests, setInterests] = useState("")
   const [gender, setGender] = useState("")
+  const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
     const getUser= async () => {
@@ -31,6 +33,8 @@ const Profile = ({userId}) => {
       setUsername(res.data.username)
       setInterests(res.data.interests ?? null)
       setGender(res.data.gender ?? null)
+      setAvatar(base64js.fromByteArray(res.data.avatar.data))
+      // ... do something else with 'buffer'
     }
     getUser()
   }, [])
@@ -105,6 +109,7 @@ const Profile = ({userId}) => {
 
   return (
     <div className="userdata-container">
+    <img src={'data:image/png;base64,' + avatar}/>
       <Grid
       container
       spacing={0}

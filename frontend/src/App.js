@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />}/>
           <Route exact path="/people" component={People} />
-          <Route exact path="/upload" component={Upload} />
+          <Route exact path="/upload" render={() => <Upload userId={userId}/>} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/snake" component={Snake} />

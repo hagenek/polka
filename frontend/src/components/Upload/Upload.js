@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import ImageUploading from "react-images-uploading"
 import backend from '../../api'
 
-const Upload = () => {
+const Upload = ({userId}) => {
 
   const [images, setImages] = useState([])
   const maxNumber = 69
@@ -20,6 +20,7 @@ const Upload = () => {
     // data for submit
     console.log(imageList, addUpdateIndex)
     // Function which adds the image to the database goes here.
+    backend.post(`/api/user/avatar/${userId}`, imageList[0])
     setImages(imageList)
   }
 
