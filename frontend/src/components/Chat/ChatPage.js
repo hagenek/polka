@@ -24,6 +24,7 @@ const ChatPage = ({ userId }) => {
 
   return (
     <section className="chatlist__section">
+      {console.log(userId)}
       <section className="chatcard__container">
           <CreateChatIcon onClick={() => {
             setCreateChat(true)
@@ -32,7 +33,7 @@ const ChatPage = ({ userId }) => {
           {chats.map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClick={id => setClickedChatId(id)} /> )}
       </section>
       <section className="chat__container">
-          {clickedChatId ? <ChatMessages senderId={userId} chatId={clickedChatId} /> 
+          {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
                          : createChat && <ChatCreate userId={userId} />
           }
       </section>

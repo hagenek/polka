@@ -4,7 +4,7 @@ import ChatMessage from './ChatMessage'
 import api from "../../api"
 import './ChatMessages.css'
 
-const ChatMessages = ({ senderId, chatId }) => {
+const ChatMessages = ({ userId, chatId }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState(undefined);
@@ -14,7 +14,7 @@ const ChatMessages = ({ senderId, chatId }) => {
     if (message !== "") {
       const msg = {
         text: message,
-        sender: senderId,
+        sender: userId,
         timestamp: new Date(),
         chatId
       }
@@ -24,7 +24,7 @@ const ChatMessages = ({ senderId, chatId }) => {
   }
 
   useEffect(() => {
-    socket.current = socketClient('http://localhost:1337/', { query: `id=${senderId}` });
+    socket.current = socketClient('http://localhost:1337/', { query: `id=${userId}` });
     socket.current.on('connect', () => {
       console.log("Connect");
     })
@@ -60,7 +60,7 @@ const ChatMessages = ({ senderId, chatId }) => {
           {chat.name}
         </section>
         <ul>
-          {chat && chat.messages.map(msg => <ChatMessage message={msg} /> )}
+          {chat && chat.messages.map(msg => <ChatMessage userId={userId} message={msg} /> )}
         </ul>
       </section>
       <div className="form__container">
