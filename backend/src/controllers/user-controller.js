@@ -40,7 +40,6 @@ const updateUser = async (req, res) => {
 	}
 }
 
-
 const getAllUsers = async (req, res) => {
   User.find((err, users) => {
     if (err) return console.error(err)
