@@ -4,10 +4,10 @@ import ChatMessage from './ChatMessage'
 import api from "../../api"
 import './ChatMessages.css'
 
-const ChatMessages = ({ senderId, chat }) => {
+const ChatMessages = ({ senderId, chatId }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
-  const [messageList, setMessageList] = useState(undefined);
+  const [chat, setChat] = useState(undefined);
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const ChatMessages = ({ senderId, chat }) => {
         text: message,
         sender: senderId,
         timestamp: new Date(),
-        chatId: chat._id
+        chatId
       }
       socket.current.emit('message', msg, chat)
       setMessage("");
@@ -33,22 +33,24 @@ const ChatMessages = ({ senderId, chat }) => {
     })
     socket.current.on('message', async msg => {
       const user = await api.get(`api/user/${msg.sender}`)
-      setMessageList(prevMessageList => {
+      setChat(prevChat => {
         msg.sender = user.data;
-        const newMessageList = [...prevMessageList];
-        newMessageList.push(msg);
-        return newMessageList;
+        const newMessages = [...prevChat.messages];
+        newMessages.push(msg);
+        const newChat = prevChat;
+        newChat.messages = newMessages;
+        return newChat;
       })
     })
 
-    const getMessages = async () => {
-      const res = await api.get(`api/chat/${chat._id}`)
-      setMessageList(res.data.messages);
+    const getChat = async () => {
+      const res = await api.get(`api/chat/${chatId}`)
+      setChat(res.data);
     }
-    getMessages()
+    getChat()
   }, [])
 
-  if(!socket) return <h1>Establishing connection...</h1>
+  if(!socket || !chat) return <h1>Establishing connection...</h1>
 
   return (
     <section className="chat__section">
@@ -60,7 +62,7 @@ const ChatMessages = ({ senderId, chat }) => {
         } 
       </section>
       <ul>
-        {messageList && messageList.map(msg => <ChatMessage message={msg} /> )}
+        {chat && chat.messages.map(msg => <ChatMessage message={msg} /> )}
       </ul>
       </div>
       <div className="form__container">

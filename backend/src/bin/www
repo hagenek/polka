@@ -106,9 +106,9 @@ io.on('connection', client => {
     console.log(onlineUsers)
   })
 
-  client.on('message', async (message, chat) => {
+  client.on('message', async (message, members) => {
     const onlineRecievers = onlineUsers.map(onlineUser => {
-      const onlineReciever = chat.members.find(chatUser => chatUser._id === onlineUser.userId)
+      const onlineReciever = members.find(chatUser => chatUser._id === onlineUser.userId)
       if(onlineReciever) return onlineUser
     })
     // Address shoul not be hardcoded
