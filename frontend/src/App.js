@@ -23,8 +23,6 @@ import "./App.css"
 function App() {
   const [userId, setUserId] = useState(undefined);
 
-  
-
   // const [message, setMessage] = useState("")
   // useEffect(() => {
   //   async function fetchData() {
@@ -39,7 +37,7 @@ function App() {
     <div className="App">
       <Router>
         {/* <p>{message}</p> */}
-        <Nav />
+        <Nav userId={userId} logOut={() => setUserId(undefined)}/>
         <Search />
         
         {/* <Search /> */}

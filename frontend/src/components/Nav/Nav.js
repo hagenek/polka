@@ -6,7 +6,7 @@ import AuthService from "../../services/auth-service"
 
 import "./Nav.css"
 
-const Nav = () => {
+const Nav = ({ userId, logOut }) => {
   const [click, setClick] = useState(false)
   const [currentUser, setCurrentUser] = useState(undefined)
 
@@ -20,8 +20,9 @@ const Nav = () => {
     }
   }, []);
 
-  const logOut = () => {
+  const handleLogOut = () => {
     AuthService.logout();
+    logOut();
     // window.location.reload();
   };
 
@@ -33,7 +34,7 @@ const Nav = () => {
             <h1>Polka Meet</h1>
           </Link>
         </div>
-        {currentUser ? (
+        {userId ? (
           <>
             <ul
               className={`nav__menu ${click && "nav_menu active"}`}
@@ -44,7 +45,7 @@ const Nav = () => {
                 <Link to="/home">Home</Link>
               </li> */}
               <li className="nav__item">
-                <Link to="/profile">{currentUser.username}</Link>
+                <Link to="/profile">Profile</Link>
               </li>
               <li className="nav__item">
                 <Link to="/people">People</Link>
@@ -59,7 +60,7 @@ const Nav = () => {
                 <Link to="/chat">Chat</Link>
               </li>
               <li className="nav__item">
-                <Link to="/" onClick={logOut}>Log Out</Link>
+                <Link to="/" onClick={handleLogOut}>Log Out</Link>
               </li>
               {/* {currentUser && (
             <li className="nav__item">
