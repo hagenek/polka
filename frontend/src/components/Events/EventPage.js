@@ -8,7 +8,7 @@ import halloweenImage from "../../assets/pablo-keep-distance.png"
 import "./EventPage.css"
 
 /* eslint-disable react/prop-types */
-function EventPage({ setClickedEvent, eventName }) {
+function EventPage({ setClickedEvent, eventName, addParticipant }) {
   const emptyEventArrray = () => {
     setClickedEvent([])
   }
@@ -25,7 +25,7 @@ function EventPage({ setClickedEvent, eventName }) {
         <h2 className="eventPage__header">{eventName.name} </h2>
         <p className="eventPage__description">Description: {eventName.description} </p>
       </div>
-      <div className="icons">
+      <div className="icons" onClick={(() => addParticipant())}>
         <IconButton className="checkBoxIcon">
           <CheckBoxIcon />
         </IconButton>

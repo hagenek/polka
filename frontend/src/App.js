@@ -39,7 +39,6 @@ function App() {
         <Nav userId={userId} logOut={() => setUserId(undefined)}/>
         <Search />
         
-        {/* <Search /> */}
         <Switch>
           {/* <Search /> */}
           {/* <Register /> */}
@@ -47,7 +46,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/people" component={People} />
-          <Route exact path="/groups" component={Groups} />
+          <Route exact path="/groups" render={() => <Groups userId={userId} />} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route exact path="/profiles" component={Profiles} />
@@ -56,7 +55,6 @@ function App() {
           <Route path="/user" component={BoardUser} />
           <Route exact path="/people" component={Profiles} />
         </Switch>
-        {/* <Profiles /> */}
         <Footer />
       </Router>
     </div>

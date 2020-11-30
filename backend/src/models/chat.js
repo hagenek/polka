@@ -8,12 +8,14 @@ const chatSchema = new Schema({
   members: [
     {
       type: Schema.Types.ObjectId,
+      default: [],
       ref: "User",
     },
   ],
   messages: [
     {
       type: Schema.Types.ObjectId,
+      default: [],
       ref: "Message",
     },
   ],

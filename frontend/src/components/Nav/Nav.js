@@ -86,7 +86,7 @@ const Nav = ({ userId, logOut }) => {
                 <Link to="/groups">Groups</Link>
               </li>
               <li className="nav__item login__logo" >
-              <AccountCircleIcon fontSize="medium" className="AccountCircleIcon" />
+              <AccountCircleIcon fontSize="large" className="AccountCircleIcon" />
                 <Link to="/login">Log In</Link>
               </li>
               {/* <li className="nav__item">

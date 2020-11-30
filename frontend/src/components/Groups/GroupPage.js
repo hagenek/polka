@@ -7,16 +7,18 @@ import IconButton from "@material-ui/core/IconButton"
 import "./GroupPage.css"
 
 /* eslint-disable react/prop-types */
-function GroupPage({ setClickedGroup, groupName }) {
+function GroupPage({ setClickedGroup, groupName, addMember }) {
   const emptyGroupArrray = () => {
     setClickedGroup([])
   }
 
   return (
     <li className="groupPage">
+      <div className="checkBox" onClick={() => emptyGroupArrray()}>
       <IconButton className="checkBoxIcon">
-        <ArrowBackIosIcon role="presentation" onClick={() => emptyGroupArrray()} />
+        <ArrowBackIosIcon role="presentation" />
       </IconButton>
+      </div>
       <img
         className="groupPage__photo"
         src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
@@ -27,10 +29,10 @@ function GroupPage({ setClickedGroup, groupName }) {
         <p className="groupPage__description">Description: {groupName.description} </p>
         <p className="groupPage__members">Members: {groupName.members.length} </p>
       </div>
-      <div className="icons">
-        <IconButton className="checkBoxIcon">
+      <div className="icons" onClick={(() => addMember())}>
+       <IconButton className="checkBoxIcon" >
           <CheckBoxIcon />
-        </IconButton>
+       </IconButton>
         <IconButton className="CheckBoxOutlineBlankIcon">
           <CheckBoxOutlineBlankIcon />
         </IconButton>

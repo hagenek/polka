@@ -46,7 +46,10 @@ const addUser = async (req, res) => {
       password,
       firstName,
       lastName,
-      chats: []
+      chats: [],
+      groups: [],
+      events: [],
+      friends: [],
     })
 
     await user.save()
