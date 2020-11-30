@@ -31,7 +31,8 @@ const getImageFromUser = async (req, res) => {
   try {
     id = mongoose.Types.ObjectId(id);
     const user = await User.findById(id);
-    res.status(200).json(user.username);
+    res.status(200)
+    res.send(user.images)
   } catch(error) {
     console.log(error);
 }
