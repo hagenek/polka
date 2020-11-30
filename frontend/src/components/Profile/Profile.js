@@ -33,7 +33,10 @@ const Profile = ({userId}) => {
       setUsername(res.data.username)
       setInterests(res.data.interests ?? null)
       setGender(res.data.gender ?? null)
-      setAvatar(base64js.fromByteArray(res.data.avatar.data))
+      if (res.data.avatar) {
+        const avatar = base64js.fromByteArray(res.data.avatar.data)
+        setAvatar(avatar);
+      }
       // ... do something else with 'buffer'
     }
     getUser()
@@ -67,7 +70,7 @@ const Profile = ({userId}) => {
     }
     ).then(
       (response) => {
-        setMessage(response.data.message)
+        setMessage("Profile inf updated")
         setSuccessful(true)
       },
       (error) => {
@@ -109,7 +112,6 @@ const Profile = ({userId}) => {
 
   return (
     <div className="userdata-container">
-    <img src={'data:image/png;base64,' + avatar}/>
       <Grid
       container
       spacing={0}
@@ -118,6 +120,7 @@ const Profile = ({userId}) => {
       justify="center"
       style={{ minHeight: '85vh' }}
     >
+    <img src={'data:image/png;base64,' + avatar}/>
       <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
         {message && (
           successful ? (
@@ -125,8 +128,8 @@ const Profile = ({userId}) => {
               <Alert severity="success" role="alert">
                 {message}
               </Alert>
-              <Link to="/login">
-                <Button variant="contained" color="primary" type="submit">Login</Button>
+              <Link to="/people">
+                <Button variant="contained" color="primary" type="submit">Find friends</Button>
               </Link>
             </>
           ) : (
