@@ -20,6 +20,8 @@ import ChatPage from "./components/Chat/ChatPage"
 import "./App.css"
 
 function App() {
+  const [userId, setUserId] = useState(undefined);
+
   // const [message, setMessage] = useState("")
   // useEffect(() => {
   //   async function fetchData() {
@@ -34,21 +36,20 @@ function App() {
     <div className="App">
       <Router>
         {/* <p>{message}</p> */}
-        <Nav />
+        <Nav userId={userId} logOut={() => setUserId(undefined)}/>
         <Search />
         
         {/* <Search /> */}
         <Switch>
-          <Route exact path="/login" component={Login} />
           {/* <Search /> */}
           {/* <Register /> */}
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
-          <Route exact path="/chat" render={() => <ChatPage userId={"5fbe611e18de443d28c81718"} />} />
+          <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
