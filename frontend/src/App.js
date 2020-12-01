@@ -14,7 +14,6 @@ import ContactInfo from "./components/ContactInfo/ContactInfo"
 import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
-import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
@@ -51,11 +50,9 @@ function App() {
           <Route exact path="/events" component={Events} />
           <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
-          <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />
-          <Route exact path="/people" component={Profiles} />
         </Switch>
         {/* <Profiles /> */}
         <Footer />
