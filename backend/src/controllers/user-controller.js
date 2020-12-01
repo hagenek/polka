@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
-const { use } = require('../routes');
 const sharp = require("sharp");
 
 const userBoard = (req, res) => {

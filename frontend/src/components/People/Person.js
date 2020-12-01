@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader'
 import base64js from 'base64-js'
 
 import "./Person.css"
-
-
 
 /* eslint-disable react/prop-types */
 function Person({ User }) {
@@ -49,6 +49,11 @@ function Person({ User }) {
         <Divider />
         <CardHeader text="LOL" />
       </div>
+      <Link to={`people/${User.username}`}>
+        <Button variant="contained" color="primary">
+          Profile
+      </Button>
+      </Link>
     </section>
   )
 }

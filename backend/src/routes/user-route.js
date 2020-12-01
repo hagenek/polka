@@ -2,8 +2,7 @@ const express = require("express")
 
 const router = express.Router()
 const { verifyToken } = require("../middleware/authJwt")
-const { userBoard, getUser, addUser, getAllUsers, updateUser, getByUsername } = require("../controllers/user-controller")
-const { userBoard, getUser, addUser, getAllUsers, updateUser, getImageFromUser, uploadImage } = require("../controllers/user-controller")
+const { userBoard, getUser, addUser, getAllUsers, updateUser, getImageFromUser, getByUsername, uploadImage } = require("../controllers/user-controller")
 const sharp = require("sharp");
 const User = require('../models/user')
 const multer = require("multer");

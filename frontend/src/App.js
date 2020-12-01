@@ -57,7 +57,7 @@ function App() {
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />
-          {/* <Route exact path="/people" component={Profiles} /> */}
+          <Route exact path="/people" component={People} />
         </Switch>
         {/* <Profiles /> */}
         <Footer />
