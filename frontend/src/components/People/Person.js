@@ -7,8 +7,6 @@ import base64js from 'base64-js'
 
 import "./Person.css"
 
-
-
 /* eslint-disable react/prop-types */
 function Person({ User }) {
 
