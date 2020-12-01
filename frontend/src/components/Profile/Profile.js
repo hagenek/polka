@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Alert from '@material-ui/lab/Alert'
 import { Link } from "react-router-dom"
 import userService from "../../services/user-service"
+import base64js from 'base64-js'
 
 const Profile = ({userId}) => {
 
@@ -20,6 +21,7 @@ const Profile = ({userId}) => {
   const [message, setMessage] = useState("")
   const [interests, setInterests] = useState("")
   const [gender, setGender] = useState("")
+  const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
     const getUser= async () => {
@@ -31,6 +33,11 @@ const Profile = ({userId}) => {
       setUsername(res.data.username)
       setInterests(res.data.interests ?? null)
       setGender(res.data.gender ?? null)
+      if (res.data.avatar) {
+        const avatar = base64js.fromByteArray(res.data.avatar.data)
+        setAvatar(avatar);
+      }
+      // ... do something else with 'buffer'
     }
     getUser()
   }, [])
@@ -63,7 +70,7 @@ const Profile = ({userId}) => {
     }
     ).then(
       (response) => {
-        setMessage(response.data.message)
+        setMessage("Profile inf updated")
         setSuccessful(true)
       },
       (error) => {
@@ -113,6 +120,7 @@ const Profile = ({userId}) => {
       justify="center"
       style={{ minHeight: '85vh' }}
     >
+    <img src={'data:image/png;base64,' + avatar}/>
       <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
         {message && (
           successful ? (
@@ -120,8 +128,8 @@ const Profile = ({userId}) => {
               <Alert severity="success" role="alert">
                 {message}
               </Alert>
-              <Link to="/login">
-                <Button variant="contained" color="primary" type="submit">Login</Button>
+              <Link to="/people">
+                <Button variant="contained" color="primary" type="submit">Find friends</Button>
               </Link>
             </>
           ) : (

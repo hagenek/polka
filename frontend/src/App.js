@@ -17,6 +17,8 @@ import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
+import Upload from './components/Upload/Upload'
+import Snake from './components/Snake/Snake'
 
 import "./App.css"
 
@@ -44,6 +46,8 @@ function App() {
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" render={() => <Groups userId={userId} />} />
           <Route exact path="/events" render={() => <Events userId={userId} />} />
+          <Route exact path="/upload" render={() => <Upload userId={userId}/>} />
+          <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/contactinfo" component={ContactInfo} />

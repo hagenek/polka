@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
+const sharp = require("sharp");
 
 const userBoard = (req, res) => {
   res.status(200).send({ message: "User authenticated woop" });
@@ -54,7 +55,7 @@ const getImageFromUser = async (req, res) => {
     id = mongoose.Types.ObjectId(id);
     const user = await User.findById(id);
     res.status(200)
-    res.send(user.images)
+    res.send(user.avatar)
   } catch(error) {
     console.log(error);
 }
@@ -90,5 +91,5 @@ module.exports = {
   addUser,
   getAllUsers,
   getImageFromUser,
-  updateUser
+  updateUser,
 }
