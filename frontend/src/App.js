@@ -37,7 +37,7 @@ function App() {
       <Router>
         {/* <p>{message}</p> */}
         <Nav userId={userId} setUserId={setUserId} />
-        <Search />
+        {/* <Search /> */}
 
         {/* <Search /> */}
         <Switch>
@@ -52,7 +52,7 @@ function App() {
           <Route exact path="/events" component={Events} />
           <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
-          <Route path="/people/:user" component={UserProfile} />
+          <Route path="/people/:user" render={() => <UserProfile userId={userId} />} />
           {/* <Route exact path="/profiles" component={Profiles} /> */}
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
