@@ -18,6 +18,7 @@ import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
 import Upload from './components/Upload/Upload'
 import Snake from './components/Snake/Snake'
+import Game from './components/Game/Game'
 
 import "./App.css"
 
@@ -35,12 +36,13 @@ function App() {
         {/* <p>{message}</p> */}
         <Nav userId={userId} setUserId={setUserId}/>
         <Search />
-        
+
         <Switch>
           {/* <Search /> */}
           {/* <Register /> */}
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/game" component={Game} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />}/>
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" render={() => <Groups userId={userId} />} />
