@@ -12,15 +12,30 @@ const Upload = ({userId}) => {
   useEffect(() => {
     // axios.post("./")
         if (images[0]) {
-          const urlString = images[0].data_url
+/*           const urlString = images[0].data_url
           const urlStringTwo = urlString.split(",")[1]
-          const buffer = base64js.toByteArray(urlStringTwo);
+          const buffer = base64js.toByteArray(urlStringTwo); */
+          var bodyFormData = new FormData();
+          bodyFormData.append('avatar', images[0].file);
 /*           axios({
             method: 'post',
             url: `localhost:1337/api/user/avatar/${userId}`,
             data: buffer,
           }); */
-          backend.post(`/api/user/avatar/${userId}`, {avatar: buffer})
+          console.log(bodyFormData)
+          axios({
+            method: 'post',
+            url: `localhost:1337/api/user/avatar/${userId}`,
+            data: bodyFormData,
+            headers: {'Content-Type': 'multipart/form-data' }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
+          // backend.post(`/api/user/avatar/${userId}`, {avatar: buffer})
           // backend.post(`/api/user/image/${userId}`, {url_string: urlStringTwo})
         }
       return () => {

@@ -13,7 +13,7 @@ const upload = multer({
   fileFilter(req, file, cb) {
 	if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
 	  return cb(new Error("File must be a Word doc"))
-	}  
+	}
 	cb(undefined, true)
 
   }
@@ -21,24 +21,22 @@ const upload = multer({
 
 router.post("/avatar/:id", upload.single("avatar"), async (req, res) => {
   let { id } = req.params
-  console.log('hsaoek')
-  console.log(req.body)
-	const buffer = 
+	const buffer =
 		await sharp(req.file.buffer)
 		.resize({width: 250, height: 250})
 		.png()
     .toBuffer()
-    
+
     const user = await User.findById(id)
 	user.avatar = buffer
 	await user.save();
-	res.send()
+	res.send(req.body)
 })
 
 router.post("/image/:id", async (req, res) => {
   let { id } = req.params;
 
-  console.log(req.body)
+  console.log(req.url)
   const user = await User.findById(id);
   user.image = req.body.url_string
   await user.save()
