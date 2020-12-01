@@ -41,7 +41,7 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/upload">Avatar</Link>
               </li>
               <li className="nav__item">
-                <Link to="/snake">Snake</Link>
+                <Link to="/snake">Games</Link>
               </li>
               <li className="nav__item">
                 <Link to="/people">People</Link>
@@ -82,7 +82,7 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/groups">Groups</Link>
               </li>
               <li className="nav__item login__logo" >
-              <AccountCircleIcon fontSize="medium" className="AccountCircleIcon" />
+              <AccountCircleIcon fontSize="large" className="AccountCircleIcon" />
                 <Link to="/login">Log In</Link>
               </li>
               {/* <li className="nav__item">

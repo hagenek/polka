@@ -1,9 +1,10 @@
 const express = require("express")
 const Event = require("../models/event")
+const { addParticipant } = require("../controllers/event-controller")
 
 const router = new express.Router()
 
-router.post("/events", async (req, res) => {
+router.post("/", async (req, res) => {
   console.log(req.body)
 
   const { name, description } = req.body
@@ -17,21 +18,23 @@ router.post("/events", async (req, res) => {
 
   Event.find((err, events) => {
     if (err) return console.error(err)
-    res.send(event)
+    res.send(events)
   })
 })
 
-router.get("/events", async (req, res) => {
+router.get("/", async (req, res) => {
   Event.find((err, events) => {
     if (err) return console.error(err)
     res.send(events)
   })
 })
 
-router.get("/events/:name", async (req, res) => {
+router.get("/:name", async (req, res) => {
   const searchQuery = req.params.name
   const data = await Event.find({ name: `${searchQuery}` })
   res.send(data)
 })
+
+router.put("/participant", addParticipant)
 
 module.exports = router
