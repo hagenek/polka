@@ -26,9 +26,8 @@ function Events({ userId }) {
   const addParticipant = async () => {
     const request = await backend.put("api/event/participant", {
       userId,
-      eventId: clickedEvent[0]._id
+      eventId: clickedEvent[0]._id,
     })
-    console.log("hello from event.js")
   }
 
   return (
@@ -43,7 +42,7 @@ function Events({ userId }) {
       ) : (
         <ul>
           {clickedEvent.map((event) => (
-            <EventPage setClickedEvent={setClickedEvent} eventName={event} addParticipant={addParticipant} />
+            <EventPage setClickedEvent={setClickedEvent} eventName={event} addParticipant={addParticipant} userId={userId}/>
           ))}
         </ul>
       )}

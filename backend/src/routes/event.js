@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
 
   Event.find((err, events) => {
     if (err) return console.error(err)
-    res.send(event)
+    res.send(events)
   })
 })
 

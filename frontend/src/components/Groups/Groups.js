@@ -44,7 +44,7 @@ function Groups({ userId }) {
       ) : (
           <ul>
             {clickedGroup.map((group) => (
-              <GroupPage setClickedGroup={setClickedGroup} groupName={group} addMember={addMember} />
+              <GroupPage setClickedGroup={setClickedGroup} groupName={group} addMember={addMember} userId={userId} />
             ))}
           </ul>
         )}

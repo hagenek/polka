@@ -31,7 +31,6 @@ router.get("/", async (req, res) => {
 
 router.get("/:name", async (req, res) => {
   const searchQuery = req.params.name
-  console.log(searchQuery)
   const data = await Group.find({ name: `${searchQuery}` })
   res.send(data)
 })

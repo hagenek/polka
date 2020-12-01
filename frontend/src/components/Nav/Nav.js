@@ -41,7 +41,7 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/upload">Avatar</Link>
               </li>
               <li className="nav__item">
-                <Link to="/snake">Snake</Link>
+                <Link to="/snake">Games</Link>
               </li>
               <li className="nav__item">
                 <Link to="/people">People</Link>
