@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ChatContact from './ChatContact'
 import api from "../../api"
-import {TextField } from '@material-ui/core'
+import {TextField, Button } from '@material-ui/core'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId }) => {
@@ -33,19 +33,9 @@ const ChatCreate = ({ userId }) => {
 
     return (
         <section className="chatcreate__section">
-            <section>
-                <TextField
-                    required
-                    type="text"
-                    id="filled-required"
-                    label="Name this chat"
-                    variant="outlined"
-                    value={chatNameInput}
-                    onChange={(e) => setChatNameInput(e.target.value)}
-                />
-            </section>
             <section className="chatcreate__lists-container">
                 <section className="chatcreate__contacts-list__container">
+                    <section className="chatcreate__search-container">
                         <TextField
                             required
                             type="text"
@@ -55,6 +45,7 @@ const ChatCreate = ({ userId }) => {
                             value={searchInput}
                             onChange={(e) => setSearchInput(e.target.value)}
                         />
+                    </section>
                     <section className="chatcreate__list">
                         {contacts && 
                             contacts
@@ -73,6 +64,22 @@ const ChatCreate = ({ userId }) => {
                             .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
                         }
                     </section>
+                </section>
+            </section>
+            <section className="chatcreate__inputs">
+                <section className="chatcreate__text">
+                    <TextField
+                        required
+                        type="text"
+                        id="filled-required"
+                        label="Name this chat"
+                        variant="outlined"
+                        value={chatNameInput}
+                        onChange={(e) => setChatNameInput(e.target.value)}
+                    />
+                </section>
+                <section className="chatcreate__button">
+                    <Button variant="contained">Create</Button>
                 </section>
             </section>
         </section>
