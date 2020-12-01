@@ -1,14 +1,9 @@
-import React, { useState } from "react"
-import backend from "../../api"
-import { Link } from "react-router-dom"
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+import React, { useState, useEffect } from "react"
+import List from '@material-ui/core/List'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import Divider from '@material-ui/core/Divider'
 import CardHeader from '@material-ui/core/CardHeader'
-import Button from "@material-ui/core/Button"
+import base64js from 'base64-js'
 
 import "./Person.css"
 
@@ -17,11 +12,22 @@ import "./Person.css"
 /* eslint-disable react/prop-types */
 function Person({ User }) {
 
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    if (User.avatar) {
+      const avatar = base64js.fromByteArray(User.avatar.data)
+      setAvatar('data:image/png;base64,' + avatar);
+    } else {
+      setAvatar('https://images.vexels.com/media/users/3/140800/isolated/preview/86b482aaf1fec78a3c9c86b242c6ada8-man-profile-avatar-by-vexels.png')
+    }
+  }, [])
+
   return (
     <section className="person">
       <div className="userinfo">
         <img
-          src=" https://images.vexels.com/media/users/3/140800/isolated/preview/86b482aaf1fec78a3c9c86b242c6ada8-man-profile-avatar-by-vexels.png"
+          src={avatar}
           alt="generic profile"
         />
         <h2 className="person__username">{User.username} </h2>
@@ -33,25 +39,16 @@ function Person({ User }) {
       <h4>Interests:</h4>
       <div>
         <List >
-          <ListItem button>
-            <ListItemIcon>
-              Golf
+          <ListItemIcon>
+            {User.interests ?? "golf"}
           </ListItemIcon>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              Tennis
+          <ListItemIcon>
+            {User.interests ?? "tennis"}
           </ListItemIcon>
-          </ListItem>
         </List>
         <Divider />
         <CardHeader text="LOL" />
       </div>
-      <Button variant="contained" color="primary">
-        <Link to={`/people/${User.username}`}>
-          profile
-        </Link>
-      </Button>
     </section>
   )
 }

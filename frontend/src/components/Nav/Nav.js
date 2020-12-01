@@ -38,6 +38,12 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li className="nav__item">
+                <Link to="/upload">Avatar</Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/snake">Snake</Link>
+              </li>
+              <li className="nav__item">
                 <Link to="/people">People</Link>
               </li>
               <li className="nav__item">

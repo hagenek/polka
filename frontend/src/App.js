@@ -14,11 +14,13 @@ import ContactInfo from "./components/ContactInfo/ContactInfo"
 import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
-import Profiles from "./components/Profiles/Profiles"
+// import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
 import UserProfile from "./components/People/UserProfile/UserProfile"
+import Upload from './components/Upload/Upload'
+import Snake from './components/Snake/Snake'
 
 import "./App.css"
 
@@ -45,15 +47,17 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />} />
           <Route exact path="/people" component={People} />
+          <Route exact path="/upload" render={() => <Upload userId={userId} />} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
+          <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route path="/people/:user" component={UserProfile} />
           {/* <Route exact path="/profiles" component={Profiles} /> */}
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />
-          <Route exact path="/people" component={Profiles} />
+          {/* <Route exact path="/people" component={Profiles} /> */}
         </Switch>
         {/* <Profiles /> */}
         <Footer />
