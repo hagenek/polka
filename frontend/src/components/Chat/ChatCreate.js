@@ -33,6 +33,9 @@ const ChatCreate = ({ userId }) => {
 
     return (
         <section className="chatcreate__section">
+            <section className="chatcreate__title__container">
+                <h1>Create a chat</h1>
+            </section>
             <section className="chatcreate__lists-container">
                 <section className="chatcreate__contacts-list__container">
                     <section className="chatcreate__search-container">

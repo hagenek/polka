@@ -1,14 +1,14 @@
 .chatcreate__section {
   height: 75vh;
   border-bottom: 1px solid rgba(244, 244, 244, 0.1);
-  margin: 0 15px;
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
 }
 
 .chatcreate__lists-container {
   display: flex;
-  padding: 0 10px;
+  height: 100%;
 }
 
 .chatcreate__list {
@@ -48,7 +48,6 @@
 .chatcreate__inputs {
   display: flex;
   flex-direction: row;
-  padding: 0 10px;
   align-items: center;
 }
 
