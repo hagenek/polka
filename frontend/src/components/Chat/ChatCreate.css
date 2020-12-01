@@ -3,6 +3,11 @@
   border-bottom: 1px solid rgba(244, 244, 244, 0.1);
   margin: 0 15px;
   display: flex;
+  flex-direction: column;
+}
+
+.chatcreate__lists-container {
+  display: flex;
 }
 
 .chatcreate__list {
@@ -18,5 +23,14 @@
 .chatcreate__members-list__container {
   display: flex;
   flex-direction: column;
-  width: 40%
+  width: 40%;
+}
+
+.chatcreate__title__container {
+  height: 56px;
+  padding: 10px;
+}
+
+.chatcreate__title__container h1 {
+  font-size: 20px;
 }

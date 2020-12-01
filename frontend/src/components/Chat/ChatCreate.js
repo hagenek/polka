@@ -5,7 +5,8 @@ import {TextField } from '@material-ui/core'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId }) => {
-    const [input, setInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
+    const [chatNameInput, setChatNameInput] = useState('');
     const [contacts, setContacts] = useState(undefined)
     const [members, setMembers] = useState([]);
 
@@ -32,30 +33,46 @@ const ChatCreate = ({ userId }) => {
 
     return (
         <section className="chatcreate__section">
-            <section className="chatcreate__contacts-list__container">
-                    <TextField
-                        required
-                        type="text"
-                        id="filled-required"
-                        label="search user"
-                        variant="outlined"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                    />
-                <section className="chatcreate__list">
-                    {contacts && 
-                        contacts
-                            .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(input.toLowerCase()))
-                            .filter(user => !members.includes(user))
-                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberAdd(id)} />) 
-                    }
-                </section>
+            <section>
+                <TextField
+                    required
+                    type="text"
+                    id="filled-required"
+                    label="Name this chat"
+                    variant="outlined"
+                    value={chatNameInput}
+                    onChange={(e) => setChatNameInput(e.target.value)}
+                />
             </section>
-            <section className="chatcreate__members-list__container">
-                <section className="chatcreate__list">
-                    {members
-                        .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
-                    }
+            <section className="chatcreate__lists-container">
+                <section className="chatcreate__contacts-list__container">
+                        <TextField
+                            required
+                            type="text"
+                            id="filled-required"
+                            label="search user"
+                            variant="outlined"
+                            value={searchInput}
+                            onChange={(e) => setSearchInput(e.target.value)}
+                        />
+                    <section className="chatcreate__list">
+                        {contacts && 
+                            contacts
+                                .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(searchInput.toLowerCase()))
+                                .filter(user => !members.includes(user))
+                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberAdd(id)} />) 
+                        }
+                    </section>
+                </section>
+                <section className="chatcreate__members-list__container">
+                    <section className="chatcreate__title__container">
+                        <h1>Selected</h1>
+                    </section>
+                    <section className="chatcreate__list">
+                        {members
+                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
+                        }
+                    </section>
                 </section>
             </section>
         </section>
