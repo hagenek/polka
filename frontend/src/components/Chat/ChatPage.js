@@ -4,12 +4,14 @@ import ChatContact from './ChatContact'
 import ChatCreate from './ChatCreate'
 import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
+import {TextField } from '@material-ui/core'
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
   const [clickedChatId, setClickedChatId] = useState(undefined)
   const [createChat, setCreateChat] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
     const getChats = async () => {
@@ -25,11 +27,24 @@ const ChatPage = ({ userId }) => {
   return (
     <section className="chatpage__container">
       <section className="chatcard__container">
+        <section>
+          <TextField
+            required
+            type="text"
+            id="filled-required"
+            label="search chat"
+            variant="outlined"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
           <CreateChatIcon onClick={() => {
             setCreateChat(true)
             setClickedChatId(undefined)
           }}/>
-          {chats.map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClick={id => setClickedChatId(id)} /> )}
+        </section>
+          {chats
+            .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
+            .map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClick={id => setClickedChatId(id)} /> )}
       </section>
       <section className="chat__container">
           {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
