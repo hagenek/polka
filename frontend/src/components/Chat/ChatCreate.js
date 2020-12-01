@@ -32,8 +32,7 @@ const ChatCreate = ({ userId }) => {
 
     return (
         <section className="chatcreate__section">
-            <section>
-                <section>
+            <section className="chatcreate__contacts-list__container">
                     <TextField
                         required
                         type="text"
@@ -43,8 +42,7 @@ const ChatCreate = ({ userId }) => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                </section>
-                <section className="chatcreate__contact-list">
+                <section className="chatcreate__list">
                     {contacts && 
                         contacts
                             .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(input.toLowerCase()))
@@ -53,10 +51,12 @@ const ChatCreate = ({ userId }) => {
                     }
                 </section>
             </section>
-            <section>
-                {members
-                    .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
-                }
+            <section className="chatcreate__members-list__container">
+                <section className="chatcreate__list">
+                    {members
+                        .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
+                    }
+                </section>
             </section>
         </section>
     )

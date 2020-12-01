@@ -1,8 +1,22 @@
 .chatcreate__section {
+  height: 75vh;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.1);
+  margin: 0 15px;
   display: flex;
-  height: 100%;
 }
 
-.chatcreate__contact-list {
+.chatcreate__list {
   overflow-y: scroll;
+}
+
+.chatcreate__contacts-list__container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.chatcreate__members-list__container {
+  display: flex;
+  flex-direction: column;
+  width: 40%
 }
