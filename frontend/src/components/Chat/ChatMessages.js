@@ -18,7 +18,8 @@ const ChatMessages = ({ userId, chatId }) => {
         timestamp: new Date(),
         chatId
       }
-      socket.current.emit('message', msg, chat)
+      const membersIds = chat.members.map(user => user._id)
+      socket.current.emit('message', msg, membersIds)
       setMessage("");
     }
   }
@@ -37,7 +38,7 @@ const ChatMessages = ({ userId, chatId }) => {
         msg.sender = user.data;
         const newMessages = [...prevChat.messages];
         newMessages.push(msg);
-        const newChat = prevChat;
+        const newChat = {...prevChat};
         newChat.messages = newMessages;
         return newChat;
       })

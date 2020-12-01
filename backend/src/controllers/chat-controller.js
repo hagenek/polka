@@ -57,7 +57,7 @@ const addMessage = async (req, res) => {
       { $push: { messages: message } },
       { useFindAndModify: false }
     )
-    res.json(message).status(201).end()
+    res.json(message).status(200).end()
   } catch (error) {
     console.log(error)
     res.send(error.message)

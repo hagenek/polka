@@ -14,9 +14,11 @@ const ChatPage = ({ userId }) => {
   const [searchInput, setSearchInput] = useState('')
 
   const getChats = async () => {
-    const res = await api.get(`api/chat/user/${userId}`)
-    const chats = res.data.chats
-    if(chats) setChats([...chats])
+    if(userId) {
+      const res = await api.get(`api/chat/user/${userId}`)
+      const chats = res.data.chats
+      if(chats) setChats([...chats])
+    }
   }
 
   const handleSelectNewChat = async (id) => {
