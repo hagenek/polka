@@ -10,6 +10,7 @@ import "./EventPage.css"
 /* eslint-disable react/prop-types */
 function EventPage({ setClickedEvent, eventName, addParticipant, userId }) {
   const [participantExist, setParticipantExist] = useState(false);
+  const [participantsNum, setParticipantsNum] = useState(0)
 
   const emptyEventArrray = () => {
     setClickedEvent([])
@@ -20,11 +21,19 @@ function EventPage({ setClickedEvent, eventName, addParticipant, userId }) {
     const boolean = eventName.participants.some(same);
     if (boolean === true) {
       setParticipantExist(true)
+      setParticipantsNum(eventName.participants.length)
     }
-  }, [participantExist])
+  }, [eventName])
+
+  const handleClick = () => {
+    addParticipant()
+    setParticipantExist(true)
+    setParticipantsNum(participantsNum + 1)
+  }
 
   return (
     <li className="eventPage">
+      {console.log("fvsdsgs", eventName)}
       <div className="eventPage__icons" onClick={() => emptyEventArrray()}>
         <IconButton className="checkBoxIcon">
           <ArrowBackIosIcon role="presentation" />
@@ -36,9 +45,9 @@ function EventPage({ setClickedEvent, eventName, addParticipant, userId }) {
       <div className="eventPage__info">
         <h2 className="eventPage__header">{eventName.name} </h2>
         <p className="eventPage__description">Description: {eventName.description} </p>
-        <p className="eventPage__description">Participants: {eventName.participants.length} </p>
+        <p className="eventPage__description">Participants: {participantsNum} </p>
       </div>
-      <div className="icons" onClick={(() => addParticipant())}>
+      <div className="icons" onClick={(() => handleClick())}>
       {participantExist === true ? (
           <ul>
             <IconButton className="checkBoxIcon" >

@@ -13,12 +13,12 @@ const addMember = async (req, res) => {
 
         await Group.findByIdAndUpdate(
             groupId,
-            { $push: { members: userId } },
+            { $addToSet: { members: userId } },
             { useFindAndModify: false }
         )
         await User.findByIdAndUpdate(
             userId,
-            { $push: { groups: groupId } },
+            { $addToSet: { groups: groupId } },
             { useFindAndModify: false }
         )
         res.json(userId).status(201).end()

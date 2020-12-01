@@ -13,12 +13,12 @@ const addParticipant = async (req, res) => {
 
         await Event.findByIdAndUpdate(
             eventId,
-            { $push: { participants: userId } },
+            { $addToSet: { participants: userId } },
             { useFindAndModify: false }
         )
         await User.findByIdAndUpdate(
             userId,
-            { $push: { events: eventId } },
+            { $addToSet: { events: eventId } },
             { useFindAndModify: false }
         )
         res.json(userId).status(201).end()
