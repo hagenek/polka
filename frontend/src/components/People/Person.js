@@ -38,23 +38,6 @@ function Person({ User }) {
       <br />
       <h4>Interests:</h4>
       <div>
-<<<<<<< HEAD
-        <List >
-          <ListItem button>
-            <ListItemIcon>
-              Golf
-          </ListItemIcon>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              Tennis
-          </ListItemIcon>
-          </ListItem>
-        </List>
-        <Divider />
-        <CardHeader text="LOL" />
-      </div>
-=======
       <List >
           <ListItemIcon>
             {User.interests ?? "golf"}
@@ -64,9 +47,8 @@ function Person({ User }) {
           </ListItemIcon>
       </List>
       <Divider />
-      <CardHeader text="LOL"/ >
+      <CardHeader text="LOL" />
     </div>
->>>>>>> dev
     </li>
   )
 }
