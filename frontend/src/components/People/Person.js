@@ -45,7 +45,7 @@ function Person({ User }) {
           </ListItemIcon>
       </List>
       <Divider />
-      <CardHeader text="LOL"/ >
+      <CardHeader text="LOL" />
     </div>
     </li>
   )
