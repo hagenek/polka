@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import backend from "./api"
-// import backend from "./api"
 import About from "./components/About/About"
 import Search from "./components/Search/Search"
 import Nav from "./components/Nav/Nav"
@@ -47,9 +46,9 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />} />
           <Route exact path="/people" component={People} />
+          <Route exact path="/groups" render={() => <Groups userId={userId} />} />
+          <Route exact path="/events" render={() => <Events userId={userId} />} />
           <Route exact path="/upload" render={() => <Upload userId={userId} />} />
-          <Route exact path="/groups" component={Groups} />
-          <Route exact path="/events" component={Events} />
           <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route path="/people/:user" render={() => <UserProfile userId={userId} />} />
@@ -59,7 +58,6 @@ function App() {
           <Route path="/user" component={BoardUser} />
           <Route exact path="/people" component={People} />
         </Switch>
-        {/* <Profiles /> */}
         <Footer />
       </Router>
     </div>

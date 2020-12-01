@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const Chat = require("./chat")
 
 const { Schema } = mongoose
 
@@ -80,31 +79,41 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
-  friends: {
-    type: String,
-    required: false,
-  },
-  groups: {
-    type: String,
-    required: false,
-  },
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      default: [],
+      ref: "User",
+    },
+  ],
+  groups: [
+    {
+      type: Schema.Types.ObjectId,
+      default: [],
+      ref: "Group",
+    },
+  ],
   avatar: {
     type: Buffer
   },
   images: {
     type: Array,
   },
-  events: {
-    type: String,
-    required: false,
-  },
+  events: [
+    {
+      type: Schema.Types.ObjectId,
+      default: [],
+      ref: "Event",
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
   },
   chats: [
     {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId, 
+      default: [],
       ref: "Chat",
     },
   ],
