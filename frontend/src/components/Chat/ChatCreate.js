@@ -82,7 +82,13 @@ const ChatCreate = ({ userId }) => {
                     />
                 </section>
                 <section className="chatcreate__button">
-                    <Button variant="contained">Create</Button>
+                    <Button
+                        style={{
+                            'background-color': '#1F72E6',
+                            color: 'white'
+                        }}
+                        variant="contained"
+                    >Create</Button>
                 </section>
             </section>
         </section>

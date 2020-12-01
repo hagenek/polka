@@ -8,3 +8,13 @@
 .chat__sidebar-container {
   border: 1px solid rgba(232, 232, 232, 0.4);
 }
+
+.chatcard__inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.chatcard__input__btn:hover {
+  cursor: pointer;
+}

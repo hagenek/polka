@@ -27,7 +27,7 @@ const ChatPage = ({ userId }) => {
   return (
     <section className="chatpage__container">
       <section className="chatcard__container">
-        <section>
+        <section className="chatcard__inputs">
           <TextField
             required
             type="text"
@@ -37,10 +37,17 @@ const ChatPage = ({ userId }) => {
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <CreateChatIcon onClick={() => {
-            setCreateChat(true)
-            setClickedChatId(undefined)
-          }}/>
+          <CreateChatIcon
+            className="chatcard__input__btn"
+            onClick={() => {
+              setCreateChat(true)
+              setClickedChatId(undefined)
+            }}
+            style={{
+              fontSize: 40,
+              color: '#1F72E6'
+            }}
+          />
         </section>
           {chats
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
