@@ -48,7 +48,7 @@ const ChatMessages = ({ userId, chatId }) => {
       setChat(res.data);
     }
     getChat()
-  }, [])
+  }, [chatId])
 
   if(!socket || !chat) return <h1>Establishing connection...</h1>
 

@@ -13,11 +13,18 @@ const ChatPage = ({ userId }) => {
   const [createChat, setCreateChat] = useState(false)
   const [searchInput, setSearchInput] = useState('')
 
+  const getChats = async () => {
+    const res = await api.get(`api/chat/user/${userId}`)
+    const chats = res.data.chats
+    if(chats) setChats([...chats])
+  }
+
+  const handleSelectNewChat = async (id) => {
+    await getChats();
+    setClickedChatId(id)
+  }
+
   useEffect(() => {
-    const getChats = async () => {
-      const res = await api.get(`api/chat/user/${userId}`)
-      setChats(res.data.chats)
-    }
     getChats()
   }, [userId])
 
@@ -55,7 +62,7 @@ const ChatPage = ({ userId }) => {
       </section>
       <section className="chat__container">
           {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
-                         : createChat && <ChatCreate userId={userId} />
+                         : createChat && <ChatCreate userId={userId} setClickedChatId={id => handleSelectNewChat(id)} />
           }
       </section>
     </section>

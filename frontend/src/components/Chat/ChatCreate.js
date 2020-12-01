@@ -4,7 +4,7 @@ import api from "../../api"
 import {TextField, Button } from '@material-ui/core'
 import './ChatCreate.css'
 
-const ChatCreate = ({ userId }) => {
+const ChatCreate = ({ userId, setClickedChatId }) => {
     const [searchInput, setSearchInput] = useState('');
     const [chatNameInput, setChatNameInput] = useState('');
     const [contacts, setContacts] = useState(undefined)
@@ -20,6 +20,22 @@ const ChatCreate = ({ userId }) => {
     const handleMemberRemove = (id) => {
         let newMembers = members.filter(user => user._id !== id);
         setMembers(newMembers)
+    }
+
+    const handleSubmit = async () => {
+        if(members.length !== 0 || chatNameInput !== '') {
+            const membersIds = members.map(user => user._id)
+            membersIds.push(userId)
+            const chat = {
+                name: chatNameInput,
+                membersIds: membersIds
+            }
+            await api.post('api/chat', chat).then(res => {
+                if(res.status === 200) {
+                    setClickedChatId(res.data._id)
+                }
+            })
+        }
     }
 
     useEffect(() => {
@@ -88,6 +104,7 @@ const ChatCreate = ({ userId }) => {
                             color: 'white'
                         }}
                         variant="contained"
+                        onClick={handleSubmit}
                     >Create</Button>
                 </section>
             </section>
