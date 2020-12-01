@@ -18,6 +18,7 @@ import Profiles from "./components/Profiles/Profiles"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
+import UserProfile from "./components/People/UserProfile/UserProfile"
 
 import "./App.css"
 
@@ -26,28 +27,29 @@ function App() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    if(user) setUserId(user.id);
+    if (user) setUserId(user.id);
   }, [])
 
   return (
     <div className="App">
       <Router>
         {/* <p>{message}</p> */}
-        <Nav userId={userId} setUserId={setUserId}/>
+        <Nav userId={userId} setUserId={setUserId} />
         <Search />
-        
+
         {/* <Search /> */}
         <Switch>
           {/* <Search /> */}
           {/* <Register /> */}
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" render={() => <Profile userId={userId} />}/>
+          <Route exact path="/profile" render={() => <Profile userId={userId} />} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
-          <Route exact path="/profiles" component={Profiles} />
+          <Route path="/people/:user" component={UserProfile} />
+          {/* <Route exact path="/profiles" component={Profiles} /> */}
           <Route exact path="/contactinfo" component={ContactInfo} />
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />

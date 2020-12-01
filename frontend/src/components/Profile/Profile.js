@@ -9,7 +9,7 @@ import Alert from '@material-ui/lab/Alert'
 import { Link } from "react-router-dom"
 import userService from "../../services/user-service"
 
-const Profile = ({userId}) => {
+const Profile = ({ userId }) => {
 
   const [userData, setUserData] = useState({})
   const [username, setUsername] = useState("")
@@ -22,7 +22,7 @@ const Profile = ({userId}) => {
   const [gender, setGender] = useState("")
 
   useEffect(() => {
-    const getUser= async () => {
+    const getUser = async () => {
       const res = await backend.get(`api/user/${userId}`)
       setUserData(res.data)
       setFirstName(res.data.firstName)
@@ -106,87 +106,87 @@ const Profile = ({userId}) => {
   return (
     <div className="userdata-container">
       <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: '85vh' }}
-    >
-      <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
-        {message && (
-          successful ? (
-            <>
-              <Alert severity="success" role="alert">
-                {message}
-              </Alert>
-              <Link to="/login">
-                <Button variant="contained" color="primary" type="submit">Login</Button>
-              </Link>
-            </>
-          ) : (
-              <Alert severity="error" role="alert">
-                {message}
-              </Alert>
-            )
-        )}
-        {!successful && (
-          <div className="test">
-            <label className="edit-label">First name: </label>
-            <TextValidator
-              onChange={onChangeFirstName}
-              name="first name"
-              value={firstName}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <label className="edit-label">Last name</label>
-            <TextValidator
-              onChange={onChangelastName}
-              name="first name"
-              value={lastName}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <label className="edit-label">Username</label>
-            <TextValidator
-              onChange={onChangeUsername}
-              name="username"
-              value={username}
-              validators={['required']}
-              errorMessages={['This field is required']}
-            />
-            <label className="edit-label">Email</label>
-            <TextValidator
-              onChange={onChangeEmail}
-              name="email"
-              value={email}
-              validators={['required', 'isEmail']}
-              errorMessages={['This field is required', 'Not a valid email']}
-            />
-            <label className="edit-label">Interests</label>
-            <TextValidator
-            label="Add interests"
-              onChange={onChangeInterests}
-              type="interests"
-              name="interests"
-              value={interests}
-            />
-            <label className="edit-label">Gender</label>
-            <TextValidator
-            label="Add gender"
-              onChange={onChangeGender}
-              type="gender"
-              name="gender"
-              value={gender}
-            />
-            <br />
-            <Button color="primary" variant="contained" type="submit">Submit changes</Button>
-          </div>
-        )}
-        {/* <Button style={{ display: "none" }} /> */}
-      </ValidatorForm>
-    </Grid>
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: '85vh' }}
+      >
+        <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
+          {message && (
+            successful ? (
+              <>
+                <Alert severity="success" role="alert">
+                  {message}
+                </Alert>
+                <Link to="/login">
+                  <Button variant="contained" color="primary" type="submit">Login</Button>
+                </Link>
+              </>
+            ) : (
+                <Alert severity="error" role="alert">
+                  {message}
+                </Alert>
+              )
+          )}
+          {!successful && (
+            <div className="test">
+              <label className="edit-label">First name: </label>
+              <TextValidator
+                onChange={onChangeFirstName}
+                name="first name"
+                value={firstName}
+                validators={['required']}
+                errorMessages={['This field is required']}
+              />
+              <label className="edit-label">Last name</label>
+              <TextValidator
+                onChange={onChangelastName}
+                name="first name"
+                value={lastName}
+                validators={['required']}
+                errorMessages={['This field is required']}
+              />
+              <label className="edit-label">Username</label>
+              <TextValidator
+                onChange={onChangeUsername}
+                name="username"
+                value={username}
+                validators={['required']}
+                errorMessages={['This field is required']}
+              />
+              <label className="edit-label">Email</label>
+              <TextValidator
+                onChange={onChangeEmail}
+                name="email"
+                value={email}
+                validators={['required', 'isEmail']}
+                errorMessages={['This field is required', 'Not a valid email']}
+              />
+              <label className="edit-label">Interests</label>
+              <TextValidator
+                label="Add interests"
+                onChange={onChangeInterests}
+                type="interests"
+                name="interests"
+                value={interests}
+              />
+              <label className="edit-label">Gender</label>
+              <TextValidator
+                label="Add gender"
+                onChange={onChangeGender}
+                type="gender"
+                name="gender"
+                value={gender}
+              />
+              <br />
+              <Button color="primary" variant="contained" type="submit">Submit changes</Button>
+            </div>
+          )}
+          {/* <Button style={{ display: "none" }} /> */}
+        </ValidatorForm>
+      </Grid>
     </div>
   )
 }
