@@ -25,7 +25,7 @@ const Upload = ({userId}) => {
           console.log(bodyFormData)
           axios({
             method: 'post',
-            url: `localhost:1337/api/user/avatar/${userId}`,
+            url: `http://localhost:1337/api/user/avatar/${userId}`,
             data: bodyFormData,
             headers: {'Content-Type': 'multipart/form-data' }
             })
