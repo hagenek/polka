@@ -30,7 +30,16 @@ function Events({ userId }) {
       eventId: clickedEvent[0]._id,
     })
     await fetchData()
-    }
+  }
+
+  const deleteParticipant = async () => {
+    const EventId = clickedEvent[0]._id
+    const request = await backend.delete(`api/event/${EventId}`, {
+      userId,
+      eventId: EventId,
+    })
+    await fetchData()
+  }
 
   return (
     <section className="event__section">
@@ -38,16 +47,23 @@ function Events({ userId }) {
       {clickedEvent.length === 0 ? (
         <ul>
           {eventName.map((event) => (
-            <EventItem getEvent={getEvent} eventName={event} />
+            <EventItem
+              getEvent={getEvent}
+              eventName={event} />
           ))}
         </ul>
       ) : (
-        <ul>
-          {clickedEvent.map((event) => (
-            <EventPage setClickedEvent={setClickedEvent} eventName={event} addParticipant={addParticipant} userId={userId}/>
-          ))}
-        </ul>
-      )}
+          <ul>
+            {clickedEvent.map((event) => (
+              <EventPage
+                setClickedEvent={setClickedEvent}
+                eventName={event}
+                addParticipant={addParticipant}
+                deleteParticipant={deleteParticipant}
+                userId={userId} />
+            ))}
+          </ul>
+        )}
     </section>
   )
 }

@@ -8,7 +8,7 @@ import halloweenImage from "../../assets/pablo-keep-distance.png"
 import "./EventPage.css"
 
 /* eslint-disable react/prop-types */
-function EventPage({ setClickedEvent, eventName, addParticipant, userId }) {
+function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipant, userId }) {
   const [participantExist, setParticipantExist] = useState(false);
   const [participantsNum, setParticipantsNum] = useState(0)
 
@@ -47,15 +47,15 @@ function EventPage({ setClickedEvent, eventName, addParticipant, userId }) {
         <p className="eventPage__description">Description: {eventName.description} </p>
         <p className="eventPage__description">Participants: {participantsNum} </p>
       </div>
-      <div className="icons" onClick={(() => handleClick())}>
+      <div className="icons" >
       {participantExist === true ? (
-          <ul>
+          <ul  onClick={(() => deleteParticipant())}>
             <IconButton className="checkBoxIcon" >
               <CheckBoxIcon />
             </IconButton>
           </ul>
         ) : (
-          <ul>
+          <ul onClick={(() => handleClick())}>
           <IconButton className="CheckBoxOutlineBlankIcon">
             <CheckBoxOutlineBlankIcon />
           </IconButton>

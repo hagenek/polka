@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
   })
 })
 
+
 router.get("/", async (req, res) => {
   Event.find((err, events) => {
     if (err) return console.error(err)
@@ -36,5 +37,18 @@ router.get("/:name", async (req, res) => {
 })
 
 router.put("/participant", addParticipant)
+
+// router.delete("/participant", deleteParticipant)
+
+router.delete("/:id", (req, res, userId) => {
+  try {
+    console.log("hello from router delete")
+    const { id } = req.params;
+    Event.splice(participants.findIndex(participant => participant.id === id), 1);
+    res.status(204).end();
+  } catch (error) {
+    res.status(400).json('Failed to delete user.');
+  }
+})
 
 module.exports = router
