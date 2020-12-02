@@ -21,7 +21,7 @@
 
 .userprofile__header-container img {
   border-radius: 30%;
-  width: 250px;
+  width: 150px;
   max-width: 100%;
   padding: 2px;
   background-color: #fff;
@@ -30,7 +30,7 @@
 .userprofile__header-container h3 {
   color: #66FCF1;
   text-transform: uppercase;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 10px 0;
 }
