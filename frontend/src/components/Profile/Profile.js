@@ -142,57 +142,74 @@ const Profile = ({ userId }) => {
               )
           )}
           {!successful && (
-            <div className="test">
-              <label className="edit-label">First name: </label>
-              <TextValidator
-                onChange={onChangeFirstName}
-                name="first name"
-                value={firstName}
-                validators={['required']}
-                errorMessages={['This field is required']}
-              />
-              <label className="edit-label">Last name</label>
-              <TextValidator
-                onChange={onChangelastName}
-                name="first name"
-                value={lastName}
-                validators={['required']}
-                errorMessages={['This field is required']}
-              />
-              <label className="edit-label">Username</label>
-              <TextValidator
-                onChange={onChangeUsername}
-                name="username"
-                value={username}
-                validators={['required']}
-                errorMessages={['This field is required']}
-              />
-              <label className="edit-label">Email</label>
-              <TextValidator
-                onChange={onChangeEmail}
-                name="email"
-                value={email}
-                validators={['required', 'isEmail']}
-                errorMessages={['This field is required', 'Not a valid email']}
-              />
-              <label className="edit-label">Interests</label>
-              <TextValidator
-                label="Add interests"
-                onChange={onChangeInterests}
-                type="interests"
-                name="interests"
-                value={interests}
-              />
-              <label className="edit-label">Gender</label>
-              <TextValidator
-                label="Add gender"
-                onChange={onChangeGender}
-                type="gender"
-                name="gender"
-                value={gender}
-              />
-              <br />
-              <Button color="primary" variant="contained" type="submit">Submit changes</Button>
+            <div className="profile__edit_container">
+              <section className="profile__input__container">
+                <label className="edit-label">First name: </label>
+                <TextValidator
+                  onChange={onChangeFirstName}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  name="first name"
+                  value={firstName}
+                  validators={['required']}
+                  errorMessages={['This field is required']}
+                />
+              </section>
+              <section className="profile__input__container">
+                <label className="edit-label">Last name</label>
+                <TextValidator
+                  onChange={onChangelastName}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  name="first name"
+                  value={lastName}
+                  validators={['required']}
+                  errorMessages={['This field is required']}
+                />
+              </section>
+              <section className="profile__input__container">
+                <label className="edit-label">Username</label>
+                <TextValidator
+                  onChange={onChangeUsername}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  name="username"
+                  value={username}
+                  validators={['required']}
+                  errorMessages={['This field is required']}
+                />
+              </section>
+              <section className="profile__input__container">
+                <label className="edit-label">Email</label>
+                <TextValidator
+                  onChange={onChangeEmail}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  name="email"
+                  value={email}
+                  validators={['required', 'isEmail']}
+                  errorMessages={['This field is required', 'Not a valid email']}
+                />
+              </section>
+              <section className="profile__input__container">
+                <label className="edit-label">Interests</label>
+                <TextValidator
+                  onChange={onChangeInterests}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  type="interests"
+                  name="interests"
+                  value={interests}
+                />
+              </section>
+              <section className="profile__input__container">
+                <label className="edit-label">Gender</label>
+                <TextValidator
+                  onChange={onChangeGender}
+                  inputProps={{style: { textAlign: 'center' }}}
+                  type="gender"
+                  name="gender"
+                  value={gender}
+                />
+              </section>
+              <section className="profile__input__container">
+                <Button color="primary" variant="contained" type="submit">Submit changes</Button>
+              </section>
             </div>
           )}
           {/* <Button style={{ display: "none" }} /> */}
