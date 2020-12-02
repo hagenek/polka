@@ -36,6 +36,7 @@ const UserProfile = ({ userId }) => {
   }, [userProfile])
 
   return (
+    <div className="bg-container">
     <section>
       <div className="userprofile__header-container">
         <img src={avatar} alt={userProfile.firstName} />
@@ -48,7 +49,7 @@ const UserProfile = ({ userId }) => {
         {userProfile[0] &&
           userId === userProfile[0]._id &&
           <Link to="/profile">
-            <Button className="edit__btn" variant="contained">Edit</Button>
+            <Button className="edit__btn" variant="contained">Edit Profile</Button>
           </Link>}
       </div>
       <main className="main__container">
@@ -141,28 +142,28 @@ const UserProfile = ({ userId }) => {
             <div className="friend__container">
               <img src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg" alt="" />
               <div className="friend__text">
-                <h1>Georg Ekeberg</h1>
+                <h1>Alex Zagame</h1>
                 <p>101 mutual friends</p>
               </div>
             </div>
             <div className="friend__container">
               <img src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg" alt="" />
               <div className="friend__text">
-                <h1>Georg Ekeberg</h1>
+                <h1>Stefan Löfven</h1>
                 <p>101 mutual friends</p>
               </div>
             </div>
             <div className="friend__container">
               <img src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg" alt="" />
               <div className="friend__text">
-                <h1>Georg Ekeberg</h1>
+                <h1>Marcus Hammarberg</h1>
                 <p>101 mutual friends</p>
               </div>
             </div>
             <div className="friend__container">
               <img src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255634-stock-illustration-avatar-icon-male-profile-gray.jpg" alt="" />
               <div className="friend__text">
-                <h1>Georg Ekeberg</h1>
+                <h1>Simon Says</h1>
                 <p>101 mutual friends</p>
               </div>
             </div>
@@ -170,6 +171,7 @@ const UserProfile = ({ userId }) => {
         </section>
       </main>
     </section>
+    </div>
   )
 }
 

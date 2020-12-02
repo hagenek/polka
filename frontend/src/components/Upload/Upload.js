@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from "react"
 import ImageUploading from "react-images-uploading"
-import base64js from 'base64-js'
 import axios from 'axios'
-import backend from '../../api'
 
-const Upload = ({userId}) => {
+const Upload = ({userId, addChange}) => {
 
   const [images, setImages] = useState([])
   const maxNumber = 69
 
   useEffect(() => {
-    // axios.post("./")
         if (images[0]) {
-/*           const urlString = images[0].data_url
-          const urlStringTwo = urlString.split(",")[1]
-          const buffer = base64js.toByteArray(urlStringTwo); */
+          addChange(images[0].url_base)
           var bodyFormData = new FormData();
           bodyFormData.append('avatar', images[0].file);
-/*           axios({
-            method: 'post',
-            url: `localhost:1337/api/user/avatar/${userId}`,
-            data: buffer,
-          }); */
-          console.log(bodyFormData)
           axios({
             method: 'post',
             url: `http://localhost:1337/api/user/avatar/${userId}`,
@@ -34,9 +23,7 @@ const Upload = ({userId}) => {
             })
             .catch(function (response) {
                 console.log(response);
-            });
-          // backend.post(`/api/user/avatar/${userId}`, {avatar: buffer})
-          // backend.post(`/api/user/image/${userId}`, {url_string: urlStringTwo})
+            })
         }
       return () => {
           // cleanup
@@ -78,7 +65,6 @@ const Upload = ({userId}) => {
               Click or Drop here
             </button>
             &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img src={image.data_url} alt="" width="100" />

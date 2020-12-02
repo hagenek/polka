@@ -56,7 +56,6 @@ const ChatMessages = ({ userId, chatId }) => {
   return (
     <>
       <section className="chat__section">
-
         <section className="chat__to-message">
           {chat.name}
         </section>

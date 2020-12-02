@@ -2,12 +2,16 @@ img {
     width: 200px
 }
 
+.profile__edit_container {
+    display: flex;
+    flex-direction: column;
+}
+
 .edit-label {
     display: flex;
     width: 350px;
     text-align: center;
     justify-content: center;
-    margin: 5px;
     font-weight: bold;
     color: #525865;
 }
@@ -24,3 +28,11 @@ img {
     justify-content: center;
     align-items: center;
 }
+
+.profile__input__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
