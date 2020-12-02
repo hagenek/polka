@@ -68,13 +68,19 @@ const ChatPage = ({ userId }) => {
           {chats
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
             .map(chat => {
-              const isGroupChat = chat.members.length > 2;
-              if(!isGroupChat) {
+              const numChatMembers = chat.members.length;
+              if(numChatMembers === 1) {
+                const image =  `data:image/png;base64,${base64js.fromByteArray(chat.members[0].avatar.data)}`
+                return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+              }
+              else if(numChatMembers === 2) {
                 const receiver = chat.members.find(user => user._id !== userId);
                 const image =  `data:image/png;base64,${base64js.fromByteArray(receiver.avatar.data)}`
                 return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
               }
-              return <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+              else {
+                return <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+              }
             })
           }
       </section>
