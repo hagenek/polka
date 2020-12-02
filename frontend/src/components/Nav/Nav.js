@@ -44,9 +44,6 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to={`/people/${username}`}>Profile</Link>
               </li>
               <li className="nav__item">
-                <Link to="/upload">Avatar</Link>
-              </li>
-              <li className="nav__item">
                 <Link to="/games">Games</Link>
               </li>
               <li className="nav__item">
