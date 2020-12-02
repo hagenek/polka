@@ -32,7 +32,7 @@
 }
 
 .message--sender {
-  background-color: #1F72E6;
+  background-color: #3f51b5;
   margin-left: 5px;
   color: #fff;
 }
@@ -55,7 +55,7 @@
 }
 
 .arrow--sender:before {
-  border-right-color: #1F72E6;
+  border-right-color: #3f51b5;
   margin-left: -20px;
   left: 10px;
   border-left: 0;

@@ -61,7 +61,7 @@ const ChatPage = ({ userId }) => {
             }}
             style={{
               fontSize: 40,
-              color: '#1F72E6'
+              color: '#3f51b5'
             }}
           />
         </section>
@@ -69,7 +69,7 @@ const ChatPage = ({ userId }) => {
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
             .map(chat => {
               const numChatMembers = chat.members.length;
-              let image = "//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+              let image = "https://www.materialui.co/materialIcons/social/group_grey_192x192.png"
               if(numChatMembers === 1) {
                 image = userService.getImage(chat.members[0].avatar)
               }
