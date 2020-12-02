@@ -14,6 +14,8 @@ import Register from "./components/Register/Register"
 import BoardUser from "./components/BoardUser"
 import Profile from "./components/Profile/Profile"
 // import Profiles from "./components/Profiles/Profiles"
+import Hero from "./components/Hero/Hero"
+import Main from "./components/Main/Main"
 import Events from "./components/Events/Events"
 import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
@@ -41,8 +43,10 @@ function App() {
 
         {/* <Search /> */}
         <Switch>
-          {/* <Search /> */}
-          {/* <Register /> */}
+          <Route exact path="/">
+            <Hero />
+            <Main />
+          </Route>
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/game" component={Game} />
