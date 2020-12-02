@@ -81,7 +81,7 @@ const Login = ({ setUserId }) => {
       justify="center"
       style={{ minHeight: '85vh' }}
     >
-      {loggedIn && <Redirect to="/"/>}
+      {loggedIn && <Redirect to={`/people/${username}`}/>}
       <ValidatorForm className="login__form" onSubmit={handleLogin} >
         {message && (
           <Alert severity="error">
