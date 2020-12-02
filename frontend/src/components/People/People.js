@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import Person from "./Person"
 import backend from "../../api"
 
+import Friends from "../../assets/test.png"
+
 import "./People.css"
 
 function Groups() {
@@ -18,7 +20,10 @@ function Groups() {
 
   return (
     <section className="people__section">
-      <h1>Find new friends: </h1>
+      <div className="people__header">
+        <h1>Find new friends</h1>
+        <img src={Friends} alt="friends image" />
+      </div>
       <ul className="people__list">
         {people.map((user) => (
           <Person User={user} />

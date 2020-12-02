@@ -8,7 +8,7 @@ const ChatContact = ({ name, id, img, handleClickCard, handleClickDelete }) => {
   return (
     <section className="contact__container" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
       <section className="contact__info" onClick={() => handleClickCard(id)}>
-          <img className="contact__image" src={img ? img : "//ssl.gstatic.com/accounts/ui/avatar_2x.png"} />
+          <img className="contact__image" src={img} />
           <h1>{name}</h1>
       </section>
       <section>

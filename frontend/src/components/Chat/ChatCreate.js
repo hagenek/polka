@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ChatContact from './ChatContact'
 import api from "../../api"
 import {TextField, Button } from '@material-ui/core'
+import userService from '../../services/user-service'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId, setClickedChatId }) => {
@@ -70,7 +71,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                             contacts
                                 .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(searchInput.toLowerCase()))
                                 .filter(user => !members.includes(user))
-                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberAdd(id)} />) 
+                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} img={userService.getImage(user.avatar)} handleClickCard={id => handleMemberAdd(id)} />) 
                         }
                     </section>
                 </section>
@@ -80,7 +81,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                     </section>
                     <section className="chatcreate__list">
                         {members
-                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberRemove(id)} />) 
+                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} img={userService.getImage(user.avatar)} handleClickCard={id => handleMemberRemove(id)} />) 
                         }
                     </section>
                 </section>

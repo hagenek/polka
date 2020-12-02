@@ -5,7 +5,7 @@ import ChatCreate from './ChatCreate'
 import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
 import {TextField } from '@material-ui/core'
-import base64js from 'base64-js'
+import userService from '../../services/user-service'
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
@@ -69,18 +69,15 @@ const ChatPage = ({ userId }) => {
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
             .map(chat => {
               const numChatMembers = chat.members.length;
+              let image = "//ssl.gstatic.com/accounts/ui/avatar_2x.png"
               if(numChatMembers === 1) {
-                const image =  `data:image/png;base64,${base64js.fromByteArray(chat.members[0].avatar.data)}`
-                return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+                image = userService.getImage(chat.members[0].avatar)
               }
               else if(numChatMembers === 2) {
                 const receiver = chat.members.find(user => user._id !== userId);
-                const image =  `data:image/png;base64,${base64js.fromByteArray(receiver.avatar.data)}`
-                return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+                image =  userService.getImage(receiver.avatar)
               }
-              else {
-                return <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
-              }
+              return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
             })
           }
       </section>
