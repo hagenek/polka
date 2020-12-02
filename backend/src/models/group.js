@@ -9,10 +9,13 @@ const groupSchema = new Schema({
     lowercase: true,
     trim: true,
   },
-  members: {
-    type: Array,
-    required: false,
-  },
+  members: [
+    {
+      type: Schema.Types.ObjectId,
+      default: [],
+      ref: "User",
+    },
+  ],
   description: {
     type: String,
     required: true,

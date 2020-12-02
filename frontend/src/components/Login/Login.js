@@ -1,13 +1,12 @@
 /* eslint-disable */
 import React, { useState } from "react"
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert';
 import AuthService from "../../services/auth-service"
-
 
 import "./Login.css";
 
@@ -30,11 +29,12 @@ const useStyles = makeStyles({
   }
 });
 
-const Login = (props) => {
+const Login = ({ setUserId }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -53,8 +53,9 @@ const Login = (props) => {
 
     AuthService.login(username, password).then(
       () => {
-        props.history.push("/user");
-        window.location.reload();
+        const user = AuthService.getCurrentUser();
+        setUserId(user.id);
+        setLoggedIn(true)
       },
       (error) => {
         const resMessage =
@@ -80,6 +81,7 @@ const Login = (props) => {
       justify="center"
       style={{ minHeight: '85vh' }}
     >
+      {loggedIn && <Redirect to={`/people/${username}`}/>}
       <ValidatorForm className="login__form" onSubmit={handleLogin} >
         {message && (
           <Alert severity="error">

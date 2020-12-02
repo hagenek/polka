@@ -1,21 +1,29 @@
-.chatlist__section {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background-color: rgb(251, 255, 255);
-  box-shadow: 2px 4px 10px #c0c0c0a1;
-  border-radius: 5px;
+.chatpage__container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* margin-right: 20px; */
+  height: 80vh;
 }
 
-.chatcard__container {
-  display: flex;
-  flex-direction: column;
-  margin-right: 2px;
-  flex: 1;
+.chat__sidebar-container {
+  border: 1px solid rgba(232, 232, 232, 0.4);
 }
 
-.chat__container {
+.chatcard__inputs {
   display: flex;
-  flex-direction: column;
-  flex: 2;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.chatcard__inputs__text {
+  width: 100%;
+}
+
+.chatcard__inputs__btn {
+  margin-left: 10px;
+}
+
+.chatcard__input__btn:hover {
+  cursor: pointer;
 }

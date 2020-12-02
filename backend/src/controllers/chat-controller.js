@@ -4,7 +4,7 @@ const Chat = require("../models/chat")
 const Message = require("../models/message")
 
 const createChat = async (req, res) => {
-  let { membersIds } = req.body
+  let { name, membersIds } = req.body
 
   if (!membersIds || membersIds.length === 0) {
     res.status(400).send("No member id's provided")
@@ -14,8 +14,8 @@ const createChat = async (req, res) => {
 
   try {
     const chat = new Chat({
+      name,
       members: membersIds,
-      messages: [],
     })
 
     // Should only save if adding chat id to users is successful
@@ -29,7 +29,7 @@ const createChat = async (req, res) => {
       )
     })
 
-    res.json(chat).status(201).end()
+    res.json(chat).status(200).send(chat)
   } catch (error) {
     console.log(error)
     res.send(error.message)
@@ -57,7 +57,7 @@ const addMessage = async (req, res) => {
       { $push: { messages: message } },
       { useFindAndModify: false }
     )
-    res.json(message).status(201).end()
+    res.json(message).status(200).end()
   } catch (error) {
     console.log(error)
     res.send(error.message)
@@ -106,9 +106,29 @@ const getChatsByUserId = async (req, res) => {
   }
 }
 
+const deleteChat = async (req, res) => {
+  let { id } = req.params
+
+  try {
+    id = mongoose.Types.ObjectId(id)
+    const chat = await Chat.findByIdAndDelete(id);
+    chat.members.forEach(async userId => {
+      await User.findByIdAndUpdate(
+        userId,       
+        { $pull: { chats: id } },
+        { useFindAndModify: false })
+    })
+    res.status(204).end();
+  } catch(error) {
+    console.log(error)
+    res.send(error.message)
+  }
+}
+
 module.exports = {
   createChat,
   addMessage,
   getChatById,
   getChatsByUserId,
+  deleteChat
 }

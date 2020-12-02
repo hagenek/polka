@@ -1,17 +1,33 @@
-import React from "react"
-import PersonAddIcon from "@material-ui/icons/PersonAdd"
-import MailOutlineIcon from "@material-ui/icons/MailOutline"
-import IconButton from "@material-ui/core/IconButton"
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import List from '@material-ui/core/List'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button';
+import CardHeader from '@material-ui/core/CardHeader'
+import base64js from 'base64-js'
 
 import "./Person.css"
 
 /* eslint-disable react/prop-types */
 function Person({ User }) {
+
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    if (User.avatar) {
+      const avatar = base64js.fromByteArray(User.avatar.data)
+      setAvatar('data:image/png;base64,' + avatar);
+    } else {
+      setAvatar('https://images.vexels.com/media/users/3/140800/isolated/preview/86b482aaf1fec78a3c9c86b242c6ada8-man-profile-avatar-by-vexels.png')
+    }
+  }, [])
+
   return (
-    <li className="person">
+    <section className="person">
       <div className="userinfo">
         <img
-          src=" https://images.vexels.com/media/users/3/140800/isolated/preview/86b482aaf1fec78a3c9c86b242c6ada8-man-profile-avatar-by-vexels.png"
+          src={avatar}
           alt="generic profile"
         />
         <h2 className="person__username">{User.username} </h2>
@@ -19,15 +35,26 @@ function Person({ User }) {
           {User.firstName} {User.lastName}{" "}
         </p>
       </div>
-      <div className="icons">
-        <IconButton className="MailOutlineIcon">
-          <MailOutlineIcon />
-        </IconButton>
-        <IconButton className="PersonAddIcon">
-          <PersonAddIcon />
-        </IconButton>
+      <br />
+      <h4>Interests:</h4>
+      <div>
+        <List >
+          <ListItemIcon>
+            {User.interests ?? "golf"}
+          </ListItemIcon>
+          <ListItemIcon>
+            {User.interests ?? "tennis"}
+          </ListItemIcon>
+        </List>
+        <Divider />
+        <CardHeader text="LOL" />
       </div>
-    </li>
+      <Link to={`people/${User.username}`}>
+        <Button variant="contained" color="primary">
+          Profile
+      </Button>
+      </Link>
+    </section>
   )
 }
 

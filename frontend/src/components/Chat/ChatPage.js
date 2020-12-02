@@ -1,43 +1,80 @@
 import React, { useState, useEffect } from 'react'
 import ChatMessages from './ChatMessages'
-import ChatContacts from './ChatContacts'
+import ChatContact from './ChatContact'
 import ChatCreate from './ChatCreate'
 import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
+import {TextField } from '@material-ui/core'
 import './ChatPage.css'
 
-const ChatList = ({ userId }) => {
+const ChatPage = ({ userId }) => {
   const [chats, setChats] = useState(undefined)
-  const [clickedChat, setClickedChat] = useState(undefined)
+  const [clickedChatId, setClickedChatId] = useState(undefined)
   const [createChat, setCreateChat] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
+
+  const getChats = async () => {
+    if(userId) {
+      const res = await api.get(`api/chat/user/${userId}`)
+      const chats = res.data.chats
+      if(chats) setChats([...chats])
+    }
+  }
+
+  const handleSelectNewChat = async (id) => {
+    await getChats();
+    setClickedChatId(id)
+  }
+
+  const handleDeleteChat = async (id) => {
+    await api.delete(`api/chat/${id}`);
+    await getChats();
+  }
 
   useEffect(() => {
-    const getChats = async () => {
-      const res = await api.get(`api/chat/user/${userId}`)
-      setChats(res.data.chats)
-    }
     getChats()
-  }, [])
+  }, [userId])
 
   // Add better response page
-  if(!chats) return <h1>No chats</h1>
+  if (!chats) return <h1>No chats</h1>
 
   return (
-    <section className="chatlist__section">
+    <section className="chatpage__container">
       <section className="chatcard__container">
-          <CreateChatIcon onClick={() => {
-            setCreateChat(true)
-            setClickedChat(undefined)
-          }}/>
-          {chats.map(chat => <ChatContacts key={chat._id} userId={userId} handleClick={chat => setClickedChat(chat)} chat={chat} /> )}
+        <section className="chatcard__inputs">
+          <TextField
+            required
+            className="chatcard__inputs__text"
+            type="text"
+            id="filled-required"
+            label="search chat"
+            variant="outlined"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <CreateChatIcon
+            className="chatcard__inputs__btn"
+            onClick={() => {
+              setCreateChat(true)
+              setClickedChatId(undefined)
+            }}
+            style={{
+              fontSize: 40,
+              color: '#1F72E6'
+            }}
+          />
+        </section>
+          {chats
+            .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
+            .map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> )}
       </section>
       <section className="chat__container">
-          {clickedChat ? <ChatMessages senderId={userId} chat={clickedChat} /> 
-                       : createChat && <ChatCreate userId={userId} />
+          {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
+                         : createChat && <ChatCreate userId={userId} setClickedChatId={id => handleSelectNewChat(id)} />
           }
       </section>
     </section>
   )
 }
 
-export default ChatList;
+export default ChatPage;

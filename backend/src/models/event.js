@@ -17,10 +17,13 @@ const eventSchema = new Schema({
     type: String,
     required: false,
   },
-  participants: {
-    type: String,
-    required: false,
-  },
+  participants: [
+    {
+      type: Schema.Types.ObjectId,
+      default: [],
+      ref: "User",
+    },
+  ],
   image: {
     type: String,
     required: false,
