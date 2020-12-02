@@ -22,7 +22,7 @@ function Main() {
                 </div>
             </section>
             <section className="feature__container">
-                <div className="card">
+                <div className="feature__card">
                     <img
                         className="card__image"
                         src={Chat}
@@ -33,7 +33,7 @@ function Main() {
                         <p>Ipsum dolores molestiae nisi aperiam odit esse dicta ullam. Totam error aperiam quibusdam odit magni obcaecati corrupti in? Animi nesciunt repudiandae inventore? lorem</p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="feature__card">
                     <img
                         className="card__image"
                         src={Basket}
@@ -44,7 +44,7 @@ function Main() {
                         <p>Ipsum dolores molestiae nisi aperiam odit esse dicta ullam. Totam error aperiam quibusdam odit magni obcaecati corrupti in? Animi nesciunt repudiandae inventore? lorem</p>
                     </div>
                 </div>
-                <div className="card">
+                <div className="feature__card">
                     <img
                         className="card__image"
                         src={Event}
