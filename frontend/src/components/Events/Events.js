@@ -9,12 +9,13 @@ function Events({ userId }) {
   const [eventName, setEventName] = useState([])
   const [clickedEvent, setClickedEvent] = useState([])
 
+  async function fetchData() {
+    const request = await backend.get("api/event")
+    setEventName(request.data)
+    return request
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const request = await backend.get("api/event")
-      setEventName(request.data)
-      return request
-    }
     fetchData()
   }, [])
 
@@ -28,7 +29,8 @@ function Events({ userId }) {
       userId,
       eventId: clickedEvent[0]._id,
     })
-  }
+    await fetchData()
+    }
 
   return (
     <section className="event__section">

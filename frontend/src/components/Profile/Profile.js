@@ -22,6 +22,7 @@ const Profile = ({ userId }) => {
   const [interests, setInterests] = useState("")
   const [gender, setGender] = useState("")
   const [avatar, setAvatar] = useState(null);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     const getUser = async () => {
@@ -37,6 +38,7 @@ const Profile = ({ userId }) => {
         const avatar = base64js.fromByteArray(res.data.avatar.data)
         setAvatar(avatar);
       }
+      setImage(res.data.image)
       // ... do something else with 'buffer'
     }
     getUser()
@@ -120,6 +122,7 @@ const Profile = ({ userId }) => {
         justify="center"
         style={{ minHeight: '85vh' }}
       >
+        <img src={'data:image/png;base64,' + image} />
         <img src={'data:image/png;base64,' + avatar} />
         <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
           {message && (

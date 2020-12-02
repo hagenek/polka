@@ -9,6 +9,8 @@ import "./GroupPage.css"
 /* eslint-disable react/prop-types */
 function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
   const [memberExist, setMemberExist] = useState(false);
+  const [membersNum, setMembersNum] = useState(0)
+
 
   const emptyGroupArrray = () => {
     setClickedGroup([])
@@ -21,6 +23,12 @@ function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
         setMemberExist(true)
       }
     }, [memberExist])
+
+    const handleClick = () => {
+      addMember()
+      setMemberExist(true)
+      setMembersNum(membersNum + 1)
+    }
 
   return (
     <li className="groupPage">
@@ -37,9 +45,9 @@ function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
       <div className="groupPage__info">
         <h2 className="groupPage__header">{groupName.name} </h2>
         <p className="groupPage__description">Description: {groupName.description} </p>
-        <p className="groupPage__members">Members: {groupName.members.length} </p>
+        <p className="groupPage__members">Members: {membersNum} </p>
       </div>
-      <div className="icons" onClick={(() => addMember())} >
+      <div className="icons" onClick={(() => handleClick())} >
         {memberExist === true ? (
           <ul>
             <IconButton className="checkBoxIcon" >

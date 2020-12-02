@@ -8,7 +8,7 @@ const User = require('../models/user')
 const multer = require("multer");
 const upload = multer({
   limits: {
-    fileSize: 1000000
+    fileSize: 10000000
   },
   fileFilter(req, file, cb) {
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
@@ -30,7 +30,17 @@ router.post("/avatar/:id", upload.single("avatar"), async (req, res) => {
   const user = await User.findById(id)
   user.avatar = buffer
   await user.save();
-  res.send()
+  res.send(req.body)
+})
+
+router.post("/image/:id", async (req, res) => {
+  let { id } = req.params;
+
+  console.log(req.url)
+  const user = await User.findById(id);
+  user.image = req.body.url_string
+  await user.save()
+  res.send();
 })
 
 router.get('/avatar/:id', async (req, res) => {
