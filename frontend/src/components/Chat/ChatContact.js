@@ -1,19 +1,29 @@
+import React, { useState } from 'react'
 import './ChatContact.css'
 import RemoveIcon from '@material-ui/icons/HighlightOff'
 
 const ChatContact = ({ name, id, handleClickCard, handleClickDelete }) => {
+  const [hovering, setHovering] = useState(false)
+
   return (
-    <>
-    <section className="contacts__container" onClick={() => handleClickCard(id)}>
-        <img className="contact__image"
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        />
-        <h1>{name}</h1>
+    <section className="contact__container" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+      <section className="contact__info" onClick={() => handleClickCard(id)}>
+          <img className="contact__image"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          />
+          <h1>{name}</h1>
+      </section>
+      <section>
+        {handleClickDelete && hovering && 
+          <RemoveIcon 
+            onClick={() => handleClickDelete(id)} 
+            style={{
+              color: 'blue'
+            }}
+          />
+        }
+      </section>
     </section>
-    <section>
-      {handleClickDelete && <RemoveIcon onClick={() => handleClickDelete(id)} />}
-    </section>
-    </>
   )
 }
 
