@@ -102,4 +102,7 @@
   .nav__item {
     margin: 0px 20px;
   }
+  .nav__loggedOut {
+    justify-content: flex-end;
+  }
 }
