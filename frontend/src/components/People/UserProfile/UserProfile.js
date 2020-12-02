@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import backend from "../../../api";
 import base64js from 'base64-js'
 import Button from "@material-ui/core/Button"
@@ -15,7 +15,7 @@ const UserProfile = ({ userId }) => {
   console.log(userId)
 
   // console.log(avatar)
-  console.log(userProfile)
+  console.log("hello", userProfile[0])
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +40,16 @@ const UserProfile = ({ userId }) => {
       <div className="userprofile__header-container">
         <img src={avatar} alt={userProfile.firstName} />
         <h3>{userProfile[0]?.firstName} {userProfile[0]?.lastName}</h3>
-        <Button className="msg__btn" variant="contained">Message</Button>
+        {userProfile[0] &&
+          userId !== userProfile[0]._id &&
+          <Link to="/chat">
+            <Button className="msg__btn" variant="contained">Message</Button>
+          </Link>}
+        {userProfile[0] &&
+          userId === userProfile[0]._id &&
+          <Link to="/profile">
+            <Button className="edit__btn" variant="contained">Edit</Button>
+          </Link>}
       </div>
       <main className="main__container">
         <section className="events__container">

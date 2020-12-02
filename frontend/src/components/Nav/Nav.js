@@ -46,13 +46,15 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/home">Home</Link>
               </li> */}
               <li className="nav__item">
-                <Link to="/profile">Profile</Link>
+              <Link to={`/people/${username}`}>
+                Profile
+              </Link>
               </li>
               <li className="nav__item">
                 <Link to="/upload">Avatar</Link>
               </li>
               <li className="nav__item">
-                <Link to="/games">Games</Link>
+                <Link to="/snake">Games</Link>
               </li>
               <li className="nav__item">
                 <Link to="/people">People</Link>

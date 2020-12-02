@@ -3,15 +3,17 @@ import { Link } from "react-router-dom"
 import SnakeImg from "../../assets/snake.png"
 import Memory from "../../assets/memory.png"
 
+import "./Games.css"
+
 
 function Games() {
     return (
-        <div>
-            <section className="event__section">
+        <div className="game__div" >
+            <section className="game__section">
                 <h1>Find a game you like here:</h1>
             </section>
             <Link className="linkToGames" to="/memory">
-                <h3>Memory</h3>
+                <h3 className="game__name">Memory:</h3>
                 <img
                     className="game__image"
                     src={Memory}
@@ -19,7 +21,7 @@ function Games() {
                 />
             </Link>
             <Link className="linkToGames" to="/snake">
-                <h3>Snake</h3>
+            <h3 className="game__name">Snake:</h3>
                 <img
                     className="game__image"
                     src={SnakeImg}

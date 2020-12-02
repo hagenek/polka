@@ -1,21 +1,42 @@
-.game__section {
+.game__div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.game__section {
     margin: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5em;
 }
 
-.game__section h1{
-color: var(--fifth--color);
-font-weight: 600;
+.game__section h1 {
+    color: var(--fifth--color);
+    font-weight: 600;
 }
 
-.game__section h3{
+.linkToGames {
+    margin: 0px 0px 20px 0px
+}
+
+.game__image {
+    height: auto;
+    width: 500px;
     margin: 10px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.game__name {
+    text-decoration: none;
+    color: var(--fifth--color);
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
