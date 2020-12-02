@@ -1,6 +1,6 @@
 const express = require("express")
 const Event = require("../models/event")
-const { addParticipant } = require("../controllers/event-controller")
+const { addParticipant, deleteParticipant } = require("../controllers/event-controller")
 
 const router = new express.Router()
 
@@ -36,5 +36,8 @@ router.get("/:name", async (req, res) => {
 })
 
 router.put("/participant", addParticipant)
+
+router.put("/", deleteParticipant)
+
 
 module.exports = router

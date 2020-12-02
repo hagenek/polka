@@ -7,10 +7,9 @@ import IconButton from "@material-ui/core/IconButton"
 import "./GroupPage.css"
 
 /* eslint-disable react/prop-types */
-function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
+function GroupPage({ setClickedGroup, groupName, addMember, deleteMember, userId }) {
   const [memberExist, setMemberExist] = useState(false);
   const [membersNum, setMembersNum] = useState(0)
-
 
   const emptyGroupArrray = () => {
     setClickedGroup([])
@@ -21,13 +20,19 @@ function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
       const boolean = groupName.members.some(same);
       if (boolean === true) {
         setMemberExist(true)
+        setMembersNum(groupName.members.length)
       }
-    }, [memberExist])
+    }, [groupName])
 
-    const handleClick = () => {
+    const handleAddClick = () => {
       addMember()
       setMemberExist(true)
       setMembersNum(membersNum + 1)
+    }
+    const handleRemoveClick = () => {
+      deleteMember()
+      setMemberExist(false)
+      setMembersNum(membersNum - 1)
     }
 
   return (
@@ -47,15 +52,15 @@ function GroupPage({ setClickedGroup, groupName, addMember, userId }) {
         <p className="groupPage__description">Description: {groupName.description} </p>
         <p className="groupPage__members">Members: {membersNum} </p>
       </div>
-      <div className="icons" onClick={(() => handleClick())} >
+      <div className="icons">
         {memberExist === true ? (
-          <ul>
-            <IconButton className="checkBoxIcon" >
+          <ul  onClick={(() => handleRemoveClick())}>
+          <IconButton className="checkBoxIcon" >
               <CheckBoxIcon />
             </IconButton>
           </ul>
         ) : (
-          <ul>
+          <ul onClick={(() => handleAddClick())}>
           <IconButton className="CheckBoxOutlineBlankIcon">
             <CheckBoxOutlineBlankIcon />
           </IconButton>
