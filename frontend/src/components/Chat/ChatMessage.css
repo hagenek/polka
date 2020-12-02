@@ -10,7 +10,7 @@
 
 .message__container--receiver {
   margin-right: 50px;
-  justify-content: right;
+  justify-content: flex-end;
 }
 
 .message__container img {
