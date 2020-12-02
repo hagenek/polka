@@ -17,7 +17,6 @@ function Footer() {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-      <img src="https://www.codewars.com/users/hagenek/badges/large" style={{width: '400px'}}></img>
       <div className="footer__icons">
         <div className="LinkedInIcon"><LinkedInIcon fontSize="large" /></div>
         <div className="FacebookIcon"><FacebookIcon fontSize="large" /></div>

@@ -43,9 +43,9 @@ function Groups({ userId }) {
 
   return (
     <section className="group__section">
-      <h1>Find a group you like here:</h1>
+      {/* <h1>Find a group you like here:</h1> */}
       {clickedGroup.length === 0 ? (
-        <ul>
+        <ul className="groups__container">
           {groupName.map((group) => (
             <GroupItem getGroup={getGroup}
               groupName={group}
@@ -53,7 +53,7 @@ function Groups({ userId }) {
           ))}
         </ul>
       ) : (
-          <ul>
+          <ul className="groups__container">
             {clickedGroup.map((group) => (
               <GroupPage
                 setClickedGroup={setClickedGroup}
