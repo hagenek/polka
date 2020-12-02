@@ -29,16 +29,17 @@
 }
 
 .eventItem__header {
+    font-size: 1em;
     text-transform: capitalize;
     font-weight: 600;
     color: var(--fifth--color);
 }
 
 .eventItem__description {
-    font-size: 1em;
+    font-size: 0.8em;
     /* color: var(--first--color); */
     color: white;
-    text-transform: lowercase;
+    font-weight: 300;
     }
 
 .ArrowForwardIosIcon:hover {

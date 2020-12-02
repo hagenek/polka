@@ -3,6 +3,8 @@ import GroupItem from "./GroupItem"
 import GroupPage from "./GroupPage"
 import backend from "../../api"
 
+import GroupBiker from "../../assets/bikes-group.png"
+
 import "./Groups.css"
 
 function Groups({ userId }) {
@@ -41,8 +43,12 @@ function Groups({ userId }) {
   }
 
   return (
-    <section className="group__section">
-      <h1 className="group__header">Find a group you like here:</h1>
+    <>
+      <div className="group__header">
+        <h1>Join new groups</h1>
+        <img src={GroupBiker} alt="group image" />
+      </div>
+      <section className="group__section">
         {clickedGroup.length === 0 ? (
           <ul className="group__containers">
             {groupName.map((group) => (
@@ -63,7 +69,8 @@ function Groups({ userId }) {
               ))}
             </ul>
           )}
-    </section>
+      </section>
+    </>
   )
 }
 

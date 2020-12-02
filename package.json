@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-card-flip": "^1.0.11"
+    "react-card-flip": "^1.0.11",
+    "react-material-ui-form-validator": "^2.1.1"
   }
 }

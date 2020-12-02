@@ -1,3 +1,28 @@
+.group__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background: #ECE9E6;
+    background: -webkit-linear-gradient(to right,  #242f3b, #151c24);
+    background: linear-gradient(to right,  #242f3be8, #151c24);
+    margin-bottom: 30px;
+}
+
+.group__header img {
+    position: absolute;
+    width: 400px;
+    bottom: 0;
+    right: 200px;
+}
+
+.group__header h1 {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
 .group__section {
     display: flex;
     flex-direction: column;
@@ -13,6 +38,7 @@
     font-weight: 600;
     justify-content: center;
 }
+
 .group__containers {
     display: flex;
     flex-direction: row !important;
