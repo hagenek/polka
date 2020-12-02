@@ -43,6 +43,7 @@ const ChatPage = ({ userId }) => {
         <section className="chatcard__inputs">
           <TextField
             required
+            className="chatcard__inputs__text"
             type="text"
             id="filled-required"
             label="search chat"
@@ -51,7 +52,7 @@ const ChatPage = ({ userId }) => {
             onChange={(e) => setSearchInput(e.target.value)}
           />
           <CreateChatIcon
-            className="chatcard__input__btn"
+            className="chatcard__inputs__btn"
             onClick={() => {
               setCreateChat(true)
               setClickedChatId(undefined)
