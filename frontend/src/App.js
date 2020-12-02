@@ -23,6 +23,7 @@ import UserProfile from "./components/People/UserProfile/UserProfile"
 import Upload from './components/Upload/Upload'
 import Snake from './components/Games/Snake/Snake'
 import Game from './components/Games/Memory/Game'
+import Games from './components/Games/Games'
 
 import "./App.css"
 
@@ -49,7 +50,8 @@ function App() {
           </Route>
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/game" component={Game} />
+          <Route exact path="/games" component={Games} />
+          <Route exact path="/memory" component={Game} />
           <Route exact path="/snake" component={Snake} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />} />
           <Route exact path="/people" component={People} />

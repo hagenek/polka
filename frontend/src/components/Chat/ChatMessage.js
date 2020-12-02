@@ -1,17 +1,27 @@
 import React from 'react'
+import base64js from 'base64-js'
 
 import './ChatMessage.css'
 
-const Message = ({ message }) => {
+const Message = ({ userId, message }) => {
+  const image = base64js.fromByteArray(message.sender.avatar.data)
   return (
-    <div className="message__container">
-      <img
-        src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"
-      />
-      <div className="message arrow">
-        <p>{message.sender.firstName}: {message.text}</p>
-      </div>
-    </div>
+    <>
+      {userId === message.sender._id ? 
+        <div className="message__container message__container--sender">
+          <img src={'data:image/png;base64,' + image} />
+          <div className="message message--sender arrow arrow--sender">
+            <p>{message.text}</p>
+          </div>
+        </div>
+      : <div className="message__container message__container--receiver">
+          <div className="message message--receiver arrow arrow--receiver">
+            <p>{message.text}</p>
+          </div>
+          <img src={'data:image/png;base64,' + image} />
+        </div>
+      }
+    </>
   )
 }
 

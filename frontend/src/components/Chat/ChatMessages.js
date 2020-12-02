@@ -4,7 +4,7 @@ import ChatMessage from './ChatMessage'
 import api from "../../api"
 import './ChatMessages.css'
 
-const ChatMessages = ({ senderId, chatId }) => {
+const ChatMessages = ({ userId, chatId }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState(undefined);
@@ -14,17 +14,18 @@ const ChatMessages = ({ senderId, chatId }) => {
     if (message !== "") {
       const msg = {
         text: message,
-        sender: senderId,
+        sender: userId,
         timestamp: new Date(),
         chatId
       }
-      socket.current.emit('message', msg, chat)
+      const membersIds = chat.members.map(user => user._id)
+      socket.current.emit('message', msg, membersIds)
       setMessage("");
     }
   }
 
   useEffect(() => {
-    socket.current = socketClient('http://localhost:1337/', { query: `id=${senderId}` });
+    socket.current = socketClient('http://localhost:1337/', { query: `id=${userId}` });
     socket.current.on('connect', () => {
       console.log("Connect");
     })
@@ -37,7 +38,7 @@ const ChatMessages = ({ senderId, chatId }) => {
         msg.sender = user.data;
         const newMessages = [...prevChat.messages];
         newMessages.push(msg);
-        const newChat = prevChat;
+        const newChat = {...prevChat};
         newChat.messages = newMessages;
         return newChat;
       })
@@ -48,19 +49,18 @@ const ChatMessages = ({ senderId, chatId }) => {
       setChat(res.data);
     }
     getChat()
-  }, [])
+  }, [chatId])
 
   if(!socket || !chat) return <h1>Establishing connection...</h1>
 
   return (
     <>
       <section className="chat__section">
-
         <section className="chat__to-message">
           {chat.name}
         </section>
         <ul>
-          {chat && chat.messages.map(msg => <ChatMessage message={msg} /> )}
+          {chat && chat.messages.map(msg => <ChatMessage userId={userId} message={msg} /> )}
         </ul>
       </section>
       <div className="form__container">

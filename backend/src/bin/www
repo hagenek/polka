@@ -106,18 +106,15 @@ io.on('connection', client => {
     console.log(onlineUsers)
   })
 
-  client.on('message', async (message, members) => {
-    const onlineRecievers = onlineUsers.map(onlineUser => {
-      const onlineReciever = members.find(chatUser => chatUser._id === onlineUser.userId)
-      if(onlineReciever) return onlineUser
-    })
-    // Address shoul not be hardcoded
+  client.on('message', async (message, membersIds) => {
+    const onlineRecievers = onlineUsers.filter(onlineUser => membersIds.includes(onlineUser.userId))
+    // Address should not be hardcoded
     fetch(`http://localhost:1337/api/chat/message`, {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(message),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      if(res.stats === 200) {
+      if(res.status === 200) {
         onlineRecievers.forEach(user => {
           io.to(user.clientId).emit('message', message);
         })

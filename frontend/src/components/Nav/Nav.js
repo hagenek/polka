@@ -24,14 +24,15 @@ const Nav = ({ userId, setUserId }) => {
       setUsername(res.data.username)
     }
     getUsername()
-  }, [])
+    console.log("hej", userId)
+  }, [userId])
 
   return (
     <nav className="nav">
       <div className="nav__container">
         {userId ? (
           <>
-            <div className="nav__logo">
+            <div className="nav__logo" >
               <Link to={`/people/${username}`}>
                 <h1>Polka Meet</h1>
               </Link>
@@ -51,7 +52,7 @@ const Nav = ({ userId, setUserId }) => {
                 <Link to="/upload">Avatar</Link>
               </li>
               <li className="nav__item">
-                <Link to="/snake">Games</Link>
+                <Link to="/games">Games</Link>
               </li>
               <li className="nav__item">
                 <Link to="/people">People</Link>
