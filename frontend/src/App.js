@@ -21,8 +21,8 @@ import ChatPage from "./components/Chat/ChatPage"
 import AuthService from "./services/auth-service"
 import UserProfile from "./components/People/UserProfile/UserProfile"
 import Upload from './components/Upload/Upload'
-import Snake from './components/Snake/Snake'
-import Game from './components/Game/Game'
+import Snake from './components/Games/Snake/Snake'
+import Game from './components/Games/Memory/Game'
 
 import "./App.css"
 
@@ -50,12 +50,12 @@ function App() {
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/game" component={Game} />
+          <Route exact path="/snake" component={Snake} />
           <Route exact path="/profile" render={() => <Profile userId={userId} />} />
           <Route exact path="/people" component={People} />
           <Route exact path="/groups" render={() => <Groups userId={userId} />} />
           <Route exact path="/events" render={() => <Events userId={userId} />} />
           <Route exact path="/upload" render={() => <Upload userId={userId} />} />
-          <Route exact path="/snake" component={Snake} />
           <Route exact path="/chat" render={() => <ChatPage userId={userId} />} />
           <Route path="/people/:user" render={() => <UserProfile userId={userId} />} />
           {/* <Route exact path="/profiles" component={Profiles} /> */}
