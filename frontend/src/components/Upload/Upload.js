@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react"
 import ImageUploading from "react-images-uploading"
 import axios from 'axios'
 
-const Upload = ({userId}) => {
+const Upload = ({userId, addChange}) => {
 
   const [images, setImages] = useState([])
   const maxNumber = 69
 
   useEffect(() => {
         if (images[0]) {
+          addChange(images[0].url_base)
           var bodyFormData = new FormData();
           bodyFormData.append('avatar', images[0].file);
-          console.log(bodyFormData)
           axios({
             method: 'post',
             url: `http://localhost:1337/api/user/avatar/${userId}`,
@@ -65,7 +65,6 @@ const Upload = ({userId}) => {
               Click or Drop here
             </button>
             &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img src={image.data_url} alt="" width="100" />

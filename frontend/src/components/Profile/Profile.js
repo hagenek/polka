@@ -9,6 +9,7 @@ import Alert from '@material-ui/lab/Alert'
 import { Link } from "react-router-dom"
 import userService from "../../services/user-service"
 import base64js from 'base64-js'
+import Upload from '../Upload/Upload'
 
 const Profile = ({ userId }) => {
 
@@ -21,8 +22,12 @@ const Profile = ({ userId }) => {
   const [message, setMessage] = useState("")
   const [interests, setInterests] = useState("")
   const [gender, setGender] = useState("")
-  const [avatar, setAvatar] = useState(null);
-  const [image, setImage] = useState("");
+  const [avatar, setAvatar] = useState(null)
+  const [changed, setChanged] = useState(1)
+
+  const addChange = (img) => {
+    setAvatar(img)
+  }
 
   useEffect(() => {
     const getUser = async () => {
@@ -38,7 +43,6 @@ const Profile = ({ userId }) => {
         const avatar = base64js.fromByteArray(res.data.avatar.data)
         setAvatar(avatar);
       }
-      setImage(res.data.image)
       // ... do something else with 'buffer'
     }
     getUser()
@@ -122,8 +126,9 @@ const Profile = ({ userId }) => {
         justify="center"
         style={{ minHeight: '85vh' }}
       >
-        <img src={'data:image/png;base64,' + image} />
-        <img src={'data:image/png;base64,' + avatar} />
+        <Upload userId={userId} addChange={addChange}/>
+        <br />
+        {avatar && <img src={'data:image/png;base64,' + avatar} />}
         <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
           {message && (
             successful ? (
