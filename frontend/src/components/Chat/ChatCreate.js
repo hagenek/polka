@@ -70,7 +70,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                             contacts
                                 .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(searchInput.toLowerCase()))
                                 .filter(user => !members.includes(user))
-                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberAdd(id)} />) 
+                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberAdd(id)} />) 
                         }
                     </section>
                 </section>
@@ -80,7 +80,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                     </section>
                     <section className="chatcreate__list">
                         {members
-                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClick={id => handleMemberRemove(id)} />) 
+                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberRemove(id)} />) 
                         }
                     </section>
                 </section>

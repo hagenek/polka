@@ -26,6 +26,10 @@ const ChatPage = ({ userId }) => {
     setClickedChatId(id)
   }
 
+  const handleDeleteChat = async (id) => {
+    console.log(id, "test")
+  }
+
   useEffect(() => {
     getChats()
   }, [userId])
@@ -60,7 +64,7 @@ const ChatPage = ({ userId }) => {
         </section>
           {chats
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
-            .map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClick={id => setClickedChatId(id)} /> )}
+            .map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> )}
       </section>
       <section className="chat__container">
           {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
