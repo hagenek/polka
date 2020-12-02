@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ImageUploading from "react-images-uploading"
-import base64js from 'base64-js'
 import axios from 'axios'
-import backend from '../../api'
 
 const Upload = ({userId}) => {
 
@@ -10,18 +8,9 @@ const Upload = ({userId}) => {
   const maxNumber = 69
 
   useEffect(() => {
-    // axios.post("./")
         if (images[0]) {
-/*           const urlString = images[0].data_url
-          const urlStringTwo = urlString.split(",")[1]
-          const buffer = base64js.toByteArray(urlStringTwo); */
           var bodyFormData = new FormData();
           bodyFormData.append('avatar', images[0].file);
-/*           axios({
-            method: 'post',
-            url: `localhost:1337/api/user/avatar/${userId}`,
-            data: buffer,
-          }); */
           console.log(bodyFormData)
           axios({
             method: 'post',
@@ -34,9 +23,7 @@ const Upload = ({userId}) => {
             })
             .catch(function (response) {
                 console.log(response);
-            });
-          // backend.post(`/api/user/avatar/${userId}`, {avatar: buffer})
-          // backend.post(`/api/user/image/${userId}`, {url_string: urlStringTwo})
+            })
         }
       return () => {
           // cleanup
