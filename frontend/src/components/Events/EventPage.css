@@ -1,5 +1,7 @@
 .eventPage {
     border: solid rgb(212, 212, 212) 1px;
+    background-color: var(--first--color);
+    background-color: #1f2833;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
@@ -22,16 +24,19 @@
     width: 100%;
 }
 
+.eventPage__header {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--main--color);
+    font-size: 2rem;
+}
+
 .eventPage__info p{
     display: flex;
     flex-direction: column;
     justify-content: left;
     width: 100%;
     padding: 5px 10px;
-}
-
-.eventPage__header {
-    text-transform: capitalize;
-    font-weight: 600;
-    color: var(--main--color);
+    color: rgb(231, 231, 231);
+    font-size: 1.3rem;
 }

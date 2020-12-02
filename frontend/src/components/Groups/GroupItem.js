@@ -1,30 +1,42 @@
 // import React, { useState, useEffect } from "react"
 import React from "react"
-import IconButton from "@material-ui/core/IconButton"
-import sportImage from "../../assets/cherry-paralympic-basketball.png"
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Button from "@material-ui/core/Button"
+import { makeStyles } from '@material-ui/core/styles'
+import Choco from "../../assets/choco.jpg"
 
 import "./Groupitem.css"
 
-/* eslint-disable react/prop-types */
-function GroupItem({ getGroup, groupName, addMember}) {
-  // const [click, setClick] = useState(false)
+const useStyles = makeStyles({
+  button: {
+      height: 48,
+      width: 200,
+      padding: '0 30px',
+      background: '#4fb3bf',
+  },
+});
 
+/* eslint-disable react/prop-types */
+function GroupItem({ getGroup, groupName }) {
+  const classes = useStyles();
   return (
     <li className="groupItem" role="presentation" onClick={() => getGroup(groupName.name)}>
       <img
-        src={sportImage}
+        className="groupPicture"
+        src={Choco}
         alt="generic group"
       />
       <div className="group__info">
         <h2 className="groupItem__header">{groupName.name} </h2>
         <p className="groupItem__description">{groupName.description} </p>
       </div>
-      <div className="groupItem__seeMore">
-        <IconButton className="ArrowForwardIosIcon">
-          <ArrowForwardIosIcon />
-        </IconButton>
-      </div>
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          borderColor="text.primary"
+          type="submit">
+            Join group
+        </Button>
     </li>
   )
 }

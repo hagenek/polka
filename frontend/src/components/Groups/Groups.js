@@ -43,27 +43,27 @@ function Groups({ userId }) {
 
   return (
     <section className="group__section">
-      {/* <h1>Find a group you like here:</h1> */}
-      {clickedGroup.length === 0 ? (
-        <ul className="groups__container">
-          {groupName.map((group) => (
-            <GroupItem getGroup={getGroup}
-              groupName={group}
-              addMember={addMember} />
-          ))}
-        </ul>
-      ) : (
-          <ul className="groups__container">
-            {clickedGroup.map((group) => (
-              <GroupPage
-                setClickedGroup={setClickedGroup}
+      <h1 className="group__header">Find a group you like here:</h1>
+        {clickedGroup.length === 0 ? (
+          <ul className="group__container">
+            {groupName.map((group) => (
+              <GroupItem getGroup={getGroup}
                 groupName={group}
-                addMember={addMember}
-                deleteMember={deleteMember}
-                userId={userId} />
+                addMember={addMember} />
             ))}
           </ul>
-        )}
+        ) : (
+            <ul className="group__container">
+              {clickedGroup && clickedGroup.map((group) => (
+                <GroupPage
+                  setClickedGroup={setClickedGroup}
+                  groupName={group}
+                  addMember={addMember}
+                  deleteMember={deleteMember}
+                  userId={userId} />
+              ))}
+            </ul>
+          )}
     </section>
   )
 }

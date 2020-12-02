@@ -1,36 +1,49 @@
 .groupPage {
+    background-color: var(--first--color);
+    background-color: #1f2833;
     border: solid rgb(212, 212, 212) 1px;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 10px;
-    padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
+}
+
+.groupPage__frame {
+    display: flex;
+    flex-direction: column;
 }
 
 .groupPage__photo {
-    width: 100%;
+    object-fit: cover;
+    width: auto;
+    height: auto;
 }
+
 .groupPage__info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
+    color: var(--main--color);
+    background-color: #1f2833;
 }
 
 .groupPage__info p{
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    width: 100%;
+    justify-content: space-between;
     padding: 5px 10px;
+    position: bottom;
 }
 
 .groupPage__header {
+    text-align: center;
     text-transform: capitalize;
     font-weight: 600;
     color: var(--main--color);
+    background-color: #1f2833;
+    background-position: bottom;
+    position: top;
 }
