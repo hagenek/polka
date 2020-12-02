@@ -3,7 +3,7 @@ import './ChatContact.css'
 import RemoveIcon from '@material-ui/icons/HighlightOff'
 
 const ChatContact = ({ name, id, handleClickCard, handleClickDelete }) => {
-  const [hovering, setHovering] = useState(true)
+  const [hovering, setHovering] = useState(false)
 
   return (
     <section className="contact__container" onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>

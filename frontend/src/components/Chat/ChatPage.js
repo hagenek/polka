@@ -27,7 +27,8 @@ const ChatPage = ({ userId }) => {
   }
 
   const handleDeleteChat = async (id) => {
-    console.log(id, "test")
+    await api.delete(`api/chat/${id}`);
+    await getChats();
   }
 
   useEffect(() => {
