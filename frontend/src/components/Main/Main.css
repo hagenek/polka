@@ -40,11 +40,11 @@
     justify-content: space-between;
 }
 
-.card {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.feature__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card__text {
@@ -52,13 +52,13 @@ align-items: center;
     text-align: center;
 }
 
-.card__text  h1{
-font-weight: 600;
-padding: 10px 0;
+.card__text h1 {
+    font-weight: 600;
+    padding: 10px 0;
 }
 
-.card__text p{
-line-height: 1.5;
+.card__text p {
+    line-height: 1.5;
 }
 
 .card__image {

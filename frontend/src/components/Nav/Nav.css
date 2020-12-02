@@ -50,7 +50,7 @@
 .nav__menu {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
   height: 90vh;
   opacity: 1;
   transition: all 0.3s ease;
@@ -84,7 +84,7 @@
 @media screen and (min-width: 960px) {
   .nav__container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     align-items: center;
   }
   .mobile__icon {

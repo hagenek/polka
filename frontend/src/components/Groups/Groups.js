@@ -5,28 +5,41 @@ import backend from "../../api"
 
 import "./Groups.css"
 
-function Groups() {
+function Groups({ userId }) {
   const [groupName, setGroupName] = useState([])
   const [clickedGroup, setClickedGroup] = useState([])
 
+  async function fetchData() {
+    const request = await backend.get("api/group")
+    setGroupName(request.data)
+    return request
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const request = await backend.get("/groups")
-      setGroupName(request.data)
-      return request
-    }
     fetchData()
   }, [])
 
-  const getGroup = async (search) => {
-    const request = await backend.get(`groups/${search}`)
-    console.log(search)
-    console.log(clickedGroup)
+  const getGroup = async (name) => {
+    const request = await backend.get(`api/group/${name}`)
     setClickedGroup(request.data)
   }
 
-  console.log("groupname:", groupName)
-  console.log("clickedGroup over return:", clickedGroup)
+  const addMember = async () => {
+    const request = await backend.put("api/group/member", {
+      userId,
+      groupId: clickedGroup[0]._id
+    })
+    console.log("hello from group.js")
+  }
+
+  const deleteMember = async () => {
+    const request = await backend.put("api/group/", {
+      userId,
+      groupId: clickedGroup[0]._id
+    },
+    )
+    await fetchData()
+  }
 
   return (
     <section className="group__section">
@@ -34,16 +47,23 @@ function Groups() {
       {clickedGroup.length === 0 ? (
         <ul>
           {groupName.map((group) => (
-            <GroupItem getGroup={getGroup} groupName={group} />
+            <GroupItem getGroup={getGroup}
+              groupName={group}
+              addMember={addMember} />
           ))}
         </ul>
       ) : (
-        <ul>
-          {clickedGroup.map((group) => (
-            <GroupPage setClickedGroup={setClickedGroup} groupName={group} />
-          ))}
-        </ul>
-      )}
+          <ul>
+            {clickedGroup.map((group) => (
+              <GroupPage
+                setClickedGroup={setClickedGroup}
+                groupName={group}
+                addMember={addMember}
+                deleteMember={deleteMember}
+                userId={userId} />
+            ))}
+          </ul>
+        )}
     </section>
   )
 }

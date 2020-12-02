@@ -5,4 +5,12 @@ const getUserBoard = async () => {
   return backend.get("/api/user", { headers: authHeader() })
 }
 
-export default getUserBoard;
+const updateUser = async (id, obj) => {
+  console.log(obj)
+  return backend.patch(`/api/user/${id}`, obj)
+}
+
+export default { 
+  getUserBoard,
+  updateUser,
+}
