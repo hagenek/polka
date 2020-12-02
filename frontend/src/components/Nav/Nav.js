@@ -24,7 +24,6 @@ const Nav = ({ userId, setUserId }) => {
       setUsername(res.data.username)
     }
     getUsername()
-    console.log("hej", userId)
   }, [userId])
 
   return (

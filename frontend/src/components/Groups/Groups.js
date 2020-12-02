@@ -29,7 +29,6 @@ function Groups({ userId }) {
       userId,
       groupId: clickedGroup[0]._id
     })
-    console.log("hello from group.js")
   }
 
   const deleteMember = async () => {
@@ -45,7 +44,7 @@ function Groups({ userId }) {
     <section className="group__section">
       <h1 className="group__header">Find a group you like here:</h1>
         {clickedGroup.length === 0 ? (
-          <ul className="group__container">
+          <ul className="group__containers">
             {groupName.map((group) => (
               <GroupItem getGroup={getGroup}
                 groupName={group}
@@ -53,7 +52,7 @@ function Groups({ userId }) {
             ))}
           </ul>
         ) : (
-            <ul className="group__container">
+            <ul className="group__containers">
               {clickedGroup && clickedGroup.map((group) => (
                 <GroupPage
                   setClickedGroup={setClickedGroup}

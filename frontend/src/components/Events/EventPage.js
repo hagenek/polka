@@ -47,7 +47,6 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
 
   return (
     <li className="eventPage">
-      {console.log("EventPage", eventName.name)}
       <div className="eventPage__icons" onClick={() => emptyEventArrray()}>
         <IconButton className="checkBoxIcon">
           <ArrowBackIosIcon className={classes.icon} role="presentation" fontSize="large"  />

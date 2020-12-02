@@ -13,18 +13,10 @@
     font-weight: 600;
     justify-content: center;
 }
-.group__container {
+.group__containers {
     display: flex;
     flex-direction: row !important;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
 }
-
-/* .group__section ul{
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-} */
