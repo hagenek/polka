@@ -34,10 +34,9 @@ function App() {
       <Router>
         {/* <p>{message}</p> */}
         <Nav userId={userId} setUserId={setUserId}/>
-        <Search />
+        {/* <Search /> */}
         
         <Switch>
-          {/* <Search /> */}
           {/* <Register /> */}
           <Route exact path="/login" render={() => <Login setUserId={setUserId} />} />
           <Route exact path="/register" component={Register} />

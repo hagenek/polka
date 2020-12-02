@@ -33,18 +33,20 @@ const deleteParticipant = async (req, res) => {
     const { eventId, userId } = req.body
     console.log("hello", eventId, userId)
     try {
-
         if (!eventId || !userId) {
             res.status(400).send("Error: missing property")
         }
 
-        await Event.updateOne(
-            {eventId: eventId},
-            { $pull: { participants: eventId } },
+        await Event.findByIdAndUpdate(
+           eventId,
+            { $pull: { participants: mongoose.Types.ObjectId(userId) } },
+            { useFindAndModify: false }
         )
-        await User.updateOne(
-            {userId: userId},
-            { $pull: { events: userId } },
+
+        await User.findByIdAndUpdate(
+           userId,
+            { $pull: { events: mongoose.Types.ObjectId(eventId) } },
+            { useFindAndModify: false }
         )
         res.json(userId).status(201).end()
     } catch (error) {

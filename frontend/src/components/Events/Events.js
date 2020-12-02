@@ -33,13 +33,10 @@ function Events({ userId }) {
   }
 
   const deleteParticipant = async () => {
-    const eventId = clickedEvent[0]._id
-    const request = await backend.put("api/event/del-participant", {
+    const request = await backend.put("api/event/", {
       userId,
       eventId: clickedEvent[0]._id,
     },
-      console.log("api/event/"),
-      console.log(eventId),
     )
     await fetchData()
   }

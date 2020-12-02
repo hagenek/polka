@@ -25,10 +25,15 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
     }
   }, [eventName])
 
-  const handleClick = () => {
+  const handleAddClick = () => {
     addParticipant()
     setParticipantExist(true)
     setParticipantsNum(participantsNum + 1)
+  }
+  const handleRemoevClick = () => {
+    deleteParticipant()
+    setParticipantExist(false)
+    setParticipantsNum(participantsNum -1)
   }
 
   return (
@@ -49,13 +54,13 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
       </div>
       <div className="icons" >
       {participantExist === true ? (
-          <ul  onClick={(() => deleteParticipant())}>
+          <ul onClick={(() => handleRemoevClick())}>
             <IconButton className="checkBoxIcon" >
               <CheckBoxIcon />
             </IconButton>
           </ul>
         ) : (
-          <ul onClick={(() => handleClick())}>
+          <ul onClick={(() => handleAddClick())}>
           <IconButton className="CheckBoxOutlineBlankIcon">
             <CheckBoxOutlineBlankIcon />
           </IconButton>

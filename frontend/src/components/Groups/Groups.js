@@ -9,13 +9,13 @@ function Groups({ userId }) {
   const [groupName, setGroupName] = useState([])
   const [clickedGroup, setClickedGroup] = useState([])
 
+  async function fetchData() {
+    const request = await backend.get("api/group")
+    setGroupName(request.data)
+    return request
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await backend.get("api/group")
-      setGroupName(request.data)
-      return request
-    }
     fetchData()
   }, [])
 
@@ -32,19 +32,35 @@ function Groups({ userId }) {
     console.log("hello from group.js")
   }
 
+  const deleteMember = async () => {
+    const request = await backend.put("api/group/", {
+      userId,
+      groupId: clickedGroup[0]._id
+    },
+    )
+    await fetchData()
+  }
+
   return (
     <section className="group__section">
       <h1>Find a group you like here:</h1>
       {clickedGroup.length === 0 ? (
         <ul>
           {groupName.map((group) => (
-            <GroupItem getGroup={getGroup} groupName={group} addMember={addMember} />
+            <GroupItem getGroup={getGroup}
+              groupName={group}
+              addMember={addMember} />
           ))}
         </ul>
       ) : (
           <ul>
             {clickedGroup.map((group) => (
-              <GroupPage setClickedGroup={setClickedGroup} groupName={group} addMember={addMember} userId={userId} />
+              <GroupPage
+                setClickedGroup={setClickedGroup}
+                groupName={group}
+                addMember={addMember}
+                deleteMember={deleteMember}
+                userId={userId} />
             ))}
           </ul>
         )}

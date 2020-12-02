@@ -37,7 +37,7 @@ router.get("/:name", async (req, res) => {
 
 router.put("/participant", addParticipant)
 
-router.put("/del-participant", deleteParticipant)
+router.put("/", deleteParticipant)
 
 
 module.exports = router

@@ -1,6 +1,6 @@
 const express = require("express")
 const Group = require("../models/group")
-const { addMember } = require("../controllers/group-controller")
+const { addMember, deleteMember } = require("../controllers/group-controller")
  
 const router = new express.Router()
 
@@ -36,5 +36,8 @@ router.get("/:name", async (req, res) => {
 })
 
 router.put("/member", addMember)
+
+router.put("/", deleteMember)
+
 
 module.exports = router
