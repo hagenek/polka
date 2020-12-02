@@ -106,9 +106,29 @@ const getChatsByUserId = async (req, res) => {
   }
 }
 
+const deleteChat = async (req, res) => {
+  let { id } = req.params
+
+  try {
+    id = mongoose.Types.ObjectId(id)
+    const chat = await Chat.findByIdAndDelete(id);
+    chat.members.forEach(async userId => {
+      await User.findByIdAndUpdate(
+        userId,       
+        { $pull: { chats: id } },
+        { useFindAndModify: false })
+    })
+    res.status(204).end();
+  } catch(error) {
+    console.log(error)
+    res.send(error.message)
+  }
+}
+
 module.exports = {
   createChat,
   addMessage,
   getChatById,
   getChatsByUserId,
+  deleteChat
 }
