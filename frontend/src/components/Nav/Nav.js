@@ -33,7 +33,7 @@ const Nav = ({ userId, setUserId }) => {
         {userId ? (
           <>
             <div className="nav__logo" >
-              <Link to={`/people/${username}`}><h1>Polka Meet</h1></Link>
+              <Link to={`/people/${username}`}><h1>Polka</h1></Link>
             </div>
             <ul
               className={`nav__menu ${click && "nav_menu active"}`}

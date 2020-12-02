@@ -7,12 +7,12 @@
     font-size: 1.5em;
 }
 
-/* .groups__container{
+.groups__container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     padding: 10px;
-} */
+}
 
 .group__section h1{
 color: var(--fifth--color);

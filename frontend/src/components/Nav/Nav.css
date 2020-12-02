@@ -21,6 +21,7 @@
 }
 
 .nav__logo {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.25rem;
   margin-left: 20px;
   cursor: pointer;
@@ -73,6 +74,9 @@
 }
 
 .nav__item a {
+  padding: 10px;
+  font-weight: bolds;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--secondary--color);
   text-transform: capitalize;
