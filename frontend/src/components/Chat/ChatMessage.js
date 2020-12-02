@@ -1,15 +1,14 @@
 import React from 'react'
-import base64js from 'base64-js'
-
+import userService from '../../services/user-service'
 import './ChatMessage.css'
 
 const Message = ({ userId, message }) => {
-  const image = base64js.fromByteArray(message.sender.avatar.data)
+  const image = userService.getImage(message.sender.avatar)
   return (
     <>
       {userId === message.sender._id ? 
         <div className="message__container message__container--sender">
-          <img src={'data:image/png;base64,' + image} />
+          <img src={image} />
           <div className="message message--sender arrow arrow--sender">
             <p>{message.text}</p>
           </div>
@@ -18,7 +17,7 @@ const Message = ({ userId, message }) => {
           <div className="message message--receiver arrow arrow--receiver">
             <p>{message.text}</p>
           </div>
-          <img src={'data:image/png;base64,' + image} />
+          <img src={image} />
         </div>
       }
     </>
