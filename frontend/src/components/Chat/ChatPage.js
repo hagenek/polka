@@ -5,6 +5,7 @@ import ChatCreate from './ChatCreate'
 import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
 import {TextField } from '@material-ui/core'
+import base64js from 'base64-js'
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
@@ -66,7 +67,16 @@ const ChatPage = ({ userId }) => {
         </section>
           {chats
             .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
-            .map(chat => <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> )}
+            .map(chat => {
+              const isGroupChat = chat.members.length > 2;
+              if(!isGroupChat) {
+                const receiver = chat.members.find(user => user._id !== userId);
+                const image =  `data:image/png;base64,${base64js.fromByteArray(receiver.avatar.data)}`
+                return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+              }
+              return <ChatContact key={chat._id} id={chat._id} name={chat.name} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+            })
+          }
       </section>
       <section className="chat__container">
           {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
