@@ -1,5 +1,7 @@
 .nav {
   background-color: var(--main--color);
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #a5c0e448);
   height: 80px;
   display: flex;
   color: #0B0C10;

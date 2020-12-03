@@ -12,10 +12,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 220px;
+    height: 200px;
     background: #ECE9E6;
     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    background: linear-gradient(to right, #FFFFFF, #a5c0e448);
+    border-bottom: 1px solid  #a5c0e43b;
     margin-bottom: 30px;
 }
 
@@ -23,7 +24,7 @@
     position: absolute;
     width: 25%;
     bottom: 0;
-    right: 300px;
+    right: 200px;
 }
 
 .people__section h1 {

@@ -3,17 +3,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 220px;
+    height: 200px;
     background: #ECE9E6;
     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    background: linear-gradient(to right, #FFFFFF, #a5c0e448);
+    border-bottom: 1px solid  #a5c0e43b;
     margin-bottom: 30px;
 }
 
 .games__header img {
     position: absolute;
-    width: 350px;
-    bottom: 0;
+    width: 320px;
+    bottom: -20px;
     right: 300px;
 }
 
