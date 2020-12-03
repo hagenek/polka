@@ -65,6 +65,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route path="/user" component={BoardUser} />
           <Route exact path="/people" component={People} />
+          <Route exact path="/contact" component={ContactInfo} />
         </Switch>
         <Footer />
       </Router>

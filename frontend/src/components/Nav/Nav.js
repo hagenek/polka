@@ -5,6 +5,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AuthService from "../../services/auth-service"
 import backend from '../../api'
 
+import Logo from "../../assets/logo_transparent.png"
+
+
 import "./Nav.css"
 
 const Nav = ({ userId, setUserId }) => {
@@ -24,7 +27,6 @@ const Nav = ({ userId, setUserId }) => {
       setUsername(res.data.username)
     }
     getUsername()
-    console.log("hej", userId)
   }, [userId])
 
   return (
@@ -34,7 +36,7 @@ const Nav = ({ userId, setUserId }) => {
           <>
             <div className="nav__logo" >
               <Link to={`/people/${username}`}>
-                <h1>Polka Meet</h1>
+              <img src={Logo} alt="Polka logo" />
               </Link>
             </div>
             <ul
@@ -42,14 +44,8 @@ const Nav = ({ userId, setUserId }) => {
               onClick={handleClick}
               role="presentation"
             >
-              {/* <li className="nav__item">
-                <Link to="/home">Home</Link>
-              </li> */}
               <li className="nav__item">
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/upload">Avatar</Link>
+                <Link to={`/people/${username}`}>Profile</Link>
               </li>
               <li className="nav__item">
                 <Link to="/games">Games</Link>
@@ -69,11 +65,6 @@ const Nav = ({ userId, setUserId }) => {
               <li className="nav__item">
                 <Link to="/" onClick={handleLogOut}>Log Out</Link>
               </li>
-              {/* {currentUser && (
-            <li className="nav__item">
-              <Link to="/profile">Profile</Link>
-            </li>
-          )} */}
             </ul>
             <div className="mobile__icon" onClick={handleClick} role="presentation">
               {click ? <FaTimes /> : <FaBars />}
@@ -81,29 +72,23 @@ const Nav = ({ userId, setUserId }) => {
           </>
         ) : (
             <>
-              <div className="nav__logo">
-                <Link to="/">
-                  <h1>Polka Meet</h1>
-                </Link>
-              </div>
+            <div className="nav__logo" >
+              <Link to={`/people/${username}`}>
+              <img src={Logo} alt="Polka logo" />
+              </Link>
+            </div>
               <ul
-                className={`nav__menu ${click && "nav_menu active"}`}
+                className={`nav__menu nav__loggedOut ${click && "nav_menu active"}`}
                 onClick={handleClick}
                 role="presentation"
               >
-                <li className="nav__item">
-                  <Link to="/events">Events</Link>
-                </li>
-                <li className="nav__item">
-                  <Link to="/groups">Groups</Link>
-                </li>
                 <li className="nav__item login__logo" >
                   <AccountCircleIcon fontSize="large" className="AccountCircleIcon" />
                   <Link to="/login">Log In</Link>
                 </li>
-                {/* <li className="nav__item">
-                <Link to="/register">Sign Up</Link>
-              </li> */}
+                <li className="nav__item" >
+                  <Link to="/register">Sign up</Link>
+                </li>
               </ul>
               <div className="mobile__icon" onClick={handleClick} role="presentation">
                 {click ? <FaTimes /> : <FaBars />}

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 function Hero() {
-    const classes = makeStyles();
+    const classes = useStyles();
     return (
         <section className="hero__section">
             <div className="hero__text">

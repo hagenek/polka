@@ -110,7 +110,7 @@ io.on('connection', client => {
     const onlineRecievers = onlineUsers.filter(onlineUser => membersIds.includes(onlineUser.userId))
     // Address should not be hardcoded
     fetch(`http://localhost:1337/api/chat/message`, {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(message),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {

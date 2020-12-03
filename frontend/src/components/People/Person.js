@@ -13,7 +13,7 @@ import "./Person.css"
 function Person({ User }) {
 
   const [avatar, setAvatar] = useState(null);
-
+  console.log(User)
   useEffect(() => {
     if (User.avatar) {
       const avatar = base64js.fromByteArray(User.avatar.data)
@@ -30,14 +30,18 @@ function Person({ User }) {
           src={avatar}
           alt="generic profile"
         />
-        <h2 className="person__username">{User.username} </h2>
         <p className="person__names">
           {User.firstName} {User.lastName}{" "}
         </p>
+        <p className="intrests">Intrested in {User.interests ?? "golf"}</p>
       </div>
-      <br />
-      <h4>Interests:</h4>
-      <div>
+      {/* <section className="intrest__container">
+        <h3>Intrests</h3>
+        <p>{User.intrests ?? "golf"}</p>
+      </section> */}
+      {/* <br />
+      <h4>Interests:</h4> */}
+      {/* <div>
         <List >
           <ListItemIcon>
             {User.interests ?? "golf"}
@@ -48,10 +52,10 @@ function Person({ User }) {
         </List>
         <Divider />
         <CardHeader text="LOL" />
-      </div>
+      </div> */}
       <Link to={`people/${User.username}`}>
         <Button variant="contained" color="primary">
-          Profile
+          See profile
       </Button>
       </Link>
     </section>

@@ -1,28 +1,32 @@
 .nav {
   background-color: var(--main--color);
-  height: 80px;
+  background: rgb(253, 253, 254);
+  background: linear-gradient(72deg, rgba(253, 253, 254, 1) 0%, rgba(230, 237, 247, 1) 98%);
+  height: 100px;
   display: flex;
+  color: #0B0C10;
   justify-content: center;
   align-items: center;
   top: 0;
   position: sticky;
-  z-index: 1;
+  z-index: 999;
 }
 
 .nav__container {
   display: flex;
   justify-content: space-between;
   align-content: center;
-  height: 80px;
   width: 100%;
   max-width: 1000px;
   z-index: 999;
 }
 
 .nav__logo {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.25rem;
   margin-left: 20px;
   cursor: pointer;
+  width: 150px;
 }
 
 .nav__logo a {
@@ -72,6 +76,9 @@
 }
 
 .nav__item a {
+  padding: 10px;
+  font-weight: bolds;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--secondary--color);
   text-transform: capitalize;
@@ -101,5 +108,8 @@
   }
   .nav__item {
     margin: 0px 20px;
+  }
+  .nav__loggedOut {
+    justify-content: flex-end;
   }
 }

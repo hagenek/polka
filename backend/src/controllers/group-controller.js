@@ -4,7 +4,6 @@ const User = require("../models/user")
 
 const addMember = async (req, res) => {
     const { groupId, userId } = req.body
-    console.log(groupId, userId)
     try {
 
         if (!groupId || !userId) {
@@ -30,7 +29,6 @@ const addMember = async (req, res) => {
 
 const deleteMember = async (req, res) => {
     const { groupId, userId } = req.body
-    console.log("hello", groupId, userId)
     try {
         if (!groupId || !userId) {
             res.status(400).send("Error: missing property")

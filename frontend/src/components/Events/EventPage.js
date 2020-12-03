@@ -4,8 +4,15 @@ import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import IconButton from "@material-ui/core/IconButton"
 import halloweenImage from "../../assets/pablo-keep-distance.png"
+import { makeStyles } from '@material-ui/core/styles'
 
 import "./EventPage.css"
+
+const useStyles = makeStyles({
+  icon: {
+    color: '#263B96',
+  },
+});
 
 /* eslint-disable react/prop-types */
 function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipant, userId }) {
@@ -36,12 +43,13 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
     setParticipantsNum(participantsNum -1)
   }
 
+  const classes = useStyles();
+
   return (
     <li className="eventPage">
-      {console.log("EventPage", eventName.name)}
       <div className="eventPage__icons" onClick={() => emptyEventArrray()}>
         <IconButton className="checkBoxIcon">
-          <ArrowBackIosIcon role="presentation" />
+          <ArrowBackIosIcon className={classes.icon} role="presentation" fontSize="large"  />
         </IconButton>
       </div>
       <img className="eventPage__photo" src={halloweenImage}
@@ -52,17 +60,18 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
         <p className="eventPage__description">Description: {eventName.description} </p>
         <p className="eventPage__description">Participants: {participantsNum} </p>
       </div>
-      <div className="icons" >
+      <div className="eventPage__icons" >
+      <p>Participate</p>
       {participantExist === true ? (
           <ul onClick={(() => handleRemoevClick())}>
             <IconButton className="checkBoxIcon" >
-              <CheckBoxIcon />
+              <CheckBoxIcon className={classes.icon} fontSize="large" />
             </IconButton>
           </ul>
         ) : (
           <ul onClick={(() => handleAddClick())}>
           <IconButton className="CheckBoxOutlineBlankIcon">
-            <CheckBoxOutlineBlankIcon />
+            <CheckBoxOutlineBlankIcon className={classes.icon} fontSize="large"  />
           </IconButton>
         </ul>
      )}

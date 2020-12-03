@@ -5,8 +5,6 @@ const { addParticipant, deleteParticipant } = require("../controllers/event-cont
 const router = new express.Router()
 
 router.post("/", async (req, res) => {
-  console.log(req.body)
-
   const { name, description } = req.body
   const event = new Event({
     name,

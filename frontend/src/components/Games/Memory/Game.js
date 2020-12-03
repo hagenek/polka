@@ -84,7 +84,7 @@ class Game extends PureComponent {
 
   render() {
     return (
-     <div>
+     <div className="game__body" >
        <Header restartGame={this.restartGame} />
        { this.isGameOver() ? <GameOver restartGame={this.restartGame} /> :
        <div className="grid-container">

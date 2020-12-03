@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import ChatContact from './ChatContact'
 import api from "../../api"
 import {TextField, Button } from '@material-ui/core'
+import userService from '../../services/user-service'
+import Loader from '../Loader/Loader'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId, setClickedChatId }) => {
@@ -9,6 +11,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
     const [chatNameInput, setChatNameInput] = useState('');
     const [contacts, setContacts] = useState(undefined)
     const [members, setMembers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const handleMemberAdd = (id) => {
         const newMembers = [...members];
@@ -43,14 +46,19 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
             // Should fetch contacts
             const res = await api.get(`api/user/all`);
             setContacts(res.data)
+            setLoading(false)
         }
         getContacts()
     }, [])
 
+    if(loading) return (
+       <Loader />
+    )
+
     return (
         <section className="chatcreate__section">
-            <section className="chatcreate__title__container">
-                <h1>Create a chat</h1>
+            <section className="chat__to-message">
+                <p>Create a chat</p>
             </section>
             <section className="chatcreate__lists-container">
                 <section className="chatcreate__contacts-list__container">
@@ -70,7 +78,8 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                             contacts
                                 .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(searchInput.toLowerCase()))
                                 .filter(user => !members.includes(user))
-                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberAdd(id)} />) 
+                                .filter(user => user._id !== userId)
+                                .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} img={userService.getImage(user.avatar)} handleClickCard={id => handleMemberAdd(id)} />) 
                         }
                     </section>
                 </section>
@@ -78,9 +87,9 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                     <section className="chatcreate__title__container">
                         <h1>Selected</h1>
                     </section>
-                    <section className="chatcreate__list">
+                    <section className="chatcreate__list chatcreate__list__members">
                         {members
-                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} handleClickCard={id => handleMemberRemove(id)} />) 
+                            .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} img={userService.getImage(user.avatar)} handleClickCard={id => handleMemberRemove(id)} />) 
                         }
                     </section>
                 </section>
@@ -97,10 +106,11 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                         onChange={(e) => setChatNameInput(e.target.value)}
                     />
                 </section>
-                <section className="chatcreate__button">
+                <section className="chatcreate__button__container">
                     <Button
+                        className="chatcreate__button"
                         style={{
-                            'background-color': '#1F72E6',
+                            'background-color': '#3f51b5',
                             color: 'white'
                         }}
                         variant="contained"

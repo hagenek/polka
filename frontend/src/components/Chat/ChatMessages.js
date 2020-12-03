@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
 import ChatMessage from './ChatMessage'
+import Loader from '../Loader/Loader'
 import api from "../../api"
 import './ChatMessages.css'
 
@@ -8,6 +9,7 @@ const ChatMessages = ({ userId, chatId }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState(undefined);
+  const [loading, setLoading] = useState(true)
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -47,18 +49,23 @@ const ChatMessages = ({ userId, chatId }) => {
     const getChat = async () => {
       const res = await api.get(`api/chat/${chatId}`)
       setChat(res.data);
+      setLoading(false)
     }
     getChat()
   }, [chatId])
 
-  if(!socket || !chat) return <h1>Establishing connection...</h1>
+  if(loading) return (
+    <Loader />
+ )
 
   return (
     <>
       <section className="chat__section">
-
         <section className="chat__to-message">
-          {chat.name}
+          <p>{'To:\u00A0'}</p>
+          {chat.members
+            .filter(user => user._id !== userId)
+            .map((user, index) => <p>{`${user.username}${chat.members.length !== index+1 ? ',\u00A0' : ''}`}</p>) }
         </section>
         <ul>
           {chat && chat.messages.map(msg => <ChatMessage userId={userId} message={msg} /> )}
@@ -67,7 +74,7 @@ const ChatMessages = ({ userId, chatId }) => {
       <div className="form__container">
         <form className="chat__form" onSubmit={handleSubmit}>
           <input className="chat__input" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-          <input className="chat__btn" type="submit" value="Send" />
+          <input className="chat__send__btn" type="submit" value="Send" />
         </form>
       </div>
     </>

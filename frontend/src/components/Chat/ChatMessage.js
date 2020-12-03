@@ -1,15 +1,14 @@
 import React from 'react'
-
+import userService from '../../services/user-service'
 import './ChatMessage.css'
 
 const Message = ({ userId, message }) => {
+  const image = userService.getImage(message.sender.avatar)
   return (
     <>
       {userId === message.sender._id ? 
         <div className="message__container message__container--sender">
-          <img
-            src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"
-          />
+          <img src={image} />
           <div className="message message--sender arrow arrow--sender">
             <p>{message.text}</p>
           </div>
@@ -18,9 +17,7 @@ const Message = ({ userId, message }) => {
           <div className="message message--receiver arrow arrow--receiver">
             <p>{message.text}</p>
           </div>
-          <img
-            src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"
-          />
+          <img src={image} />
         </div>
       }
     </>
