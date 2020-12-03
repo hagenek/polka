@@ -55,13 +55,13 @@ function GroupPage({ setClickedGroup, groupName, addMember, deleteMember, userId
         </IconButton>
       </div>
       <div className="groupPage__frame">
-        <h2 className="groupPage__header">{groupName.name} </h2>
         <img
           className="groupPage__photo"
           src={team}
           alt="generic group"
         />
         <div className="groupPage__info">
+        <h2 className="groupPage__header">{groupName.name} </h2>
           <p className="groupPage__description">Description: {groupName.description} </p>
           <p className="groupPage__members">Members: {membersNum} </p>
         </div>
