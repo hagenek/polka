@@ -1,6 +1,6 @@
 .userprofile__header-container {
   /* background-color: #3f51b5; */
-  height: 40vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@
 
 .userprofile__header-container img {
   border-radius: 30%;
-  width: 150px;
+  width: 140px;
   max-width: 100%;
   padding: 2px;
   background-color: #fff;
@@ -34,7 +34,7 @@
 .userprofile__header-container h3 {
   color: #66FCF1;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: bold;
   margin: 10px 0;
 }
@@ -122,7 +122,7 @@
   background-color: #1F2833;
   display: flex;
   border-radius: 10px;
-  margin: 10px;
+  margin: 10px 0;
   flex-direction: column;
   color: #fff;
 }
@@ -166,7 +166,7 @@
   color: #fff;
   font-weight: bold;
   flex-direction: column;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .profile__container li {
@@ -198,7 +198,7 @@
   display: flex;
   align-items: center;
   background-color: #1f2833;
-  color: #66FCF1;
+  color: #fff;
   font-weight: bold;
   font-size: larger;
   border-radius: 10px;
@@ -207,12 +207,17 @@
   /* text-align: center; */
 }
 
-.friend__container p {
+.friend__text h1 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.friend__text p {
   font-size: 0.8rem;
 }
 
 .friend__container img {
   width: 50px;
-  margin-right: 4px;
+  margin-right: 6px;
   border-radius: 10px;
 }

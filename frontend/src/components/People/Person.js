@@ -13,7 +13,7 @@ import "./Person.css"
 function Person({ User }) {
 
   const [avatar, setAvatar] = useState(null);
-
+  console.log(User)
   useEffect(() => {
     if (User.avatar) {
       const avatar = base64js.fromByteArray(User.avatar.data)
@@ -33,7 +33,7 @@ function Person({ User }) {
         <p className="person__names">
           {User.firstName} {User.lastName}{" "}
         </p>
-        <p className="intrests">Intrested in {User.intrests ?? "golf"}</p>
+        <p className="intrests">Intrested in {User.interests ?? "golf"}</p>
       </div>
       {/* <section className="intrest__container">
         <h3>Intrests</h3>
