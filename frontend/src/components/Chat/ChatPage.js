@@ -7,6 +7,7 @@ import CreateChatIcon from "@material-ui/icons/AddComment"
 import {TextField } from '@material-ui/core'
 import userService from '../../services/user-service'
 import Loader from '../Loader/Loader'
+import ChatIllustration from "../../assets/marginalia-online-cooperation.png"
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
@@ -42,56 +43,62 @@ const ChatPage = ({ userId }) => {
 
   if(loading) return (
     <Loader />
- )
+  )
 
   return (
-    <section className="chatpage__container">
-      <section className="chatcard__container">
-        <section className="chatcard__inputs">
-          <TextField
-            required
-            className="chatcard__inputs__text"
-            type="text"
-            id="filled-required"
-            label="search chat"
-            variant="outlined"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          <CreateChatIcon
-            className="chatcard__inputs__btn"
-            onClick={() => {
-              setCreateChat(true)
-              setClickedChatId(undefined)
-            }}
-            style={{
-              fontSize: 40,
-              color: '#3f51b5'
-            }}
-          />
+    <>
+      <div className="group__header">
+        <h1>Chat with other people</h1>
+        <img src={ChatIllustration} alt="group image" />
+      </div>
+      <section className="chatpage__content__container">
+        <section className="chatcard__container">
+          <section className="chatcard__inputs">
+            <TextField
+              required
+              className="chatcard__inputs__text"
+              type="text"
+              id="filled-required"
+              label="search chat"
+              variant="outlined"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <CreateChatIcon
+              className="chatcard__inputs__btn"
+              onClick={() => {
+                setCreateChat(true)
+                setClickedChatId(undefined)
+              }}
+              style={{
+                fontSize: 40,
+                color: '#3f51b5'
+              }}
+            />
+          </section>
+            {chats
+              .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
+              .map(chat => {
+                const numChatMembers = chat.members.length;
+                let image = "https://www.materialui.co/materialIcons/social/group_grey_192x192.png"
+                if(numChatMembers === 1) {
+                  image = userService.getImage(chat.members[0].avatar)
+                }
+                else if(numChatMembers === 2) {
+                  const receiver = chat.members.find(user => user._id !== userId);
+                  image =  userService.getImage(receiver.avatar)
+                }
+                return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
+              })
+            }
         </section>
-          {chats
-            .filter(chat => chat.name.toLowerCase().includes(searchInput.toLowerCase()))
-            .map(chat => {
-              const numChatMembers = chat.members.length;
-              let image = "https://www.materialui.co/materialIcons/social/group_grey_192x192.png"
-              if(numChatMembers === 1) {
-                image = userService.getImage(chat.members[0].avatar)
-              }
-              else if(numChatMembers === 2) {
-                const receiver = chat.members.find(user => user._id !== userId);
-                image =  userService.getImage(receiver.avatar)
-              }
-              return <ChatContact key={chat._id} id={chat._id} name={chat.name} img={image} handleClickCard={id => setClickedChatId(id)} handleClickDelete={id => handleDeleteChat(id)} /> 
-            })
-          }
+        <section className="chat__container">
+            {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
+                          : createChat && <ChatCreate userId={userId} setClickedChatId={id => handleSelectNewChat(id)} />
+            }
+        </section>
       </section>
-      <section className="chat__container">
-          {clickedChatId ? <ChatMessages userId={userId} chatId={clickedChatId} /> 
-                         : createChat && <ChatCreate userId={userId} setClickedChatId={id => handleSelectNewChat(id)} />
-          }
-      </section>
-    </section>
+    </>
   )
 }
 
