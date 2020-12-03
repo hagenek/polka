@@ -10,10 +10,10 @@ import "./Groupitem.css"
 
 const useStyles = makeStyles({
   button: {
-      height: 48,
-      width: 200,
-      padding: '0 30px',
-      background: '#4fb3bf',
+    height: 48,
+    width: 200,
+    padding: '0 30px',
+    background: '#4fb3bf',
   },
 });
 
@@ -31,13 +31,13 @@ function GroupItem({ getGroup, groupName }) {
         <h2 className="groupItem__header">{groupName.name} </h2>
         <p className="groupItem__description">{groupName.description} </p>
       </div>
-        <Button
-          className={classes.button}
-          variant="contained"
-          color="primary"
-          borderColor="text.primary"
-          type="submit">
-            Join group
+      <Button
+        className={classes.button}
+        variant="contained"
+        color="primary"
+        borderColor="text.primary"
+        type="submit">
+        Join group
         </Button>
     </li>
   )

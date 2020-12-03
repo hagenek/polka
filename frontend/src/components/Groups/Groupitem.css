@@ -1,7 +1,6 @@
 .groupItem {
     background-color: var(--first--color);
-    background-color: #1f2833;
-    border: solid 1px #bebebe;
+    box-shadow: 2px 4px 10px #c0c0c0a1;
     margin: 5px;
     padding: 0 0 20px 0;
     display: flex;
@@ -9,8 +8,11 @@
     align-items: center;
     justify-content: space-around;
     width: 400px;
-    height: 350px;
     border-radius: 10px;
+}
+
+.groupItem:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .groupPicture {
@@ -28,7 +30,6 @@
     font-weight: 600;
     margin: 10px;
     color: var(--fifth--color);
-
 }
 
 .groupItem__description {
@@ -36,12 +37,7 @@
     text-align: center;
     width: 80%;
     margin: 0 0 15px 0;
-    color: #f8f8f8
-
-}
-
-.groupItem:hover {
-    background-color: #1f2833e7;
+    color: rgba(0, 0, 0, 0.75)
 }
 
 .group__info {
@@ -51,5 +47,3 @@
     justify-content: space-around;
     width: 100%;
 }
-
-
