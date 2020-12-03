@@ -2,6 +2,7 @@
   "scripts": {
     "start-dev-backend": "cd backend && yarn run dev",
     "start-dev-frontend": "cd frontend && yarn start",
+    "start": "cd backend && yarn start",
     "heroku-postbuild": "cd frontend && yarn install && yarn run build"
   },
   "dependencies": {
