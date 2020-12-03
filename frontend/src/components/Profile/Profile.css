@@ -16,12 +16,11 @@ img {
     color: #525865;
 }
 
-.signup__form {
-    background-color: rgba(213, 213, 213, 0.20);
+.profile__signup__form {
     width: 350px;
     border-radius: 5px;
     padding: 20px;
-  }
+}
 
 .submit-btn {
     display: flex;
@@ -36,3 +35,8 @@ img {
     margin: 20px 0;
 }
 
+.profile__image {
+    border-radius: 50%;
+    border: 5px solid rgba(201, 201, 201, 0.319);
+    margin-bottom: 20px;
+}

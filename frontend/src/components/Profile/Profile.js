@@ -126,10 +126,8 @@ const Profile = ({ userId }) => {
         justify="center"
         style={{ minHeight: '85vh' }}
       >
-        <Upload userId={userId} addChange={addChange}/>
         <br />
-        {avatar && <img src={'data:image/png;base64,' + avatar} />}
-        <ValidatorForm className="signup__form" onSubmit={handleUpdate}>
+        <ValidatorForm className="profile__signup__form" onSubmit={handleUpdate}>
           {message && (
             successful ? (
               <>
@@ -147,7 +145,12 @@ const Profile = ({ userId }) => {
               )
           )}
           {!successful && (
+
             <div className="profile__edit_container">
+              <section className="profile__input__container">
+                {avatar && <img className="profile__image" src={'data:image/png;base64,' + avatar} />}
+                <Upload userId={userId} addChange={addChange}/>
+              </section>
               <section className="profile__input__container">
                 <label className="edit-label">First name: </label>
                 <TextValidator
