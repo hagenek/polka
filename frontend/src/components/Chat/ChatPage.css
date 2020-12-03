@@ -1,8 +1,8 @@
-.chatpage__container {
+.chatpage__content__container {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  /* margin-right: 20px; */
   height: 80vh;
+  /* margin-right: 20px; */
 }
 
 .chatcard__container {
