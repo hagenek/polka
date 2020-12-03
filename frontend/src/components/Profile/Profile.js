@@ -10,9 +10,9 @@ import { Link } from "react-router-dom"
 import userService from "../../services/user-service"
 import base64js from 'base64-js'
 import Upload from '../Upload/Upload'
+import Loader from '../Loader/Loader'
 
 const Profile = ({ userId }) => {
-
   const [userData, setUserData] = useState({})
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -24,6 +24,7 @@ const Profile = ({ userId }) => {
   const [gender, setGender] = useState("")
   const [avatar, setAvatar] = useState(null)
   const [changed, setChanged] = useState(1)
+  const [loading, setLoading] = useState(true)
 
   const addChange = (img) => {
     setAvatar(img)
@@ -43,6 +44,7 @@ const Profile = ({ userId }) => {
         const avatar = base64js.fromByteArray(res.data.avatar.data)
         setAvatar(avatar);
       }
+      setLoading(false)
       // ... do something else with 'buffer'
     }
     getUser()
@@ -114,7 +116,9 @@ const Profile = ({ userId }) => {
     setGender(e.target.value)
   }
 
-
+  if(loading) return (
+    <Loader />
+  )
 
   return (
     <div className="userdata-container">

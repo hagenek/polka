@@ -6,7 +6,7 @@ import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
 import {TextField } from '@material-ui/core'
 import userService from '../../services/user-service'
-import ClipLoader from 'react-spinners/ClipLoader'
+import Loader from '../Loader/Loader'
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
@@ -41,10 +41,8 @@ const ChatPage = ({ userId }) => {
   }, [userId])
 
   if(loading) return (
-    <section className="loader__container">
-      <ClipLoader />
-    </section>
-  )
+    <Loader />
+ )
 
   return (
     <section className="chatpage__container">

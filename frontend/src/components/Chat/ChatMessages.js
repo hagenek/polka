@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
 import ChatMessage from './ChatMessage'
-import ClipLoader from 'react-spinners/ClipLoader'
+import Loader from '../Loader/Loader'
 import api from "../../api"
 import './ChatMessages.css'
 
@@ -55,10 +55,8 @@ const ChatMessages = ({ userId, chatId }) => {
   }, [chatId])
 
   if(loading) return (
-    <section className="loader__container">
-      <ClipLoader />
-    </section>
-  )
+    <Loader />
+ )
 
   return (
     <>

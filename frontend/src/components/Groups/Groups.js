@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import GroupItem from "./GroupItem"
 import GroupPage from "./GroupPage"
+import Loader from '../Loader/Loader'
 import backend from "../../api"
 
 import GroupBiker from "../../assets/bikes-group.png"
@@ -10,10 +11,13 @@ import "./Groups.css"
 function Groups({ userId }) {
   const [groupName, setGroupName] = useState([])
   const [clickedGroup, setClickedGroup] = useState([])
+  const [loading, setLoading] = useState(true)
 
   async function fetchData() {
+    setLoading(true)
     const request = await backend.get("api/group")
     setGroupName(request.data)
+    setLoading(false)
     return request
   }
 
@@ -41,6 +45,10 @@ function Groups({ userId }) {
     )
     await fetchData()
   }
+
+  if(loading) return (
+    <Loader />
+  )
 
   return (
     <>
