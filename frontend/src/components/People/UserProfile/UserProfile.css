@@ -91,7 +91,6 @@
   font-size: 2.5rem;
   font-weight: 200;
   color: #2e59a8;
-
 }
 
 .date__container p {
@@ -109,14 +108,12 @@
   font-size: 1.5rem;
   font-weight: 500;
   color: #2e59a8;
-
 }
 
 .event__description p {
   font-size: 0.9rem;
   padding-top: 10px;
   color: #2e59a8ef;
-
 }
 
 /*GROUPS*/
@@ -141,6 +138,7 @@
   padding: 20px;
   background-color: #E9ECF5;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.027);
+  width: 100%;
 }
 
 .group__text {

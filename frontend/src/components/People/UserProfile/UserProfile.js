@@ -31,7 +31,7 @@ const UserProfile = ({ userId }) => {
     }
   }, [userProfile])
 
-  if(loading) return (
+  if (loading) return (
     <Loader />
   )
 
@@ -117,9 +117,9 @@ const UserProfile = ({ userId }) => {
               <li><strong>Gender:</strong> {userProfile[0]?.gender ?? "Not sure"}</li>
               <li><strong>City:</strong> Bergen</li>
               <li><strong>Disability:</strong> Hearing Impairment</li>
-              <li><strong>Gender Intrest:</strong> Not picky</li>
+              <li><strong>Gender Interest:</strong> Bisexual</li>
               <li><strong>Hobbies:</strong> Reading, Basketball, Netflix & Chill</li>
-              <li><strong>Intrests:</strong> {userProfile[0]?.interests}</li>
+              <li><strong>Interests:</strong> {userProfile[0]?.interests}</li>
             </ul>
           </section>
           <section className="friends__main-container">
