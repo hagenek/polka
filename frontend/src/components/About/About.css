@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 150px;
   background: #ECE9E6;
   background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
   background: linear-gradient(to right, #FFFFFF, #a5c0e448);
@@ -13,8 +13,8 @@
 
 .about__header img {
   position: absolute;
-  width: 350px;
-  bottom: -8px;
+  width: 270px;
+  bottom: -6px;
   right: 200px;
 }
 

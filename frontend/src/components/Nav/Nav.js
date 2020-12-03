@@ -5,6 +5,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AuthService from "../../services/auth-service"
 import backend from '../../api'
 
+import Logo from "../../assets/logo_transparent.png"
+
+
 import "./Nav.css"
 
 const Nav = ({ userId, setUserId }) => {
@@ -32,7 +35,9 @@ const Nav = ({ userId, setUserId }) => {
         {userId ? (
           <>
             <div className="nav__logo" >
-              <Link to={`/people/${username}`}><h1>Polka</h1></Link>
+              <Link to={`/people/${username}`}>
+              <img src={Logo} alt="Polka logo" />
+              </Link>
             </div>
             <ul
               className={`nav__menu ${click && "nav_menu active"}`}
@@ -67,9 +72,11 @@ const Nav = ({ userId, setUserId }) => {
           </>
         ) : (
             <>
-              <div className="nav__logo">
-                <Link to="/"><h1>Polka Meet</h1></Link>
-              </div>
+            <div className="nav__logo" >
+              <Link to={`/people/${username}`}>
+              <img src={Logo} alt="Polka logo" />
+              </Link>
+            </div>
               <ul
                 className={`nav__menu nav__loggedOut ${click && "nav_menu active"}`}
                 onClick={handleClick}

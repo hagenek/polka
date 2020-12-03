@@ -2,7 +2,7 @@
   background-color: var(--main--color);
   background: rgb(253, 253, 254);
   background: linear-gradient(72deg, rgba(253, 253, 254, 1) 0%, rgba(230, 237, 247, 1) 98%);
-  height: 80px;
+  height: 100px;
   display: flex;
   color: #0B0C10;
   justify-content: center;
@@ -16,7 +16,6 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
-  height: 80px;
   width: 100%;
   max-width: 1000px;
   z-index: 999;
@@ -27,6 +26,7 @@
   font-size: 1.25rem;
   margin-left: 20px;
   cursor: pointer;
+  width: 150px;
 }
 
 .nav__logo a {
