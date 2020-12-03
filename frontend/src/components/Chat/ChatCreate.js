@@ -78,6 +78,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
                             contacts
                                 .filter(user => (`${user.firstName} ${user.lastName}`).toLowerCase().includes(searchInput.toLowerCase()))
                                 .filter(user => !members.includes(user))
+                                .filter(user => user._id !== userId)
                                 .map(user => <ChatContact name={`${user.firstName} ${user.lastName}`} id={user._id} img={userService.getImage(user.avatar)} handleClickCard={id => handleMemberAdd(id)} />) 
                         }
                     </section>
