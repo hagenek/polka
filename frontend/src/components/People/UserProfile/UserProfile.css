@@ -1,6 +1,6 @@
 .userprofile__header-container {
   /* background-color: #3f51b5; */
-  height: 45vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,10 +13,13 @@
 }
 
 .heading {
-  background-color: #1F2833;
+  background-color: #2e59a8;
   border-radius: 10px;
   color: #fff;
   text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 15px 0;
 }
 
 .edit__btn {
@@ -32,7 +35,7 @@
 }
 
 .userprofile__header-container h3 {
-  color: #66FCF1;
+  color: #fff;
   text-transform: uppercase;
   font-size: 1.75rem;
   font-weight: bold;
@@ -68,20 +71,15 @@
   display: flex;
   align-items: center;
   margin: 10px 0;
-  color: #fff;
-  background-color: #1F2833;
+  color: #000;
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
-.heading {
-  font-size: 1.5rem;
-  padding: 20px 0;
-}
-
 .date__container {
-  background-color: #1F2833;
-  color: #fff;
+  background-color: #EAECF5;
+  color: #000;
   padding: 5px 15px;
   text-align: center;
   min-height: 100%;
@@ -92,11 +90,13 @@
 .date__container h1 {
   font-size: 2.5rem;
   font-weight: 200;
+  color: #2e59a8;
 }
 
 .date__container p {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #2e59a8;
 }
 
 .event__description {
@@ -107,11 +107,13 @@
 .event__description h1 {
   font-size: 1.5rem;
   font-weight: 500;
+  color: #2e59a8;
 }
 
 .event__description p {
   font-size: 0.9rem;
   padding-top: 10px;
+  color: #2e59a8ef;
 }
 
 /*GROUPS*/
@@ -119,7 +121,7 @@
 .group__container {
   grid-area: groups;
   width: 100%;
-  background-color: #1F2833;
+  background-color: #fff;
   display: flex;
   border-radius: 10px;
   margin: 10px 0;
@@ -132,9 +134,11 @@
   align-items: center;
   border-radius: 10px;
   margin-bottom: 10px;
-  color: #fff;
+  color: #000;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  background-color: #E9ECF5;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.027);
+  width: 100%;
 }
 
 .group__text {
@@ -143,12 +147,15 @@
 
 .group__text h1 {
   font-size: 1.5rem;
+  font-weight: 500;
   margin-bottom: 10px;
+  color: #2e59a8;
 }
 
 .group__text p {
   padding-right: 25px;
   word-break: break-all;
+  color: #2e59a8ef;
 }
 
 /*PROFILE INFO*/
@@ -164,17 +171,19 @@
   border-radius: 10px;
   display: flex;
   color: #fff;
-  font-weight: bold;
+  font-weight: 450;
   flex-direction: column;
   /* height: 100%; */
 }
 
 .profile__container li {
-  background-color: #1F2833;
-  color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 10px;
+  color: #2e59a8;
+  padding: 15px;
+  margin: 2px 0;
+}
+
+.profile__container li:nth-child(even) {
+  background-color: #EAECF5;
 }
 
 /*FRIENDS*/
@@ -188,8 +197,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15); */
-  background-color: #0B0C10;
-  margin: 5px 0;
+  background-color: #E9ECF5;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
 }
@@ -197,8 +206,8 @@
 .friend__container {
   display: flex;
   align-items: center;
-  background-color: #1f2833;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   font-weight: bold;
   font-size: larger;
   border-radius: 10px;
@@ -210,10 +219,12 @@
 .friend__text h1 {
   font-size: 1rem;
   font-weight: 500;
+  color: #2e59a8;
 }
 
 .friend__text p {
   font-size: 0.8rem;
+  color: #2e59a8ef;
 }
 
 .friend__container img {
