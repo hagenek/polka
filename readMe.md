@@ -1,18 +1,38 @@
-# Polka Meeting App
+# Polka Meet
 
-![Alt](/logo.png "Polka logo")
+[![](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-## The flow of pushing your changes
+_Students at [\</salt> Fall2020](https://salt.study/) were required to make a web application from scratch in a timeframe of two weeks. Our group consisted of Adrian Nesvik, Georg Ekeberg, Helari Sosi and Joakim Andersson and this is the result of our final project._
 
-1. Make sure you are working on your own local branch (NOT dev) - commit everything you do there locally --> git commit -am "added a great feature"
+## Installation and setup
 
-2. Go to the dev branch and do the following:
+### Install
 
-   - git checkout dev
-   - git pull
-   - git merge [Your local branch]
-   - git push
-   - git checkout [your local branch]
-   - git merge dev
+Use yarn to install dependencies by running the following command in the server and client directories.
 
-3. Questions: Ask Georg.
+```bash
+yarn install
+```
+
+### Start the application
+
+To start the development servers you will need to run the following command in the server directory
+
+```bash
+yarn dev
+```
+
+and in the client directory
+
+```bash
+yarn start
+```
+
+The frontend will now be accessible at http://localhost:3000/ and the backend will be accessible on http://localhost:1337/
+
+## Visuals
+
+
+
+## Project Status
+
