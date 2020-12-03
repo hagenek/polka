@@ -3,7 +3,7 @@ import ChatContact from './ChatContact'
 import api from "../../api"
 import {TextField, Button } from '@material-ui/core'
 import userService from '../../services/user-service'
-import ClipLoader from 'react-spinners/ClipLoader'
+import Loader from '../Loader/Loader'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId, setClickedChatId }) => {
@@ -52,9 +52,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
     }, [])
 
     if(loading) return (
-        <section className="loader__container">
-          <ClipLoader />
-        </section>
+       <Loader />
     )
 
     return (
