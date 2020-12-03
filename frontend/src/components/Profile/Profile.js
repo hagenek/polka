@@ -78,7 +78,7 @@ const Profile = ({ userId }) => {
     }
     ).then(
       (response) => {
-        setMessage("Profile inf updated")
+        setMessage("Profile sucessfully updated")
         setSuccessful(true)
       },
       (error) => {
