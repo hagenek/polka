@@ -116,7 +116,7 @@ const Profile = ({ userId }) => {
     setGender(e.target.value)
   }
 
-  if(loading) return (
+  if (loading) return (
     <Loader />
   )
 
@@ -132,19 +132,19 @@ const Profile = ({ userId }) => {
       >
         <section className="profile__input__container">
           {avatar && <img className="profile__image" src={'data:image/png;base64,' + avatar} />}
-          <Upload userId={userId} addChange={addChange}/>
+          <Upload userId={userId} addChange={addChange} />
         </section>
         <ValidatorForm className="profile__signup__form" onSubmit={handleUpdate}>
           {message && (
             successful ? (
-              <>
+              <div className="update__profile-message">
                 <Alert severity="success" role="alert">
                   {message}
                 </Alert>
                 <Link to="/people">
-                  <Button variant="contained" color="primary" type="submit">Find friends</Button>
+                  <Button className="mt-10" variant="contained" color="primary" type="submit">Find friends</Button>
                 </Link>
-              </>
+              </div>
             ) : (
                 <Alert severity="error" role="alert">
                   {message}
@@ -158,7 +158,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">First name: </label>
                 <TextValidator
                   onChange={onChangeFirstName}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   name="first name"
                   value={firstName}
                   validators={['required']}
@@ -169,7 +169,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">Last name</label>
                 <TextValidator
                   onChange={onChangelastName}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   name="first name"
                   value={lastName}
                   validators={['required']}
@@ -180,7 +180,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">Username</label>
                 <TextValidator
                   onChange={onChangeUsername}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   name="username"
                   value={username}
                   validators={['required']}
@@ -191,7 +191,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">Email</label>
                 <TextValidator
                   onChange={onChangeEmail}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   name="email"
                   value={email}
                   validators={['required', 'isEmail']}
@@ -202,7 +202,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">Interests</label>
                 <TextValidator
                   onChange={onChangeInterests}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   type="interests"
                   name="interests"
                   value={interests}
@@ -212,7 +212,7 @@ const Profile = ({ userId }) => {
                 <label className="edit-label">Gender</label>
                 <TextValidator
                   onChange={onChangeGender}
-                  inputProps={{style: { textAlign: 'center' }}}
+                  inputProps={{ style: { textAlign: 'center' } }}
                   type="gender"
                   name="gender"
                   value={gender}

@@ -28,6 +28,16 @@ img {
     align-items: center;
 }
 
+.update__profile-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
 .profile__input__container {
     display: flex;
     flex-direction: column;
