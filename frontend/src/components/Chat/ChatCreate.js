@@ -3,6 +3,7 @@ import ChatContact from './ChatContact'
 import api from "../../api"
 import {TextField, Button } from '@material-ui/core'
 import userService from '../../services/user-service'
+import ClipLoader from 'react-spinners/ClipLoader'
 import './ChatCreate.css'
 
 const ChatCreate = ({ userId, setClickedChatId }) => {
@@ -10,6 +11,7 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
     const [chatNameInput, setChatNameInput] = useState('');
     const [contacts, setContacts] = useState(undefined)
     const [members, setMembers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const handleMemberAdd = (id) => {
         const newMembers = [...members];
@@ -44,9 +46,16 @@ const ChatCreate = ({ userId, setClickedChatId }) => {
             // Should fetch contacts
             const res = await api.get(`api/user/all`);
             setContacts(res.data)
+            setLoading(false)
         }
         getContacts()
     }, [])
+
+    if(loading) return (
+        <section className="loader__container">
+          <ClipLoader />
+        </section>
+    )
 
     return (
         <section className="chatcreate__section">

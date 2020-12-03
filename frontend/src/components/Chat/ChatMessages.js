@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import socketClient from 'socket.io-client'
 import ChatMessage from './ChatMessage'
+import ClipLoader from 'react-spinners/ClipLoader'
 import api from "../../api"
 import './ChatMessages.css'
 
@@ -8,6 +9,7 @@ const ChatMessages = ({ userId, chatId }) => {
   const socket = useRef();
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState(undefined);
+  const [loading, setLoading] = useState(true)
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -47,11 +49,16 @@ const ChatMessages = ({ userId, chatId }) => {
     const getChat = async () => {
       const res = await api.get(`api/chat/${chatId}`)
       setChat(res.data);
+      setLoading(false)
     }
     getChat()
   }, [chatId])
 
-  if(!socket || !chat) return <h1>Establishing connection...</h1>
+  if(loading) return (
+    <section className="loader__container">
+      <ClipLoader />
+    </section>
+  )
 
   return (
     <>

@@ -6,6 +6,7 @@ import api from "../../api"
 import CreateChatIcon from "@material-ui/icons/AddComment"
 import {TextField } from '@material-ui/core'
 import userService from '../../services/user-service'
+import ClipLoader from 'react-spinners/ClipLoader'
 import './ChatPage.css'
 
 const ChatPage = ({ userId }) => {
@@ -13,12 +14,15 @@ const ChatPage = ({ userId }) => {
   const [clickedChatId, setClickedChatId] = useState(undefined)
   const [createChat, setCreateChat] = useState(false)
   const [searchInput, setSearchInput] = useState('')
+  const [loading, setLoading] = useState(true);
 
   const getChats = async () => {
     if(userId) {
+      setLoading(true)
       const res = await api.get(`api/chat/user/${userId}`)
       const chats = res.data.chats
       if(chats) setChats([...chats])
+      setLoading(false)
     }
   }
 
@@ -36,8 +40,11 @@ const ChatPage = ({ userId }) => {
     getChats()
   }, [userId])
 
-  // Add better response page
-  if (!chats) return <h1>No chats</h1>
+  if(loading) return (
+    <section className="loader__container">
+      <ClipLoader />
+    </section>
+  )
 
   return (
     <section className="chatpage__container">
