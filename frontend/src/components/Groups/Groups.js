@@ -51,7 +51,7 @@ function Groups({ userId }) {
   )
 
   return (
-    <>
+    <section className="group__frame">
       <div className="group__header">
         <h1>Join new groups</h1>
         <img src={GroupBiker} alt="group image" />
@@ -78,7 +78,7 @@ function Groups({ userId }) {
             </ul>
           )}
       </section>
-    </>
+    </section>
   )
 }
 

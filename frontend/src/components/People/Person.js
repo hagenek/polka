@@ -55,7 +55,7 @@ function Person({ User }) {
       </div> */}
       <Link to={`people/${User.username}`}>
         <Button variant="contained" color="primary">
-          Profile
+          See profile
       </Button>
       </Link>
     </section>

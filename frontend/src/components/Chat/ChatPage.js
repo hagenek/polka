@@ -48,7 +48,7 @@ const ChatPage = ({ userId }) => {
   return (
     <>
       <div className="group__header">
-        <h1>Chat with other people</h1>
+        <h1>Chat with friends</h1>
         <img src={ChatIllustration} alt="group image" />
       </div>
       <section className="chatpage__content__container">

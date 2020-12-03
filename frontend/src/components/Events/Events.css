@@ -8,7 +8,7 @@
     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
     background: linear-gradient(to right, #FFFFFF, #a5c0e448);
     border-bottom: 1px solid  #a5c0e43b;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .events__header img {
@@ -31,11 +31,6 @@
     margin: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5em;
-}
-
-.event__section h1 {
-    color: var(--fifth--color);
-    font-weight: 600;
 }
 
 .event__section ul {

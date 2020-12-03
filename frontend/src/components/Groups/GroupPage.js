@@ -12,7 +12,7 @@ import "./GroupPage.css"
 
 const useStyles = makeStyles({
   icon: {
-    color: '#ffffff',
+    color: '#263B96',
   },
 });
 
@@ -54,20 +54,18 @@ function GroupPage({ setClickedGroup, groupName, addMember, deleteMember, userId
           <ArrowBackIosIcon className={classes.icon} role="presentation" />
         </IconButton>
       </div>
-      <div className="groupPage__frame">
-        <img
-          className="groupPage__photo"
-          src={team}
-          alt="generic group"
-        />
-        <div className="groupPage__info">
+      <img
+        className="groupPage__photo"
+        src={team}
+        alt="generic group"
+      />
+      <div className="groupPage__info">
         <h2 className="groupPage__header">{groupName.name} </h2>
-          <p className="groupPage__description">Description: {groupName.description} </p>
-          <p className="groupPage__members">Members: {membersNum} </p>
-        </div>
+        <p className="groupPage__description">Description: {groupName.description} </p>
+        <p className="groupPage__members">Members: {membersNum} </p>
       </div>
-      <div className="icons">
-      <p>Join</p>
+      <div className="groupPage__icons">
+        <p>Join</p>
         {memberExist === true ? (
           <ul onClick={(() => handleRemoveClick())}>
             <IconButton className="checkBoxIcon" >

@@ -50,7 +50,6 @@ function Events({ userId }) {
         <img src={Calender} alt="event image" />
       </div>
       <section className="event__section">
-        <h1>Find an event you like here:</h1>
         {clickedEvent.length === 0 ? (
           <ul>
             {eventName.map((event) => (

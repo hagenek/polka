@@ -13,9 +13,9 @@
 
 .games__header img {
     position: absolute;
-    width: 320px;
+    width: 350px;
     bottom: -20px;
-    right: 300px;
+    right: 200px;
 }
 
 .games__header h1 {
@@ -29,17 +29,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.game__section {
-    margin: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.5em;
-}
-
-.game__section h1 {
-    color: var(--fifth--color);
-    font-weight: 600;
 }
 
 .linkToGames {

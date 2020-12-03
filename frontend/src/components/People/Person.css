@@ -30,14 +30,21 @@
 }
 
 .person__names {
-    font-size: 1.2rem;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
     margin: 10px 0;
+    color: var(--fifth--color);
 }
 
 .intrests {
-    margin-bottom: 20px;
-    text-align: center;
     color: #3e3e3ee1;
+    font-size: 1rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.75);
+    margin-bottom: 15px;
+    width: 80%;
 }
 
 .icons {

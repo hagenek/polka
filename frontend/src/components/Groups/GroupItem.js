@@ -10,10 +10,8 @@ import "./Groupitem.css"
 
 const useStyles = makeStyles({
   button: {
-    height: 48,
+    height: 45,
     width: 200,
-    padding: '0 30px',
-    background: '#4fb3bf',
   },
 });
 

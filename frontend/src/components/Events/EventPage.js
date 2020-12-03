@@ -10,7 +10,7 @@ import "./EventPage.css"
 
 const useStyles = makeStyles({
   icon: {
-    color: '#ffffff',
+    color: '#263B96',
   },
 });
 
@@ -60,7 +60,8 @@ function EventPage({ setClickedEvent, eventName, addParticipant, deleteParticipa
         <p className="eventPage__description">Description: {eventName.description} </p>
         <p className="eventPage__description">Participants: {participantsNum} </p>
       </div>
-      <div className="icons" >
+      <div className="eventPage__icons" >
+      <p>Participate</p>
       {participantExist === true ? (
           <ul onClick={(() => handleRemoevClick())}>
             <IconButton className="checkBoxIcon" >

@@ -9,7 +9,7 @@ import "./EventItem.css"
 
 const useStyles = makeStyles({
   icon: {
-    color: '#ffffff',
+    color: '#263B96',
   },
 });
 
