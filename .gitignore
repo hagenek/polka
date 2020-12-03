@@ -2,6 +2,7 @@ backend/node_modules
 frontend/node_modules
 backend/.env
 frontend/.eslintcache
+node_modules
 
 # dotenv environment variables file
 config.env
