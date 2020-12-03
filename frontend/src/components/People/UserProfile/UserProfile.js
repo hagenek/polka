@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from "react-router-dom";
+import Loader from '../../Loader/Loader'
 import backend from "../../../api";
 import base64js from 'base64-js'
 import Button from "@material-ui/core/Button"
-
 import './UserProfile.css'
-
-
 
 const UserProfile = ({ userId }) => {
   const [userProfile, setUserProfile] = useState([]);
   const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(true)
   const { user } = useParams();
-  console.log(userId)
-
-  // console.log(avatar)
-  console.log("hello", userProfile[0])
 
   useEffect(() => {
     async function fetchData() {
       const request = await backend.get(`api/user/profile/${user}`)
       setUserProfile(request.data)
+      setLoading(false)
       return request
     }
     fetchData()
@@ -34,6 +30,10 @@ const UserProfile = ({ userId }) => {
       setAvatar('https://images.vexels.com/media/users/3/140800/isolated/preview/86b482aaf1fec78a3c9c86b242c6ada8-man-profile-avatar-by-vexels.png')
     }
   }, [userProfile])
+
+  if(loading) return (
+    <Loader />
+  )
 
   return (
     <div className="bg-container">
