@@ -11,7 +11,7 @@ function Games() {
     return (
         <>
             <div className="games__header">
-                <h1>Find new events</h1>
+                <h1>Games</h1>
                 <img src={GameImg} alt="event image" />
             </div>
             <div className="game__div" >

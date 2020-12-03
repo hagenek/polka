@@ -3,22 +3,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 220px;
     background: #ECE9E6;
-    background: -webkit-linear-gradient(to right, #242f3b, #151c24);
-    background: linear-gradient(to right, #242f3be8, #151c24);
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
     margin-bottom: 30px;
 }
 
 .events__header img {
     position: absolute;
-    width: 180px;
+    width: 130px;
     bottom: 0;
     right: 300px;
 }
 
 .events__header h1 {
-    color: #ffffff;
+    color: #263B96;
     font-weight: 600;
     font-size: 2rem;
 }

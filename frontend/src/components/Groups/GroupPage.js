@@ -5,6 +5,9 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import IconButton from "@material-ui/core/IconButton"
 import { makeStyles } from '@material-ui/core/styles'
 
+import team from "../../assets/team.jpg"
+
+
 import "./GroupPage.css"
 
 const useStyles = makeStyles({
@@ -55,7 +58,7 @@ function GroupPage({ setClickedGroup, groupName, addMember, deleteMember, userId
         <h2 className="groupPage__header">{groupName.name} </h2>
         <img
           className="groupPage__photo"
-          src="https://www.cancer.org/content/dam/cancer-org/images/photographs/single-use/espresso-coffee-cup-with-beans-on-table-restricted.jpg"
+          src={team}
           alt="generic group"
         />
         <div className="groupPage__info">
@@ -64,6 +67,7 @@ function GroupPage({ setClickedGroup, groupName, addMember, deleteMember, userId
         </div>
       </div>
       <div className="icons">
+      <p>Join</p>
         {memberExist === true ? (
           <ul onClick={(() => handleRemoveClick())}>
             <IconButton className="checkBoxIcon" >

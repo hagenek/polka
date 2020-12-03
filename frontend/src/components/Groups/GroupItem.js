@@ -2,7 +2,9 @@
 import React from "react"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from '@material-ui/core/styles'
-import Choco from "../../assets/choco.jpg"
+
+import team from "../../assets/team.jpg"
+
 
 import "./Groupitem.css"
 
@@ -22,7 +24,7 @@ function GroupItem({ getGroup, groupName }) {
     <li className="groupItem" role="presentation" onClick={() => getGroup(groupName.name)}>
       <img
         className="groupPicture"
-        src={Choco}
+        src={team}
         alt="generic group"
       />
       <div className="group__info">

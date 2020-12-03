@@ -8,6 +8,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    width: 80%;
 }
 
 .groupPage__frame {
@@ -46,4 +47,19 @@
     background-color: #1f2833;
     background-position: bottom;
     position: top;
+}
+
+.groupPage__description {
+    width: 70%;
+    text-align: center;
+}
+
+.groupPage__members {
+    text-align: center;
+}
+
+.icons {
+    display: flex  !important;
+    flex-direction: column !important;
+    color: white;
 }
