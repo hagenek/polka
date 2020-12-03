@@ -5,8 +5,8 @@
     align-items: center;
     height: 300px;
     background: #ECE9E6;
-    background: -webkit-linear-gradient(to right,  #242f3b, #151c24);
-    background: linear-gradient(to right,  #242f3be8, #151c24);
+    background: -webkit-linear-gradient(to right, #242f3b, #151c24);
+    background: linear-gradient(to right, #242f3be8, #151c24);
     margin-bottom: 30px;
 }
 
@@ -32,12 +32,12 @@
     font-size: 1.5em;
 }
 
-.event__section h1{
-color: var(--fifth--color);
-font-weight: 600;
+.event__section h1 {
+    color: var(--fifth--color);
+    font-weight: 600;
 }
 
-.event__section ul{
+.event__section ul {
     margin: 10px;
     display: flex;
     flex-direction: column;
