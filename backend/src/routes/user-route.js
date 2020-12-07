@@ -56,6 +56,6 @@ router.patch("/:id", updateUser)
 router.get("/all", getAllUsers);
 router.get('/:id', getUser);
 router.post("/user", addUser);
-router.get("/profile/:username", getByUsername);
+router.get("/profile/:username", verifyToken, getByUsername);
 
 module.exports = router

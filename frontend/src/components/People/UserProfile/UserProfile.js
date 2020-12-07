@@ -1,26 +1,47 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import Loader from '../../Loader/Loader'
 import backend from "../../../api";
 import base64js from 'base64-js'
 import Button from "@material-ui/core/Button"
+import authHeader from "../../../services/auth-header"
 import './UserProfile.css'
 
 const UserProfile = ({ userId }) => {
   const [userProfile, setUserProfile] = useState([]);
   const [avatar, setAvatar] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const history = useHistory();
+
   const { user } = useParams();
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await backend.get(`api/user/profile/${user}`)
-      setUserProfile(request.data)
-      setLoading(false)
-      return request
-    }
-    fetchData()
+    backend.get(`api/user/profile/${user}`, { headers: authHeader() })
+      .then(response => {
+        setUserProfile(response.data)
+        setLoading(false)
+      },
+        (error) => {
+          switch (error.response.status) {
+            case 403:
+              history.push('/login')
+              break
+            default:
+              break
+          }
+        }
+      )
   }, [])
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const request = await backend.get(`api/user/profile/${user}`, { headers: authHeader() })
+  //     setUserProfile(request.data)
+  //     setLoading(false)
+  //     return request
+  //   }
+  //   fetchData()
+  // }, [])
 
   useEffect(() => {
     if (userProfile[0]?.avatar) {

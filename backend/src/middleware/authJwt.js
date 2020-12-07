@@ -7,6 +7,7 @@ verifyToken = (req, res, next) => {
   const token = req.headers["x-access-token"]
 
   if (!token) {
+    console.log('No token provided')
     return res.status(403).send({ message: "No token provided!" })
   }
 

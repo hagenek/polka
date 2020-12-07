@@ -13,7 +13,6 @@ import "./Person.css"
 function Person({ User }) {
 
   const [avatar, setAvatar] = useState(null);
-  console.log(User)
   useEffect(() => {
     if (User.avatar) {
       const avatar = base64js.fromByteArray(User.avatar.data)
