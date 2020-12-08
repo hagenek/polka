@@ -4,6 +4,9 @@
 
 _Students at [\</salt> Fall2020](https://salt.study/) were required to make a web application from scratch in a timeframe of two weeks. Our group consisted of Adrian Nesvik, Georg Ekeberg, Helari Sosi and Joakim Andersson and this is the result of our final project._
 
+## The project is live at https://polkat.herokuapp.com/
+
+
 ## Installation and setup
 
 ### Install
